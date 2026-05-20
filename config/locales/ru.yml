@@ -171,6 +171,9 @@ ru:
           open: 'Выбрать тему'
           close: 'Закрыть'
           active: 'Активна'
+          locked: 'Закрыто'
+          locked_hint: 'Открой соответствующую ачивку, чтобы разблокировать'
+        theme_locked: 'Тема ещё не разблокирована'
         notifications: 'Уведомления'
         notifications_desc: 'Письма о новых достижениях и неделях'
         notifications_options:
@@ -215,6 +218,10 @@ ru:
         rewards: 'Награды'
       rewards:
         from: 'За достижение «%{name}»'
+        titles_heading: 'Титулы'
+        themes_heading: 'Темы'
+        badges_heading: 'Бейджи'
+        locked: 'закрыто'
       missions:
         current: 'Текущая миссия'
         current_empty: 'Активной миссии нет'

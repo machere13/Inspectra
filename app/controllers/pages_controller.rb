@@ -56,7 +56,12 @@ class PagesController < WebController
     @user = current_user
     attrs = {}
     if params[:theme].present? && User::ALLOWED_THEMES.include?(params[:theme])
-      attrs[:theme] = params[:theme]
+      if @user.theme_unlocked?(params[:theme])
+        attrs[:theme] = params[:theme]
+      else
+        redirect_back(fallback_location: profile_config_path, alert: t('pages.profile_config.preferences.theme_locked', default: 'Тема ещё не разблокирована'))
+        return
+      end
     end
     unless params[:notifications_email].nil?
       attrs[:notifications_email] = ActiveModel::Type::Boolean.new.cast(params[:notifications_email])

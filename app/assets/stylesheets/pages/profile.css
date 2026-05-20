@@ -438,6 +438,26 @@
     border-radius: var(--border-radius-x1);
 }
 
+.PageProfile-Identity-NameRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-x2);
+    flex-wrap: wrap;
+}
+
+.PageProfile-Identity-Badge{
+    padding: 2px var(--spacing-x2);
+    background: var(--color-text-primary);
+    color: var(--color-background, #000);
+    border-radius: var(--border-radius-x05);
+    font-family: var(--font-family-geist-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
 .PageProfile-ProgressCard{
     gap: var(--spacing-x3);
 }
@@ -735,6 +755,95 @@
 
 .PageProfile-RewardRow-From{
     color: var(--color-text-secondary, var(--color-text-primary));
+}
+
+.PageProfile-RewardSection{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x2);
+    padding-bottom: var(--spacing-x3);
+    margin-bottom: var(--spacing-x3);
+    border-bottom: var(--border-x025) solid var(--color-border-tertiary);
+}
+
+.PageProfile-RewardSection:last-child{
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.PageProfile-RewardSection-Title{
+    color: var(--color-text-secondary, var(--color-text-primary));
+    font-family: var(--font-family-geist-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.PageProfile-RewardThemes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-x2);
+}
+
+.PageProfile-RewardTheme{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x1);
+    padding: var(--spacing-x2);
+    border: var(--border-x025) solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-x2);
+}
+
+.PageProfile-RewardTheme-Preview{
+    width: 100%;
+}
+
+.PageProfile-RewardTheme-Name{
+    color: var(--color-text-primary);
+    font-family: var(--font-family-geist-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.PageProfile-RewardBadges{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-x2);
+}
+
+.PageProfile-RewardBadge{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-x2);
+    padding: var(--spacing-x1) var(--spacing-x3);
+    border: var(--border-x025) solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-x1);
+}
+
+.PageProfile-RewardBadge-Label{
+    padding: 2px var(--spacing-x2);
+    background: var(--color-text-primary);
+    color: var(--color-background, #000);
+    border-radius: var(--border-radius-x05);
+    font-family: var(--font-family-geist-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.PageProfile-RewardBadge-From{
+    color: var(--color-text-secondary, var(--color-text-primary));
+}
+
+.PageProfile-RewardTheme-From{
+    color: var(--color-text-secondary, var(--color-text-primary));
+    opacity: 0.7;
+}
+
+/* Locked-варианты — приглушены */
+.PageProfile-RewardRow--Locked,
+.PageProfile-RewardTheme--Locked,
+.PageProfile-RewardBadge--Locked{
+    opacity: 0.4;
 }
 
 .PageProfile-Missions{
