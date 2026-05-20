@@ -604,6 +604,14 @@
     min-height: 0;
     overflow-y: auto;
     padding-right: var(--spacing-x1);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.PageProfile-TabContent::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 .PageProfile-AchievementList{
@@ -640,6 +648,25 @@
     border: var(--border-x025) solid var(--color-border-tertiary);
     border-radius: var(--border-radius-x05);
     font-family: var(--font-family-geist-mono);
+}
+
+.PageProfile-AchievementRow-Head{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-x2);
+    flex-wrap: wrap;
+}
+
+.PageProfile-AchievementRow-Pill{
+    padding: 2px var(--spacing-x2);
+    border: var(--border-x025) solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-x05);
+    color: var(--color-text-secondary, var(--color-text-primary));
+    font-family: var(--font-family-geist-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    line-height: 1.2;
 }
 
 .PageProfile-Titles-Grid{

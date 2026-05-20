@@ -99,8 +99,10 @@
                 <% @achievement_groups.each do |g| %>
                   <div class="PageProfile-AchievementRow <%= 'PageProfile-AchievementRow--Done' if g[:all_completed] %>">
                     <div class="PageProfile-AchievementRow-Body">
-                      <div class="text-p-3">
-                        <strong><%= g[:tier].name %></strong><% if g[:all_completed] %> ✓<% end %>
+                      <div class="PageProfile-AchievementRow-Head">
+                        <strong class="text-p-3"><%= g[:tier].name %></strong>
+                        <% if g[:all_completed] %><span class="text-p-3">✓</span><% end %>
+                        <span class="PageProfile-AchievementRow-Pill text-p-3"><%= t("achievement_categories.#{g[:category]}", default: g[:category].to_s.titleize) %></span>
                       </div>
                       <div class="text-p-3"><%= g[:tier].description %></div>
                       <% if g[:tiers_total] > 1 %>
