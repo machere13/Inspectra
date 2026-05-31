@@ -93,7 +93,27 @@
       "Bash(python scripts/search.py \"settings config bento dashboard dark sci-fi cyber\" --design-system -p \"Inspectra Profile Config\")",
       "Bash(python scripts/search.py \"settings dashboard dark sci-fi minimal\" --design-system -p \"Inspectra Config\")",
       "Bash(python scripts/search.py \"settings page hierarchy bento card layout\" --domain ux -n 12)",
-      "Bash(python scripts/search.py \"form input button label spacing density\" --domain ux -n 8)"
+      "Bash(python scripts/search.py \"form input button label spacing density\" --domain ux -n 8)",
+      "Bash(bin/rails db:migrate:status)",
+      "Bash(bin/rails routes *)",
+      "Bash(mkdir -p 'C:\\\\Users\\\\vladi\\\\Desktop\\\\gg\\\\study\\\\thirdCourse\\\\inspectra_vk_mini_app')",
+      "Read(//c/Users/vladi/Desktop/gg/study/thirdCourse/**)",
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(mkdir -p \"C:/Users/vladi/Desktop/gg/study/thirdCourse/inspectra_vk_mini_app/scripts\")",
+      "Bash(node node_modules/@vkontakte/vk-tunnel/bin/vk-tunnel.js --help)",
+      "Bash(ls \"C:/Users/vladi/Desktop/gg/job/VTB_web/\" 2>&1 | head -40)",
+      "Bash(ls \"C:\\\\Users\\\\vladi\\\\Desktop\\\\gg\\\\job\\\\VTB_web\\\\\")",
+      "Bash(mkdir -p \"C:/Users/vladi/Desktop/gg/study/thirdCourse/inspectra_vk_mini_app/.husky\")",
+      "Bash(pnpm install *)",
+      "Bash(pnpm lint *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(pnpm typecheck *)",
+      "Bash(echo \"LINT=$?\")",
+      "Bash(echo \"TC=$?\")",
+      "Bash(node -e \"import\\('eslint-plugin-react-hooks'\\).then\\(m => { console.log\\('recommended-latest:', JSON.stringify\\(m.default.configs['recommended-latest'], null, 2\\)\\); console.log\\('flat:', JSON.stringify\\(m.default.configs.flat, null, 2\\)\\); }\\)\")",
+      "Bash(rm \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/services/vk_launch_params_verifier.rb\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/config/initializers/vk_config.rb\")"
     ]
   }
 }

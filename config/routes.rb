@@ -14,6 +14,11 @@ Rails.application.routes.draw do
       post 'auth/resend', to: 'auth#resend_verification_code'
       get 'auth/me', to: 'auth#me'
       get 'auth/supported-domains', to: 'auth#supported_email_domains'
+
+      get   'profile',              to: 'profile#show'
+      patch 'profile/preferences',  to: 'profile#update_preferences'
+      patch 'profile/title',        to: 'profile#select_title'
+      patch 'profile/name',         to: 'profile#update_name'
       get 'game_roles', to: 'game_roles#index'
       patch 'game_roles/select', to: 'game_roles#select'
       
