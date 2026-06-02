@@ -2,17 +2,17 @@
   <%
     is_admin_week_page = request.path.match?(%r{^/admin/weeks/}) && !@week.nil? && @week.persisted?
     admin_navigation_items = [
-      { text: 'DASHBOARD', href: admin_dashboard_path, hotkey: 'D' },
-      { text: 'USERS', href: admin_users_path, hotkey: 'U' },
-      { text: 'WEEKS', href: admin_weeks_path, hotkey: 'W' },
-      { text: 'REPORTS', href: admin_error_reports_path, hotkey: 'R' },
-      { text: 'MEDIA', href: admin_media_subscriptions_path, hotkey: 'M' }
+      { text: 'ПАНЕЛЬ', href: admin_dashboard_path, hotkey: 'П' },
+      { text: 'ЮЗЕРЫ', href: admin_users_path, hotkey: 'Ю' },
+      { text: 'НЕДЕЛИ', href: admin_weeks_path, hotkey: 'Н' },
+      { text: 'ОТЧЁТЫ', href: admin_error_reports_path, hotkey: 'О' },
+      { text: 'МЕДИА', href: admin_media_subscriptions_path, hotkey: 'М' }
     ]
     week_navigation_items = nil
     if is_admin_week_page
       week_navigation_items = [
-        { text: 'СТАТЬИ', href: admin_week_articles_path(@week), hotkey: 'A' },
-        { text: 'КОНТЕНТ', href: admin_week_content_items_path(@week), hotkey: 'C' }
+        { text: 'СТАТЬИ', href: admin_week_articles_path(@week), hotkey: 'С' },
+        { text: 'КОНТЕНТ', href: admin_week_content_items_path(@week), hotkey: 'К' }
       ]
     end
   %>
@@ -28,24 +28,24 @@
   <% is_article_page = request.path.include?('/articles/') %>
   <% is_inspectra_page = request.path == '/inspectra' || request.path == inspectra_path %>
   <% is_profile_page = request.path == '/profile' || request.path.start_with?('/profile/') %>
-  <% 
+  <%
     article_count = is_week_page && defined?(@week) ? @week.articles.count : 0
     filter_items = is_week_page && defined?(@content_counts) ? [
-      { label: "Articles (#{article_count})", value: 'article', checked: false },
-      { label: "Image (#{@content_counts['image'] || 0})", value: 'image', checked: false },
+      { label: "Статьи (#{article_count})", value: 'article', checked: false },
+      { label: "Картинки (#{@content_counts['image'] || 0})", value: 'image', checked: false },
       { label: "GIF (#{@content_counts['gif'] || 0})", value: 'gif', checked: false },
-      { label: "Video (#{@content_counts['video'] || 0})", value: 'video', checked: false },
-      { label: "Audio (#{@content_counts['audio'] || 0})", value: 'audio', checked: false },
-      { label: "Link (#{@content_counts['link'] || 0})", value: 'link', checked: false }
+      { label: "Видео (#{@content_counts['video'] || 0})", value: 'video', checked: false },
+      { label: "Аудио (#{@content_counts['audio'] || 0})", value: 'audio', checked: false },
+      { label: "Ссылки (#{@content_counts['link'] || 0})", value: 'link', checked: false }
     ] : []
     navigation_items = [
-      { text: 'HOME', href: root_path, hotkey: 'H' },
-      { text: 'INSPECTRA', href: inspectra_path, hotkey: 'I' }
+      { text: 'ГЛАВНАЯ', href: root_path, hotkey: 'Г' },
+      { text: 'ИНСПЕКТРА', href: inspectra_path, hotkey: 'И' }
     ]
     if defined?(current_user) && current_user&.email_verified?
-      navigation_items << { text: 'PROFILE', href: profile_path, hotkey: 'P' }
+      navigation_items << { text: 'ПРОФИЛЬ', href: profile_path, hotkey: 'П' }
     else
-      navigation_items << { text: 'AUTH', href: auth_path, hotkey: 'A' }
+      navigation_items << { text: 'ВХОД', href: auth_path, hotkey: 'В' }
     end
   %>
 
@@ -56,20 +56,20 @@
       <%= render 'shared/wrappers/W_NavigationItems', index: 1, items: filter_items, radio: true %>
     <% elsif is_inspectra_page %>
       <%= render 'shared/wrappers/W_NavigationItems', index: 1, items: [
-        { text: 'MAIN', href: '#main' },
-        { text: 'ABOUT', href: '#about' },
-        { text: 'YOUR ROLE', href: '#your_role' },
-        { text: 'HOW', href: '#how' },
-        { text: 'READY', href: '#ready' },
+        { text: 'ГЛАВНОЕ', href: '#main' },
+        { text: 'О НАС', href: '#about' },
+        { text: 'ТВОЯ РОЛЬ', href: '#your_role' },
+        { text: 'КАК', href: '#how' },
+        { text: 'ГОТОВ', href: '#ready' },
       ] %>
     <% elsif is_profile_page %>
       <%= render 'shared/wrappers/W_NavigationItems', index: 1, items: [
-        { text: 'OVERVIEW', href: profile_path, hotkey: 'O' },
-        { text: 'CONFIG', href: profile_config_path, hotkey: 'C' }
+        { text: 'ОБЗОР', href: profile_path, hotkey: 'О' },
+        { text: 'НАСТРОЙКИ', href: profile_config_path, hotkey: 'Н' }
       ] %>
     <% elsif !is_article_page && !@error_page %>
       <%= render 'shared/wrappers/W_NavigationItems', index: 1, items: [
-        { text: 'BLOCKS', href: '#blocks' }
+        { text: 'БЛОКИ', href: '#blocks' }
       ], style: is_home ? 'visibility: hidden; opacity: 0; height: 0;' : '' %>
     <% elsif @error_page %>
       <%= render 'shared/wrappers/W_NavigationItems', index: 1, items: [], style: 'visibility: hidden; pointer-events: none; overflow: hidden;', aria_hidden: true %>

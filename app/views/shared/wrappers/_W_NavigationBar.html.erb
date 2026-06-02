@@ -2,11 +2,11 @@
   <% is_admin_week_page = request.path.match?(%r{^/admin/weeks/}) && !@week.nil? && @week.persisted? %>
   <div class="W_NavigationBar">
     <div class="W_NavigationBar-Item" data-index="0">
-      <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 16, icon_height: 16, text: 'Admin', arrow: { opened: true } %>
+      <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 16, icon_height: 16, text: 'Админка', arrow: { opened: true } %>
     </div>
     <% if is_admin_week_page %>
       <div class="W_NavigationBar-Item" data-index="1">
-        <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 16, icon_height: 16, text: 'Week', arrow: { opened: true } %>
+        <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 16, icon_height: 16, text: 'Неделя', arrow: { opened: true } %>
       </div>
     <% end %>
   </div>
@@ -16,11 +16,11 @@
 
   <div class="W_NavigationBar">
     <div class="W_NavigationBar-Item" data-index="0">
-      <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 24, icon_height: 24, text: 'Pages', arrow: { opened: true } %>
+      <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 24, icon_height: 24, text: 'Страницы', arrow: { opened: true } %>
     </div>
     <% if !is_article_page && !@error_page %>
       <div class="W_NavigationBar-Item" data-index="1">
-        <%= render 'shared/molecules/M_NavigationBar', icon_name: is_week_page ? 'Q_FilterIcon' : nil, icon_width: 24, icon_height: 24, text: is_week_page ? 'Filter' : 'Blocks', arrow: { opened: true } %>
+        <%= render 'shared/molecules/M_NavigationBar', icon_name: is_week_page ? 'Q_FilterIcon' : nil, icon_width: 24, icon_height: 24, text: is_week_page ? 'Фильтр' : 'Блоки', arrow: { opened: true } %>
       </div>
     <% elsif is_article_page || @error_page %>
       <div class="W_NavigationBar-Item" data-index="1"<%= ' aria-hidden="true"'.html_safe if @error_page %>></div>

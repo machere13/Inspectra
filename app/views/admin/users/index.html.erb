@@ -4,8 +4,8 @@
   <%= render 'shared/organisms/O_ControlPanelTable',
       title: t('admin.users.index.statistics') do %>
     <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
-      'Statistic',
-      'Count'
+      'Показатель',
+      'Количество'
     ] %>
     <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
       t('admin.users.index.total'),
@@ -45,7 +45,7 @@
     <% if @users.any? %>
       <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
         'ID',
-        'Email',
+        'E-mail',
         t('admin.users.index.role'),
         t('admin.users.index.email_verified'),
         t('admin.users.index.registered'),
@@ -62,7 +62,7 @@
         ] %>
       <% end %>
     <% else %>
-      <p>No users found</p>
+      <p>Пользователей не найдено</p>
     <% end %>
   <% end %>
 

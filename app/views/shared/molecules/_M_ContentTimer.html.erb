@@ -3,6 +3,6 @@
 %>
 <div class="M_ContentTimer-Wrapper">
   <span class="M_ContentTimer-Text text-p-1">
-    content expires in: <span data-countdown data-expires-at="<%= week&.expires_at&.iso8601 %>" class="timer-value"><%= week ? week.time_left : '00:00:00' %></span>
+    контент истекает через: <span data-countdown data-expires-at="<%= week&.expires_at&.iso8601 %>" class="timer-value"><%= week ? week.time_left : '00:00:00' %></span>
   </span>
 </div>

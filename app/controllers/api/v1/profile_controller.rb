@@ -50,7 +50,7 @@ class Api::V1::ProfileController < ApplicationController
       if User::ALLOWED_THEMES.include?(params[:theme]) && user.theme_unlocked?(params[:theme])
         attrs[:theme] = params[:theme]
       else
-        return render_validation_error(message: 'Theme not allowed or locked')
+        return render_validation_error(message: 'Тема недоступна или заблокирована')
       end
     end
 
@@ -59,7 +59,7 @@ class Api::V1::ProfileController < ApplicationController
     end
 
     if attrs.empty?
-      return render_validation_error(message: 'No changes')
+      return render_validation_error(message: 'Нет изменений')
     end
 
     if user.update(attrs)
@@ -72,13 +72,13 @@ class Api::V1::ProfileController < ApplicationController
   def select_title
     user  = current_user
     title = Title.find_by(id: params[:title_id])
-    return render_not_found(message: 'Title not found') unless title
+    return render_not_found(message: 'Титул не найден') unless title
 
     begin
       user.select_title!(title)
       render_success(data: { current_title: { id: title.id, name: title.name } })
     rescue ArgumentError
-      render_validation_error(message: 'Title not available for user')
+      render_validation_error(message: 'Титул недоступен для пользователя')
     end
   end
 

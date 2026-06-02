@@ -4,10 +4,10 @@
 %>
 <div class="W_NotificationsBar">
   <div class="W_NotificationsBar-Item <%= 'W_NotificationsBar-Item--HasUnread' if has_unread %>" data-index="0">
-    <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_UnreadIcon', icon_width: 24, icon_height: 24, text: 'Unread mess', arrow: { opened: false } %>
+    <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_UnreadIcon', icon_width: 24, icon_height: 24, text: 'Непрочитанные', arrow: { opened: false } %>
   </div>
   <div class="W_NotificationsBar-Item" data-index="1">
-    <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 24, icon_height: 24, text: 'Archive', arrow: { opened: false } %>
+    <%= render 'shared/molecules/M_NavigationBar', icon_name: 'Q_FolderIcon', icon_width: 24, icon_height: 24, text: 'Архив', arrow: { opened: false } %>
   </div>
 </div>
 

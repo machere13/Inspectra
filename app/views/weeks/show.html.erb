@@ -1,4 +1,4 @@
-<% content_for :meta_title, "Week #{@week.number}" %>
+<% content_for :meta_title, "Неделя #{@week.number}" %>
 <% content_for :meta_description, @week.title %>
 <% content_for :og_image, og_week_url(@week, format: :png) %>
 
@@ -8,28 +8,38 @@
       <%= render 'shared/molecules/M_ContentTimer', week: @week %>
     </div>
   <% end %>
-  <% 
+  <%
+    kind_labels = {
+      'article' => 'СТАТЬЯ',
+      'image'   => 'КАРТИНКА',
+      'gif'     => 'GIF',
+      'video'   => 'ВИДЕО',
+      'audio'   => 'АУДИО',
+      'link'    => 'ССЫЛКА'
+    }
+
     articles_with_positions = @week.articles.map { |article| { item: article, position: rand(0..@content_items.length), type: 'article' } }
     content_with_positions = @content_items.map { |item| { item: item, position: (item.position || 0), type: 'content' } }
     all_items = (articles_with_positions + content_with_positions).sort_by { |x| (x[:position] || 0).to_i }
-    
+
     items_by_type = all_items.group_by { |item_data| item_data[:type] == 'article' ? 'article' : item_data[:item].kind }
     type_order = ['article', 'image', 'gif', 'video', 'audio', 'link']
     sorted_items_by_type = type_order.map { |type| [type, items_by_type[type] || []] }.to_h
   %>
-  
+
   <%= render 'shared/wrappers/W_Loader' %>
   <div class="PageWeek-Content" data-filter-group="content-filters" data-view-mode="cobweb">
     <div class="PageWeek-Content-Canvas PageWeek-Content-View--Cobweb">
       <canvas class="PageWeek-Content-Canvas-Lines"></canvas>
       <div class="PageWeek-Content-Canvas-Items">
         <% all_items.each_with_index do |item_data, index| %>
-          <div class="PageWeek-Content-Item" 
-               data-content-type="<%= item_data[:type] == 'article' ? 'article' : item_data[:item].kind %>"
+          <% kind_key = item_data[:type] == 'article' ? 'article' : item_data[:item].kind %>
+          <div class="PageWeek-Content-Item"
+               data-content-type="<%= kind_key %>"
                data-node-index="<%= index %>">
             <%= render 'weeks/M_ContentCard',
-              type: item_data[:type] == 'article' ? 'article' : item_data[:item].kind,
-              label: item_data[:type] == 'article' ? 'ARTICLE' : item_data[:item].kind&.upcase,
+              type: kind_key,
+              label: kind_labels[kind_key] || kind_key.to_s.upcase,
               id: item_data[:type] == 'article' ? "article_card_#{item_data[:item].id}" : "content_card_#{item_data[:item].id}",
               title: item_data[:item].title,
               description: item_data[:type] == 'article' ? (item_data[:item].description.presence || truncate(item_data[:item].body, length: 120)) : nil,
@@ -39,16 +49,17 @@
         <% end %>
       </div>
     </div>
-    
+
     <div class="PageWeek-Content-List PageWeek-Content-View--List">
       <% sorted_items_by_type.each do |type, items| %>
         <% next if items.empty? %>
         <div class="PageWeek-Content-List-Group" data-content-type="<%= type %>">
           <% items.each do |item_data| %>
+            <% kind_key = item_data[:type] == 'article' ? 'article' : item_data[:item].kind %>
             <div class="PageWeek-Content-List-Item">
               <%= render 'weeks/M_ContentCard',
-                type: item_data[:type] == 'article' ? 'article' : item_data[:item].kind,
-                label: item_data[:type] == 'article' ? 'ARTICLE' : item_data[:item].kind&.upcase,
+                type: kind_key,
+                label: kind_labels[kind_key] || kind_key.to_s.upcase,
                 id: item_data[:type] == 'article' ? "article_card_#{item_data[:item].id}" : "content_card_#{item_data[:item].id}",
                 title: item_data[:item].title,
                 description: item_data[:type] == 'article' ? (item_data[:item].description.presence || truncate(item_data[:item].body, length: 120)) : nil,
@@ -61,4 +72,3 @@
     </div>
   </div>
 </div>
-
