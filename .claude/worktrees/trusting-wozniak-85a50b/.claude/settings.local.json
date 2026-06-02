@@ -141,7 +141,8 @@
       "Bash(curl -s -H 'Cookie: token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozODY5LCJleHAiOjE3ODEwMzExODMsImlzcyI6Imluc3BlY3RyYSIsImF1ZCI6Imluc3BlY3RyYS1hcGkiLCJqdGkiOiIyMTdlNWJiOS04MWI4LTQ0NDAtOTc3NS03ODNhZDlmNmVkNGYiLCJpYXQiOjE3ODA0MjYzODN9.qQafT5iQQgKD2OH9lPa_mcNio6d7oDBKmnNutz3fPsc' -L http://localhost:3000/admin/dashboard -o /tmp/d3.html)",
       "Bash(curl -s -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozODY5LCJleHAiOjE3ODEwMzExODMsImlzcyI6Imluc3BlY3RyYSIsImF1ZCI6Imluc3BlY3RyYS1hcGkiLCJqdGkiOiIyMTdlNWJiOS04MWI4LTQ0NDAtOTc3NS03ODNhZDlmNmVkNGYiLCJpYXQiOjE3ODA0MjYzODN9.qQafT5iQQgKD2OH9lPa_mcNio6d7oDBKmnNutz3fPsc' -L http://localhost:3000/admin/dashboard -o /tmp/d4.html)",
       "Bash(xargs grep -nE \"\\\\b[A-Z][a-z]{3,}\\\\b\")",
-      "Bash(grep -E \"'ON'|'OFF'|\\\\\"ON\\\\\"|on'$|off'$\")"
+      "Bash(grep -E \"'ON'|'OFF'|\\\\\"ON\\\\\"|on'$|off'$\")",
+      "Bash(grep -nE \"\\\\.PageProfile-Card\\\\s*\\\\{|\\\\.PageProfile-Card,|\\\\.PageProfile-Card-Title\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/assets/stylesheets/pages/profile.css\")"
     ]
   }
 }

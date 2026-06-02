@@ -153,18 +153,78 @@
     margin-top: auto;
 }
 
-/* === Identity (единая 3-кол сетка: label | value | action) === */
-.PageProfileConfig-Identity-Grid{
-    display: grid;
-    grid-template-columns: minmax(120px, 160px) minmax(0, 1fr) auto;
-    column-gap: var(--spacing-x4);
-    row-gap: var(--spacing-x3);
-    align-items: center;
+.PageProfileConfig-Identity{
+    display: flex;
+    gap: var(--spacing-x6);
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-/* Форма становится "невидимой" — её дети (input + кнопка) ложатся в столбцы grid'а */
-.PageProfileConfig-FormContents{
-    display: contents;
+.PageProfileConfig-Avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-x2);
+    flex-shrink: 0;
+}
+
+.PageProfileConfig-Avatar-Hint{
+    color: var(--color-text-tertiary, var(--color-text-secondary));
+    text-align: center;
+    max-width: 160px;
+    line-height: var(--line-height-normal);
+}
+
+.PageProfileConfig-Identity-Fields{
+    flex: 1 1 0;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x3);
+}
+
+.PageProfileConfig-Row{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x2);
+    padding: var(--spacing-x3) 0;
+    border-bottom: var(--border-x025) solid var(--color-border-tertiary);
+}
+
+.PageProfileConfig-Row:last-child{
+    border-bottom: none;
+}
+
+.PageProfileConfig-Row--ReadOnly{
+    gap: var(--spacing-x1);
+}
+
+.PageProfileConfig-Row-Edit{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-x3);
+    flex-wrap: wrap;
+}
+
+.PageProfileConfig-Row-Edit > .A_Button,
+.PageProfileConfig-Row-Edit > a.A_Button,
+.PageProfileConfig-Row--ReadOnly .PageProfileConfig-Note{
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.PageProfileConfig-Row-Value{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-x3);
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.PageProfileConfig-Row--ReadOnly .PageProfileConfig-Row-Value{
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .PageProfileConfig-Field-Label{
@@ -174,19 +234,18 @@
     font-family: var(--font-family-geist-mono);
 }
 
-.PageProfileConfig-Identity-Grid .A_Input{
-    width: 100%;
-    max-width: 360px;
+.PageProfileConfig-Row-Edit .A_Input{
+    flex: 1 1 200px;
+    min-width: 0;
+    max-width: 420px;
 }
 
-/* Превью текущей темы внутри Theme-блока (использует те же data-theme цвета, что и модалка) */
 .PageProfileConfig-ThemePreview{
     width: 100%;
     max-width: 100%;
     margin-bottom: var(--spacing-x2);
 }
 
-/* === Toggle (button group) === */
 .PageProfileConfig-Toggle{
     display: flex;
     flex-wrap: wrap;
@@ -247,35 +306,60 @@
     opacity: 0.5;
 }
 
-/* === Avatar в Identity === */
 .PageProfileConfig-AvatarThumb{
     position: relative;
     width: 160px;
     height: 160px;
-    border-radius: var(--border-radius-x2);
+    border-radius: 50%;
     overflow: hidden;
-    border: var(--border-x025) solid var(--color-border-tertiary);
+    border: var(--border-x025) solid var(--color-border-secondary);
     background: var(--color-background-overlay, var(--color-secondary));
     flex-shrink: 0;
+    cursor: pointer;
+    display: block;
+    transition: border-color .2s ease, transform .2s ease;
 }
 
-.PageProfileConfig-AvatarSubmit{
+.PageProfileConfig-AvatarThumb--placeholder{
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-geist);
+    font-size: 48px;
+    text-transform: uppercase;
+    background: var(--color-quaternary, var(--color-secondary));
 }
 
-.PageProfileConfig-AvatarLabel{
+.PageProfileConfig-AvatarThumb:hover{
+    border-color: var(--color-accent);
+    transform: scale(1.02);
+}
+
+.PageProfileConfig-AvatarThumb-Overlay{
     position: absolute;
     inset: 0;
-    cursor: pointer;
-    border-radius: var(--border-radius-x2);
-    transition: background .2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-family-geist-mono);
+    opacity: 0;
+    transition: opacity .15s ease;
+    pointer-events: none;
+    border-radius: 50%;
 }
 
-.PageProfileConfig-AvatarLabel:hover{
-    background: rgba(0, 0, 0, 0.35);
+.PageProfileConfig-AvatarThumb:hover .PageProfileConfig-AvatarThumb-Overlay,
+.PageProfileConfig-AvatarThumb:focus-within .PageProfileConfig-AvatarThumb-Overlay{
+    opacity: 1;
 }
 
-/* === Адаптив === */
 @media (max-width: 1100px) {
     .PageProfileConfig-Block--Identity     { grid-column: span 6; }
     .PageProfileConfig-Block--Theme        { grid-column: span 3; }
@@ -298,9 +382,13 @@
     .PageProfileConfig-Block--Session{
         grid-column: 1 / -1;
     }
-    .PageProfileConfig-Identity-Grid{
-        grid-template-columns: 1fr;
-        row-gap: var(--spacing-x4);
+    .PageProfileConfig-Identity{
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-x4);
+    }
+    .PageProfileConfig-Identity-Fields{
+        width: 100%;
     }
     .PageProfileConfig-Layout{
         flex: 0 0 auto;
@@ -861,20 +949,25 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-x2);
+    min-height: 0;
 }
 
+/* Секция «решённые миссии» растягивается на всю остаточную высоту карточки */
 .PageProfile-Missions-Section + .PageProfile-Missions-Section{
     padding-top: var(--spacing-x4);
     border-top: var(--border-x025) solid var(--color-border-tertiary);
+    flex: 1 1 auto;
 }
 
 .PageProfile-MissionList{
     display: flex;
     flex-direction: column;
     gap: var(--spacing-x1);
-    max-height: 380px;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
     padding-right: var(--spacing-x1);
+    scrollbar-width: thin;
 }
 
 .PageProfile-MissionItem{
@@ -919,7 +1012,6 @@ a.PageProfile-MissionItem:hover{
     color: var(--color-text-primary);
 }
 
-/* Adaptive 880 < viewport ≤ 1480: 2 кол, Missions идёт inline в Identity-колонку */
 @media (max-width: 1480px) and (min-width: 881px) {
     .PageProfile-Col--Identity{
         flex: 0 0 300px;
@@ -930,17 +1022,16 @@ a.PageProfile-MissionItem:hover{
         min-width: 0;
     }
     .PageProfile-Col.PageProfile-Col--Missions{
-        display: none;            /* прячем standalone-колонку */
+        display: none;
     }
     .PageProfile-Card.PageProfile-Missions--InColumn{
-        display: flex;            /* показываем inline-копию */
-        flex: 1;                  /* заполняет остаток высоты левой колонки */
+        display: flex;
+        flex: 1;
         min-height: 0;
         overflow: hidden;
     }
 }
 
-/* Mobile ≤880: всё в одну колонку, страница скроллится естественно */
 @media (max-width: 880px) {
     .PageProfile{
         height: auto;
@@ -957,10 +1048,10 @@ a.PageProfile-MissionItem:hover{
         min-width: 0;
     }
     .PageProfile-Col.PageProfile-Col--Missions{
-        display: none;            /* прячем standalone */
+        display: none;
     }
     .PageProfile-Card.PageProfile-Missions--InColumn{
-        display: flex;            /* показываем inline */
+        display: flex;
     }
 }
 
