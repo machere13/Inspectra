@@ -189,6 +189,64 @@
 .PageInteractive-Hint summary{
     cursor: pointer;
     user-select: none;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-x2);
+    transition: color .2s ease;
+}
+
+.PageInteractive-Hint summary::-webkit-details-marker{
+    display: none;
+}
+
+.PageInteractive-Hint summary::before{
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 9px;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='9' viewBox='0 0 6 9' fill='none'><path d='M6 4.5L1.38609 9L0 7.64813L3.22782 4.5L0 1.35187L1.38609 0L6 4.5Z' fill='black'/></svg>") center / contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='9' viewBox='0 0 6 9' fill='none'><path d='M6 4.5L1.38609 9L0 7.64813L3.22782 4.5L0 1.35187L1.38609 0L6 4.5Z' fill='black'/></svg>") center / contain no-repeat;
+    color: var(--color-text-secondary, var(--color-text-primary));
+    transform: rotate(0deg);
+    transition: transform .25s ease, color .2s ease;
+}
+
+.PageInteractive-Hint[open] summary::before{
+    transform: rotate(90deg);
+}
+
+.PageInteractive-Hint summary:hover::before{
+    color: var(--color-text-primary);
+}
+
+.PageInteractive-Hint summary:hover{
+    color: var(--color-text-primary);
+}
+
+/* Fade+slide контента при появлении (работает везде, где есть <details>) */
+.PageInteractive-Hint[open] > *:not(summary){
+    animation: hintReveal .25s ease both;
+}
+
+@keyframes hintReveal{
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Плавная анимация высоты в современных браузерах (Chrome 131+, Edge 131+).
+   В Firefox/Safari тихо игнорируется — там просто работает fade-slide выше. */
+.PageInteractive-Hint::details-content{
+    block-size: 0;
+    overflow: clip;
+    transition:
+        block-size .25s ease,
+        content-visibility .25s allow-discrete;
+}
+
+.PageInteractive-Hint[open]::details-content{
+    block-size: auto;
 }
 
 .PageInteractive-Hint-Inline{

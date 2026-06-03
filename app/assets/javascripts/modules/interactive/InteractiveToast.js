@@ -62,15 +62,20 @@
     const overlay = document.querySelector(OVERLAY_SELECTOR);
     if (!overlay) return;
     overlay.classList.remove('is-visible');
-    // выходим из max-режима, чтобы при следующем открытии не было сюрприза
-    if (overlay.classList.contains('is-maximized')) {
-      overlay.classList.remove('is-maximized');
-      restoreMaxIcon(overlay);
-    }
-    preMaxRect = null;
     setTimeout(() => {
       overlay.style.display = 'none';
       overlay.setAttribute('aria-hidden', 'true');
+      if (overlay.classList.contains('is-maximized')) {
+        overlay.classList.remove('is-maximized');
+        restoreMaxIcon(overlay);
+      }
+      overlay.style.left = '';
+      overlay.style.top = '';
+      overlay.style.right = '';
+      overlay.style.bottom = '';
+      overlay.style.width = '';
+      overlay.style.height = '';
+      preMaxRect = null;
     }, TRANSITION_MS);
   }
 
