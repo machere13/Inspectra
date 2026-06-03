@@ -143,7 +143,16 @@
       "Bash(xargs grep -nE \"\\\\b[A-Z][a-z]{3,}\\\\b\")",
       "Bash(grep -E \"'ON'|'OFF'|\\\\\"ON\\\\\"|on'$|off'$\")",
       "Bash(grep -nE \"\\\\.PageProfile-Card\\\\s*\\\\{|\\\\.PageProfile-Card,|\\\\.PageProfile-Card-Title\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/assets/stylesheets/pages/profile.css\")",
-      "Bash(rm \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/interactives/index.html.erb\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/interactives/show.html.erb\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/shared/super_organisms/_SO_InteractiveSpace.html.erb\")"
+      "Bash(rm \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/interactives/index.html.erb\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/interactives/show.html.erb\" \"C:/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/app/views/shared/super_organisms/_SO_InteractiveSpace.html.erb\")",
+      "Bash(docker --version)",
+      "Bash(docker compose *)",
+      "Bash(bundle lock *)",
+      "Bash(grep -A1 \"^PLATFORMS$\" /c/Users/vladi/Desktop/gg/study/thirdCourse/project3.1/Gemfile.lock)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/up)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -k -sS -o /dev/null -w \"HTTPS /up: HTTP %{http_code}\\\\n\" https://localhost:3000/up)",
+      "Bash(curl -sS -o /dev/null -w \"/up   → HTTP %{http_code}\\\\n\" http://localhost:3000/up)",
+      "Bash(curl -sS -o /dev/null -w \"/     → HTTP %{http_code}\\\\n\" http://localhost:3000/)"
     ]
   }
 }

@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require_relative "../initializers/app_config"
+require_relative "../initializers/json_log_formatter"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

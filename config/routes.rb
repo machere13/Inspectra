@@ -3,8 +3,12 @@ Rails.application.routes.draw do
     mount ActiveStorage::Engine => '/rails/active_storage'
   end
   
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  if defined?(Rswag::Ui::Engine)
+    mount Rswag::Ui::Engine => '/api-docs'
+  end
+  if defined?(Rswag::Api::Engine)
+    mount Rswag::Api::Engine => '/api-docs'
+  end
   
   namespace :api do
     namespace :v1 do
