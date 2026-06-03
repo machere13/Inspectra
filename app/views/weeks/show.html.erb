@@ -80,13 +80,13 @@
                               .uniq(&:id)
     random_interactive = random_pending_interactive(current_user, week_interactives)
   %>
-  <% if random_interactive %>
-    <% interactive_url = interactive_path(random_interactive.key) %>
+  <% interactive_session_data = prepare_interactive_session(current_user, random_interactive) %>
+  <% if interactive_session_data %>
     <%= render 'shared/molecules/M_ToastInteractive',
-               name: random_interactive.title,
-               href: interactive_url %>
+               name: random_interactive.title %>
     <%= render 'shared/organisms/O_ModalInteractive',
-               name: random_interactive.title,
-               href: interactive_url %>
+               name: random_interactive.title %>
+    <%= render 'shared/super_organisms/SO_InteractiveOverlay',
+               data: interactive_session_data %>
   <% end %>
 </div>

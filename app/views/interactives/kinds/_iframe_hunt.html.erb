@@ -1,4 +1,4 @@
-<%
+﻿<%
   session = @session_token || @session&.attempts_record&.session_token
   expected = interactive.issue_token_for(current_user, variant: variant)
 %>
@@ -8,10 +8,10 @@
           class="PageInteractive-Iframe"
           referrerpolicy="no-referrer"
           title="legacy"></iframe>
-  <p class="text-caption">Подсказка: кодовое слово — внутри тега <code>.secret</code>.</p>
+  <p class="text-p-3">Подсказка: кодовое слово — внутри тега <code>.secret</code>.</p>
 
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? && variant %><p class="text-caption">Dev-ответ: <code><%= expected %></code></p><% end %>
+  <% if Rails.env.development? && variant %><p class="text-p-3">Dev-ответ: <code><%= expected %></code></p><% end %>
 </div>

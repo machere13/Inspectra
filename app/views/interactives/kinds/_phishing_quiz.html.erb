@@ -1,4 +1,4 @@
-<%
+﻿<%
   is_marker_quiz = interactive.key == 'it_security.link_swap'
   marker_options = Array(variant&.payload&.dig('marker_options'))
   marker_options = Array(variant&.payload&.dig('correct_markers')) if marker_options.empty?
@@ -28,7 +28,7 @@
         </label>
       <% end %>
     </div>
-    <p class="text-caption">Порядок чекбоксов не важен — сравнение по множеству.</p>
+    <p class="text-p-3">Порядок чекбоксов не важен — сравнение по множеству.</p>
   <% else %>
     <p class="text-p-2">
       В «Уведомлениях» пришло 3 письма. Два — фишинг. Кликни по настоящему.
@@ -50,11 +50,11 @@
     <% if current_user&.game_role_mage? %>
       <p class="text-p-3 PageInteractive-RolePerk"><strong>Перк Мага:</strong> фишинговые письма подсвечены.</p>
     <% end %>
-    <p class="text-caption">При клике id выбранного письма попадает в поле ответа. Подсказка: сравнивай домен отправителя с <code>inspectra.ru</code>.</p>
+    <p class="text-p-3">При клике id выбранного письма попадает в поле ответа. Подсказка: сравнивай домен отправителя с <code>inspectra.ru</code>.</p>
   <% end %>
 
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? && variant %><p class="text-caption">Dev-ответ: <code><%= variant.expected_answer %></code></p><% end %>
+  <% if Rails.env.development? && variant %><p class="text-p-3">Dev-ответ: <code><%= variant.expected_answer %></code></p><% end %>
 </div>

@@ -1,0 +1,98 @@
+.W_ControlPanel--interactive-overlay {
+  width: min(820px, 92vw);
+  height: min(720px, 86vh);
+  max-width: 92vw;
+  max-height: 86vh;
+  bottom: auto;
+  right: auto;
+  background: var(--color-background, #0a0a0a);
+  border: var(--border-x025) solid var(--color-border-primary);
+  border-radius: var(--border-radius-x3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  transform-origin: center center;
+}
+
+.W_ControlPanel--interactive-overlay > .W_ControlPanel-Body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.W_ControlPanel--interactive-overlay > .W_ControlPanel-Body--fill {
+  padding: 0;
+}
+
+.SO_InteractiveOverlay {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+}
+
+.SO_InteractiveOverlay-Header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-x2);
+  padding: var(--spacing-x4) var(--spacing-x5) var(--spacing-x3);
+  border-bottom: var(--border-x025) solid var(--color-border-tertiary);
+  background: var(--color-background);
+}
+
+.SO_InteractiveOverlay-Title {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.SO_InteractiveOverlay-Description {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.SO_InteractiveOverlay-Meta {
+  color: var(--color-text-tertiary, var(--color-text-secondary));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-family-geist-mono);
+}
+
+.SO_InteractiveOverlay-CompletedBanner {
+  flex: 0 0 auto;
+  margin: var(--spacing-x3) var(--spacing-x5) 0;
+  padding: var(--spacing-x3) var(--spacing-x4);
+  background: var(--color-quaternary);
+  border: var(--border-x025) solid var(--color-status-success);
+  border-radius: var(--border-radius-x2);
+  color: var(--color-status-success);
+}
+
+.SO_InteractiveOverlay-Body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--spacing-x4) var(--spacing-x5);
+  scrollbar-width: thin;
+}
+
+.SO_InteractiveOverlay-Form {
+  flex: 0 0 auto;
+  display: flex;
+  gap: var(--spacing-x3);
+  align-items: center;
+  padding: var(--spacing-x3) var(--spacing-x5);
+  border-top: var(--border-x025) solid var(--color-border-tertiary);
+  background: var(--color-background);
+}
+
+.SO_InteractiveOverlay-Form .A_Input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.SO_InteractiveOverlay-Form .A_Button {
+  flex-shrink: 0;
+}

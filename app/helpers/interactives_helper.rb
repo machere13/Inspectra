@@ -18,4 +18,20 @@ module InteractivesHelper
     pending = candidates.reject { |i| completed_keys.include?(i.key) }
     pending.sample
   end
+
+  def prepare_interactive_session(user, interactive)
+    return nil unless user && interactive
+    session = InteractiveSession.new(user: user, interactive: interactive)
+    return nil if session.locked?
+
+    already_completed = session.already_completed?
+    {
+      interactive:       interactive,
+      variant:           session.variant,
+      already_completed: already_completed,
+      attempts_left:     session.attempts_left,
+      max_attempts:      session.max_attempts,
+      session_token:     (already_completed ? nil : session.attempts_record.issue_session!)
+    }
+  end
 end

@@ -1,4 +1,4 @@
-<div class="PageInteractive-Scene">
+﻿<div class="PageInteractive-Scene">
   <p class="text-p-2">
     Бэкенд возвращает токен только клиенту с User-Agent старого IE6.
     Подмени UA в DevTools → ⋮ → More tools → <strong>Network conditions</strong> → сними «Use browser default» → вставь нужный UA → перезагрузи страницу → нажми кнопку.
@@ -12,10 +12,10 @@
           data-endpoint="/api/v1/interactive_props/ie6_token?seed=<%= variant&.seed %>">
     <span class="A_Button-Content text-button">Запросить токен</span>
   </button>
-  <p class="text-caption">После нажатия — открой Network, найди запрос, посмотри Response.</p>
+  <p class="text-p-3">После нажатия — открой Network, найди запрос, посмотри Response.</p>
 
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? %><p class="text-caption">Dev-ответ: <code><%= interactive.issue_token_for(current_user, variant: variant) %></code></p><% end %>
+  <% if Rails.env.development? %><p class="text-p-3">Dev-ответ: <code><%= interactive.issue_token_for(current_user, variant: variant) %></code></p><% end %>
 </div>

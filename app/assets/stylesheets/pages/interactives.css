@@ -196,12 +196,42 @@
 }
 
 .PageInteractive-Code{
-    padding: var(--spacing-x2) var(--spacing-x3);
-    background: var(--color-background-overlay, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x1);
+    margin: 0;
+    padding: var(--spacing-x3) var(--spacing-x4);
+    background: var(--color-background-overlay, var(--color-secondary));
     border: var(--border-x025) solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-x1);
+    border-radius: var(--border-radius-x2);
     overflow-x: auto;
-    white-space: pre-wrap;
+    list-style: none;
+    font-family: var(--font-family-geist-mono);
+    font-size: var(--font-size-code, var(--font-size-p-3));
+    line-height: var(--line-height-normal, 1.4);
+    color: var(--color-text-secondary, var(--color-text-primary));
+}
+
+.PageInteractive-Code li{
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-x2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.PageInteractive-Code li::before{
+    content: '';
+    display: none;
+}
+
+.PageInteractive-Code code{
+    color: var(--color-text-primary);
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    word-break: break-all;
 }
 
 .PageInteractive-Iframe{

@@ -1,4 +1,4 @@
-<%
+﻿<%
   event_name = variant&.payload&.dig('event_name') || 'inspectra:secret'
   token = interactive.issue_token_for(current_user, variant: variant)
 %>
@@ -16,5 +16,5 @@
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? %><p class="text-caption">Dev-ответ: <code><%= token %></code></p><% end %>
+  <% if Rails.env.development? %><p class="text-p-3">Dev-ответ: <code><%= token %></code></p><% end %>
 </div>
