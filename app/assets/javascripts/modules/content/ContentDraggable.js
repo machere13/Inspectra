@@ -11,9 +11,14 @@
       let origLeft = 0;
       let origTop = 0;
       let dragging = false;
+      let activePointerId = null;
 
-      const onMouseMove = function(e) {
-        if (!dragging) return;
+      // На мобилке нативный скролл/жест перехватывал бы наш драг — блокируем
+      // touch-поведение на хэндле, чтобы pointermove приходил без задержек.
+      handle.style.touchAction = 'none';
+
+      const onPointerMove = function(e) {
+        if (!dragging || e.pointerId !== activePointerId) return;
         e.preventDefault();
         const dx = (e.clientX || 0) - startX;
         const dy = (e.clientY || 0) - startY;
@@ -27,30 +32,40 @@
         item.style.top = newTop + 'px';
       };
 
-      const onMouseUp = function() {
-        if (!dragging) return;
+      const onPointerUp = function(e) {
+        if (!dragging || (activePointerId !== null && e.pointerId !== activePointerId)) return;
         dragging = false;
-        document.removeEventListener('mousemove', onMouseMove, true);
-        document.removeEventListener('mouseup', onMouseUp, true);
+        try { handle.releasePointerCapture(activePointerId); } catch (_) { /* noop */ }
+        activePointerId = null;
+        handle.removeEventListener('pointermove', onPointerMove, true);
+        handle.removeEventListener('pointerup', onPointerUp, true);
+        handle.removeEventListener('pointercancel', onPointerUp, true);
         document.body.style.userSelect = '';
       };
 
-      const onMouseDown = function(e) {
+      const onPointerDown = function(e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (!e.isPrimary) return;
         e.preventDefault();
         e.stopPropagation();
         dragging = true;
+        activePointerId = e.pointerId;
         const rect = item.getBoundingClientRect();
         const contRect = container.getBoundingClientRect();
         startX = e.clientX;
         startY = e.clientY;
         origLeft = rect.left - contRect.left;
         origTop = rect.top - contRect.top;
-        document.addEventListener('mousemove', onMouseMove, true);
-        document.addEventListener('mouseup', onMouseUp, true);
+        try { handle.setPointerCapture(e.pointerId); } catch (_) { /* noop */ }
+        // Слушаем move/up на самом handle — благодаря pointer capture
+        // события придут даже когда палец/курсор вышли за пределы.
+        handle.addEventListener('pointermove', onPointerMove, true);
+        handle.addEventListener('pointerup', onPointerUp, true);
+        handle.addEventListener('pointercancel', onPointerUp, true);
         document.body.style.userSelect = 'none';
       };
 
-      handle.addEventListener('mousedown', onMouseDown);
+      handle.addEventListener('pointerdown', onPointerDown);
       handle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -76,4 +91,3 @@
     ContentDraggable.init();
   });
 })();
-

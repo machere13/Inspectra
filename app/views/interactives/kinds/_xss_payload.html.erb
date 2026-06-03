@@ -1,5 +1,4 @@
-<div class="PageInteractive-Scene PageInteractive-Scene--Stub">
+﻿<div class="PageInteractive-Scene PageInteractive-Scene--Stub">
   <p class="text-p-2">Введи XSS-payload, который доказывает уязвимость. Введённый текст НЕ выполняется — только сравнивается с эталоном.</p>
   <% if variant&.hint.present? %><p class="text-p-3 PageInteractive-Hint-Inline">Подсказка: <%= variant.hint %></p><% end %>
-  <% if Rails.env.development? && variant %><p class="text-caption">Dev-ответ: <code><%= h variant.expected_answer %></code></p><% end %>
 </div>

@@ -102,11 +102,11 @@
           node.href = url || '#';
           node.target = '_blank';
           node.rel = 'noopener noreferrer';
-          node.textContent = url || 'Open link';
+          node.textContent = url || 'Открыть ссылку';
           break;
         default:
           node = document.createElement('div');
-          node.textContent = 'No preview available';
+          node.textContent = 'Превью недоступно';
       }
       body.appendChild(node);
       preview.style.display = 'block';

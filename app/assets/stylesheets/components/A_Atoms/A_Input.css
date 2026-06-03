@@ -41,3 +41,49 @@
   transition: background-color 5000s ease-in-out 0s;
   caret-color: var(--color-state-text-active);
 }
+
+.A_Input[type="file"] {
+  padding: var(--spacing-x2) var(--spacing-x3);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-geist-mono);
+  font-size: var(--font-size-p-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-x3);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.A_Input[type="file"]::file-selector-button,
+.A_Input[type="file"]::-webkit-file-upload-button {
+  padding: var(--spacing-x3);
+  margin-right: var(--spacing-x3);
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-geist);
+  font-size: var(--font-size-buttons);
+  font-weight: var(--font-weight-buttons);
+  text-transform: uppercase;
+  border: var(--border-x025) solid var(--color-border-primary);
+  border-radius: var(--border-radius-x2);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.A_Input[type="file"]::file-selector-button:hover,
+.A_Input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--color-state-hover);
+  color: var(--color-text-primary);
+}
+
+.A_Input[type="file"]::file-selector-button:active,
+.A_Input[type="file"]::-webkit-file-upload-button:active {
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-tertiary);
+}
+
+.A_Input[type="file"]:focus {
+  border-color: var(--color-border-primary);
+}

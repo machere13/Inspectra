@@ -20,7 +20,7 @@
     <% if @media_subscriptions.any? %>
       <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
         'ID',
-        'Email',
+        'E-mail',
         t('admin.media_subscriptions.index.subscribed_at')
       ] %>
       <% @media_subscriptions.each do |subscription| %>

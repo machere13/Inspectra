@@ -7,15 +7,15 @@
       title: t('admin.users.show.user_info'),
       actions: link_to(t('admin.users.show.edit'), edit_admin_user_path(@user)) do %>
     <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
-      'Field',
-      'Value'
+      'Поле',
+      'Значение'
     ] %>
     <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
       'ID',
       @user.id
     ] %>
     <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
-      'Email',
+      'E-mail',
       @user.email
     ] %>
     <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
@@ -40,8 +40,8 @@
       title: t('admin.users.show.achievements') do %>
     <% if @user_achievements.any? %>
       <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
-        'Achievement',
-        'Status'
+        'Достижение',
+        'Статус'
       ] %>
       <% @user_achievements.each do |ua| %>
         <%= render 'shared/collections/C_ControlPanelTableRow', cells: [

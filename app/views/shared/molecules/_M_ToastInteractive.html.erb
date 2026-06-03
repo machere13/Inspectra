@@ -1,4 +1,11 @@
-<button class="M_ToastInteractive" style="display: none;" data-interactive-name="<%= local_assigns[:name] || 'Интерактив' %>">
+<%
+  name = local_assigns[:name] || 'Интерактив'
+%>
+<button class="M_ToastInteractive"
+        style="display: none;"
+        type="button"
+        data-interactive-name="<%= name %>"
+        data-js-interactive-modal-open>
     <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon', width: 24, height: 24 %>
     <span class="M_ToastInteractive-Text text-p-1-mono">обнаружен интерактив! &gt;&gt;&gt;</span>
 </button>

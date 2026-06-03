@@ -1,31 +1,44 @@
-version: '3.8'
-
 services:
   web:
     build: .
+    image: project3_1:prod
     command: ./bin/thrust ./bin/rails server
+    env_file:
+      - .env.docker
+    environment:
+      RAILS_ENV: production
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: project3_1
+      DATABASE_PASSWORD: password
+      PROJECT3_1_DATABASE_PASSWORD: password
     ports:
       - '3000:80'
-    environment:
-      - RAILS_ENV=production
-      - DATABASE_URL=postgresql://project3_1:password@db:5432/project3_1_production
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - storage:/rails/storage
     networks:
       - app-network
+    restart: unless-stopped
 
   db:
     image: postgres:16
     environment:
-      - POSTGRES_USER=project3_1
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=project3_1_production
+      POSTGRES_USER: project3_1
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: project3_1_production
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U project3_1 -d project3_1_production']
+      interval: 5s
+      timeout: 5s
+      retries: 20
     networks:
       - app-network
+    restart: unless-stopped
 
 volumes:
   postgres_data:

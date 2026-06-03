@@ -5,6 +5,7 @@
     init: function(canvasContainer, canvasWidth, canvasHeight, viewportWidth, viewportHeight) {
       let isDragging = false;
       let hasDragged = false;
+      let activePointerId = null;
       let startX = 0;
       let startY = 0;
       let transformX = -(canvasWidth - viewportWidth) / 2;
@@ -17,15 +18,30 @@
       let animationFrameId = null;
       const friction = 0.96;
       const dragThreshold = 5;
-      const maxX = canvasWidth - viewportWidth;
-      const maxY = canvasHeight - viewportHeight;
+      let maxX = canvasWidth - viewportWidth;
+      let maxY = canvasHeight - viewportHeight;
 
       canvasContainer.style.transform = `translate(${transformX}px, ${transformY}px)`;
+      canvasContainer.style.touchAction = 'none';
 
       const updateTransform = function() {
         transformX = Math.max(-maxX, Math.min(0, transformX));
         transformY = Math.max(-maxY, Math.min(0, transformY));
         canvasContainer.style.transform = `translate(${transformX}px, ${transformY}px)`;
+      };
+
+      const setBounds = function(newCanvasWidth, newCanvasHeight, newViewportWidth, newViewportHeight) {
+        canvasWidth = newCanvasWidth;
+        canvasHeight = newCanvasHeight;
+        viewportWidth = newViewportWidth;
+        viewportHeight = newViewportHeight;
+        maxX = Math.max(0, canvasWidth - viewportWidth);
+        maxY = Math.max(0, canvasHeight - viewportHeight);
+        transformX = -maxX / 2;
+        transformY = -maxY / 2;
+        velocityX = 0;
+        velocityY = 0;
+        updateTransform();
       };
 
       const animate = function(currentTime) {
@@ -51,47 +67,17 @@
         }
       };
 
-      const onMouseDown = function(e) {
-        if (e.target.closest('.M_ContentCard-Handle') || 
-            e.target.closest('.O_ArticleCard')) {
-          return;
-        }
-        isDragging = true;
-        hasDragged = false;
-        window.CanvasDrag.isDragging = true;
-        window.CanvasDrag.hasDragged = false;
-        startX = e.clientX;
-        startY = e.clientY;
-        lastMoveX = e.clientX;
-        lastMoveY = e.clientY;
-        velocityX = 0;
-        velocityY = 0;
-        lastTime = 0;
-
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-        }
-
-        canvasContainer.style.cursor = 'grabbing';
-        
-        const card = e.target.closest('.M_ContentCard');
-        if (card) {
-          card.dataset.dragStarted = 'true';
-        }
-      };
-
-      const onMouseMove = function(e) {
-        if (!isDragging) return;
+      const onPointerMove = function(e) {
+        if (!isDragging || e.pointerId !== activePointerId) return;
 
         const currentTime = performance.now();
         const dx = e.clientX - lastMoveX;
         const dy = e.clientY - lastMoveY;
-        
+
         const totalDx = e.clientX - startX;
         const totalDy = e.clientY - startY;
         const totalDistance = Math.sqrt(totalDx * totalDx + totalDy * totalDy);
-        
+
         if (totalDistance > dragThreshold) {
           hasDragged = true;
           window.CanvasDrag.hasDragged = true;
@@ -112,37 +98,78 @@
         lastTime = currentTime;
       };
 
-      const onMouseUp = function(e) {
-        if (isDragging) {
-          isDragging = false;
-          canvasContainer.style.cursor = 'grab';
-          
-          const wasDragging = window.CanvasDrag.hasDragged;
-          window.CanvasDrag.isDragging = false;
+      const onPointerUp = function(e) {
+        if (!isDragging || (activePointerId !== null && e.pointerId !== activePointerId)) return;
 
-          if (hasDragged) {
-            setTimeout(function() {
-              window.CanvasDrag.hasDragged = false;
-            }, 300);
-          } else {
+        isDragging = false;
+        activePointerId = null;
+        canvasContainer.style.cursor = 'grab';
+
+        window.CanvasDrag.isDragging = false;
+
+        if (hasDragged) {
+          setTimeout(function() {
             window.CanvasDrag.hasDragged = false;
-          }
+          }, 300);
+        } else {
+          window.CanvasDrag.hasDragged = false;
+        }
 
-          if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
-            lastTime = performance.now();
-            animationFrameId = requestAnimationFrame(animate);
-          }
+        document.removeEventListener('pointermove', onPointerMove);
+        document.removeEventListener('pointerup', onPointerUp);
+        document.removeEventListener('pointercancel', onPointerUp);
+
+        if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
+          lastTime = performance.now();
+          animationFrameId = requestAnimationFrame(animate);
         }
       };
 
-      canvasContainer.addEventListener('mousedown', onMouseDown);
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      const onPointerDown = function(e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (!e.isPrimary) return;
+
+        if (e.target.closest('.M_ContentCard-Handle') ||
+            e.target.closest('.O_ArticleCard')) {
+          return;
+        }
+
+        isDragging = true;
+        hasDragged = false;
+        activePointerId = e.pointerId;
+        window.CanvasDrag.isDragging = true;
+        window.CanvasDrag.hasDragged = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        lastMoveX = e.clientX;
+        lastMoveY = e.clientY;
+        velocityX = 0;
+        velocityY = 0;
+        lastTime = 0;
+
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+
+        canvasContainer.style.cursor = 'grabbing';
+
+        document.addEventListener('pointermove', onPointerMove);
+        document.addEventListener('pointerup', onPointerUp);
+        document.addEventListener('pointercancel', onPointerUp);
+
+        const card = e.target.closest('.M_ContentCard');
+        if (card) {
+          card.dataset.dragStarted = 'true';
+        }
+      };
+
+      canvasContainer.addEventListener('pointerdown', onPointerDown);
 
       return {
-        updateTransform: updateTransform
+        updateTransform: updateTransform,
+        setBounds: setBounds
       };
     }
   };
 })();
-

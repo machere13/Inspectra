@@ -9,63 +9,81 @@
 
     <div class="PageProfileConfig-Bento">
 
-      <%# ===== IDENTITY (span 6) — большой герой-блок ===== %>
+      <%# ===== IDENTITY (span 6) — hero-аватар слева, поля справа ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Identity">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.account.title') %></span>
           <span class="PageProfileConfig-Block-Tag text-p-3">/ 01</span>
         </header>
 
-        <div class="PageProfileConfig-Identity-Grid">
-          <%# === AVATAR row === %>
-          <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.avatar') %></span>
-          <%= form_with url: update_avatar_path, method: :patch, local: true, multipart: true, class: 'PageProfileConfig-FormContents' do |f| %>
-            <div class="PageProfileConfig-AvatarThumb">
+        <div class="PageProfileConfig-Identity">
+          <%# === AVATAR (большой, кликабельный, авто-сабмит) === %>
+          <%= form_with url: update_avatar_path, method: :patch, local: true, multipart: true, id: 'config-avatar-form', class: 'PageProfileConfig-Avatar' do |f| %>
+            <label for="config-avatar-upload" class="PageProfileConfig-AvatarThumb" title="<%= @user.avatar.attached? ? t('pages.profile.avatar.change') : t('pages.profile.avatar.upload') %>">
               <% if @user.avatar.attached? %>
                 <%= image_tag url_for(@user.avatar), alt: @user.name || @user.email %>
               <% else %>
-                <div class="PageProfileConfig-AvatarThumb--placeholder"></div>
+                <div class="PageProfileConfig-AvatarThumb--placeholder">
+                  <span class="text-p-3"><%= (@user.name || @user.email).to_s[0]&.upcase %></span>
+                </div>
               <% end %>
-              <%= f.file_field :avatar, accept: 'image/*', class: 'PageProfileConfig-AvatarInput', id: 'config-avatar-upload' %>
-              <label for="config-avatar-upload" class="PageProfileConfig-AvatarLabel" title="<%= @user.avatar.attached? ? t('pages.profile.avatar.change') : t('pages.profile.avatar.upload') %>"></label>
+              <span class="PageProfileConfig-AvatarThumb-Overlay text-p-3">
+                <%= @user.avatar.attached? ? t('pages.profile.avatar.change', default: 'Сменить') : t('pages.profile.avatar.upload', default: 'Загрузить') %>
+              </span>
+              <%= f.file_field :avatar,
+                               accept: 'image/*',
+                               class: 'PageProfileConfig-AvatarInput',
+                               id: 'config-avatar-upload',
+                               onchange: "document.getElementById('config-avatar-form').requestSubmit();" %>
+            </label>
+          <% end %>
+
+          <%# === Поля справа === %>
+          <div class="PageProfileConfig-Identity-Fields">
+
+            <%# Имя — редактируется === %>
+            <div class="PageProfileConfig-Row">
+              <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.name') %></span>
+              <%= form_with url: update_name_path, method: :patch, local: true, class: 'PageProfileConfig-Row-Edit' do %>
+                <%= render 'shared/atoms/A_Input',
+                           name: 'name',
+                           type: 'text',
+                           value: @user.name,
+                           placeholder: t('pages.profile.name_placeholder'),
+                           autocomplete: 'name',
+                           maxlength: 60 %>
+                <%= render 'shared/atoms/A_Button', type: 'submit', text: t('pages.profile_config.actions.save') %>
+              <% end %>
             </div>
-            <%= render 'shared/atoms/A_Button', type: 'submit', text: t('pages.profile_config.actions.save') %>
-          <% end %>
 
-          <%# === NAME row === %>
-          <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.name') %></span>
-          <%= form_with url: update_name_path, method: :patch, local: true, class: 'PageProfileConfig-FormContents' do %>
-            <%= render 'shared/atoms/A_Input',
-                       name: 'name',
-                       type: 'text',
-                       value: @user.name,
-                       placeholder: t('pages.profile.name_placeholder'),
-                       autocomplete: 'name',
-                       maxlength: 60 %>
-            <%= render 'shared/atoms/A_Button', type: 'submit', text: t('pages.profile_config.actions.save') %>
-          <% end %>
+            <div class="PageProfileConfig-Row PageProfileConfig-Row--ReadOnly">
+              <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.email') %></span>
+              <div class="PageProfileConfig-Row-Value">
+                <span class="PageProfileConfig-Static text-p-2"><%= @user.email %></span>
+                <span class="PageProfileConfig-Note text-p-3"><%= t('pages.profile_config.account.email_locked') %></span>
+              </div>
+            </div>
 
-          <%# === EMAIL row === %>
-          <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.email') %></span>
-          <div class="PageProfileConfig-Static text-p-3"><%= @user.email %></div>
-          <span class="PageProfileConfig-Note text-p-3"><%= t('pages.profile_config.account.email_locked') %></span>
+            <div class="PageProfileConfig-Row">
+              <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.game_role') %></span>
+              <div class="PageProfileConfig-Row-Edit">
+                <div class="PageProfileConfig-Row-Value">
+                  <% if @user.game_role.present? %>
+                    <span class="PageProfileConfig-Pill"><%= @user.game_role_label %></span>
+                  <% else %>
+                    <span class="PageProfileConfig-Static--Muted text-p-3"><%= t('pages.profile_config.account.game_role_empty') %></span>
+                  <% end %>
+                </div>
+                <%= render 'shared/atoms/A_Button',
+                           href: select_game_role_path,
+                           text: t(@user.game_role.present? ? 'pages.profile.change_game_role' : 'pages.profile.choose_game_role') %>
+              </div>
+            </div>
 
-          <%# === ROLE row === %>
-          <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.game_role') %></span>
-          <div class="PageProfileConfig-Static text-p-3">
-            <% if @user.game_role.present? %>
-              <span class="PageProfileConfig-Pill"><%= @user.game_role_label %></span>
-            <% else %>
-              <span class="PageProfileConfig-Static--Muted"><%= t('pages.profile_config.account.game_role_empty') %></span>
-            <% end %>
           </div>
-          <%= render 'shared/atoms/A_Button',
-                     href: select_game_role_path,
-                     text: t(@user.game_role.present? ? 'pages.profile.change_game_role' : 'pages.profile.choose_game_role') %>
         </div>
       </article>
 
-      <%# ===== THEME ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Theme">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.preferences.theme') %></span>
@@ -89,7 +107,6 @@
         </div>
       </article>
 
-      <%# ===== SECURITY (row 2, span 3) ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Security">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.security.title') %></span>
@@ -106,7 +123,6 @@
         <% end %>
       </article>
 
-      <%# ===== SESSION (row 2, span 3, danger) — горизонтальный layout ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Session PageProfileConfig-Block--Danger">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.session.title') %></span>
@@ -123,7 +139,6 @@
         <% end %>
       </article>
 
-      <%# ===== NOTIFICATIONS (row 2, span 2) — вертикальный ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Notifications">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.preferences.notifications') %></span>

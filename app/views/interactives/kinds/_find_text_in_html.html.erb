@@ -1,4 +1,4 @@
-<%
+﻿<%
   priest_perk = current_user&.game_role_priest? && interactive.category == 'legacy'
   hunter_perk = current_user&.game_role_hunter? && interactive.category == 'dev_diving'
   hidden_classes = ['PageInteractive-Hidden']
@@ -39,7 +39,7 @@
         <span style="font-size:14px;"><%= hidden_text %></span>
       </div>
     </div>
-    <p class="text-caption">Подсказка: смотри inline-стили в инспекторе, попробуй убрать каждое свойство.</p>
+    <p class="text-p-3">Подсказка: смотри inline-стили в инспекторе, попробуй убрать каждое свойство.</p>
 
   <% when 'dev_diving.blind_in_dom' %>
     <p class="text-p-2">
@@ -109,7 +109,7 @@
     <% when 'midi' %>
       <embed src="/legacy/cdn/theme.midi" type="audio/midi" width="120" height="40"></embed>
     <% end %>
-    <p class="text-caption">Подсказка: посмотри <code>src</code> в инспекторе.</p>
+    <p class="text-p-3">Подсказка: посмотри <code>src</code> в инспекторе.</p>
 
   <% when 'it_errors.blind_check' %>
     <p class="text-p-2">
@@ -124,7 +124,7 @@
       На странице подключена устаревшая JS-библиотека через <code>&lt;script src&gt;</code>. Найди её версию.
     </p>
     <script src="/legacy/cdn/<%= hidden_text %>"></script>
-    <p class="text-caption">Подсказка: View Source или Network → отфильтруй JS.</p>
+    <p class="text-p-3">Подсказка: View Source или Network → отфильтруй JS.</p>
 
   <% when 'it_security.broken_perms' %>
     <p class="text-p-2">

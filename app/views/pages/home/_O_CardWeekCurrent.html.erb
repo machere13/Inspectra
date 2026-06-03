@@ -1,7 +1,7 @@
 <div class="O_CardWeekCurrent">
     <div class="O_CardWeekCurrent-Header">
         <%= render 'shared/quarks/Q_Icon', name: 'Q_ArrowDividerIcon', width: 6, height: 9 %>
-        <span class="O_CardWeekCurrent-Label text-labels-1"><%= "WEEK #{week.number}" %></span>
+        <span class="O_CardWeekCurrent-Label text-labels-1"><%= "НЕДЕЛЯ #{week.number}" %></span>
     </div>
     <div class="O_CardWeekCurrent-Body" data-week-number="<%= week.number %>">
         <%= render 'shared/atoms/A_Button', text: 'Перейти к неделе', href: week_path(week) %>

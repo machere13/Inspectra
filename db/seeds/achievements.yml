@@ -5,6 +5,7 @@ achievements:
     progress_type: 'registration_order'
     progress_target: 13
     title_name: 'Один из 13'
+    reward_badge_label: '13'
   - name: 'Первые шаги'
     description: 'Просматривать контент 3 дня подряд'
     category: 'content_viewing'

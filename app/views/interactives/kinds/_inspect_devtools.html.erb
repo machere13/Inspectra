@@ -1,4 +1,4 @@
-<%
+﻿<%
   endpoint = case interactive.key
              when 'dev_diving.network_spy'      then "/api/v1/interactive_props/spy?seed=#{variant&.seed}"
              when 'dev_diving.missing_cookie'   then nil
@@ -53,7 +53,7 @@
             data-target-id="<%= variant&.payload&.dig('interval_id') %>">
       <span class="A_Button-Content text-button">Запустить процесс</span>
     </button>
-    <p class="text-caption" data-leak-feedback>Интервалы не запущены</p>
+    <p class="text-p-3" data-leak-feedback>Интервалы не запущены</p>
   <% elsif interactive.key == 'it_errors.silent_failure' %>
     <p class="text-p-3">
       Картинка ниже не грузится — путь содержит опечатку. Открой DevTools → <strong>Network</strong> или <strong>Console</strong>,
@@ -65,7 +65,7 @@
            alt="broken"
            onerror="console.error('[Inspectra] 404:', this.src); this.replaceWith(Object.assign(document.createElement('div'), { className: 'PageInteractive-BrokenImage-Placeholder', innerHTML: '❌ 404<br><code>' + this.src + '</code>' }));" />
     </div>
-    <p class="text-caption">
+    <p class="text-p-3">
       <em>Замечание:</em> реальные картинки в проекте не лежат — даже исправленный путь не покажет изображение.
       Зачёт по тому, что введён правильный исходный filename.
     </p>
@@ -98,8 +98,4 @@
     </p>
   <% end %>
 
-  <% if Rails.env.development? %>
-    <% dev_answer = interactive.randomizable? ? interactive.issue_token_for(current_user, variant: variant) : variant&.expected_answer %>
-    <p class="text-caption PageInteractive-Stub-Note">Dev-ответ: <code><%= dev_answer %></code></p>
-  <% end %>
 </div>

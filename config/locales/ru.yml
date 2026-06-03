@@ -88,9 +88,9 @@ ru:
     general: 'Общее'
   pages:
     home:
-      title: 'Главная / Inspectra'
-    inspectra:
-      title: 'О нас / Inspectra'
+      title: 'Главная / Инспектра'
+    Инспектра:
+      title: 'О нас / Инспектра'
       subscription_success: 'Подписка успешна. Мы сообщим на почту, когда медиа запустится'
       back_to_home: 'На главную'
     article:
@@ -127,7 +127,7 @@ ru:
       invalid_role: 'Неизвестная роль'
       cancel: 'Назад в профиль'
     profile_config:
-      title: 'Настройки / Inspectra'
+      title: 'Настройки / Инспектра'
       heading: 'Настройки аккаунта'
       subheading: 'Управляй своим профилем, безопасностью и сессией'
       actions:
@@ -157,9 +157,9 @@ ru:
         theme_options:
           dark: 'Тёмная'
           white: 'Светлая'
-          void: 'Void'
+          void: 'Пустота'
           purple: 'Фиолетовая'
-          chrome: 'Chrome'
+          chrome: 'Хром'
           ocean-blue: 'Океан'
           vampire: 'Вампир'
           acid-green: 'Кислотный'
@@ -171,11 +171,14 @@ ru:
           open: 'Выбрать тему'
           close: 'Закрыть'
           active: 'Активна'
+          locked: 'Закрыто'
+          locked_hint: 'Открой соответствующую ачивку, чтобы разблокировать'
+        theme_locked: 'Тема ещё не разблокирована'
         notifications: 'Уведомления'
         notifications_desc: 'Письма о новых достижениях и неделях'
         notifications_options:
-          on: 'Включены'
-          off: 'Отключены'
+          on: 'ВКЛ'
+          off: 'ВЫКЛ'
         saved: 'Настройки сохранены'
         no_changes: 'Нет изменений'
       session:
@@ -186,7 +189,7 @@ ru:
         logout_action: 'Выйти из аккаунта'
         logout_confirm: 'Точно выйти из аккаунта?'
     profile:
-      title: 'Профиль / Inspectra'
+      title: 'Профиль / Инспектра'
       current_title: 'Текущий титул'
       title_selected: 'Титул "%{title}" выбран'
       no_name: 'Без имени'
@@ -215,6 +218,10 @@ ru:
         rewards: 'Награды'
       rewards:
         from: 'За достижение «%{name}»'
+        titles_heading: 'Титулы'
+        themes_heading: 'Темы'
+        badges_heading: 'Бейджи'
+        locked: 'закрыто'
       missions:
         current: 'Текущая миссия'
         current_empty: 'Активной миссии нет'
@@ -268,28 +275,28 @@ ru:
       back_to_home: 'На главную'
   layouts:
     application:
-      title: 'Inspectra'
-      description: 'Inspectra — интерактивная платформа с неделями, статьями и мультимедийным контентом'
+      title: 'Инспектра'
+      description: 'Инспектра — интерактивная платформа с неделями, статьями и мультимедийным контентом'
   auth:
     shared:
-      email: 'Email'
+      email: 'E-mail'
       password: 'Пароль'
       back_to_login: 'Вернуться назад'
     login:
       title: 'Авторизация'
-      description: 'Введите данные, чтобы начать расследование в Inspectra'
-      email_placeholder: 'Email'
+      description: 'Введите данные, чтобы начать расследование в Инспектра'
+      email_placeholder: 'E-mail'
       password_placeholder: 'Пароль'
       submit: 'Продолжить'
       forgot_link: 'Забыли пароль?'
     forgot:
       title: 'Забыли пароль?'
       description: 'Мы вышлем ссылку на создание нового пароля '
-      email_placeholder: 'Email'
+      email_placeholder: 'E-mail'
       submit: 'Отправить письмо'
     reset:
       title: 'Сброс пароля'
-      description: 'Введите новые данные, чтобы начать расследование в Inspectra'
+      description: 'Введите новые данные, чтобы начать расследование в Инспектра'
       password_placeholder: 'Новый пароль'
       password_confirmation_placeholder: 'Подтвердите пароль'
       submit: 'Продолжить'
@@ -313,7 +320,7 @@ ru:
       resend_wait: 'Повторная отправка доступна через %{seconds} сек'
       code_resent: 'Код отправлен повторно'
       email_already_sent_try_later: 'Письмо уже отправлено, попробуйте позже'
-      smtp_debug_link: 'Debug: письмо не отправлено (SMTP). URL: %{url}'
+      smtp_debug_link: 'Отладка: письмо не отправлено (SMTP). URL: %{url}'
       failed_to_send_email: 'Не удалось отправить письмо'
       if_email_exists_sent_link: 'Если email существует, мы отправили ссылку для сброса'
       token_and_passwords_required: 'Токен и пароли обязательны'
@@ -326,7 +333,7 @@ ru:
   shared:
     navigation:
       home: 'Главная'
-      inspectra: 'О нас'
+      Инспектра: 'О нас'
     day_card:
       heading: 'День %{number}'
       article_prefix: 'Статья:'
@@ -339,9 +346,9 @@ ru:
       content: 'Контент'
       to_site: 'На сайт'
     dashboard:
-      title: 'Панель управления / Inspectra'
+      title: 'Панель управления / Инспектра'
       users:
-        title: 'Пользователи / Inspectra'
+        title: 'Пользователи / Инспектра'
         statistic: 'Статистика'
         count: 'Количество'
         total: 'Всего пользователей'
@@ -352,7 +359,7 @@ ru:
         email_verified: 'Подтверждено email'
         email_unverified: 'Не подтверждено email'
       content:
-        title: 'Контент / Inspectra'
+        title: 'Контент / Инспектра'
         statistic: 'Статистика'
         count: 'Количество'
         weeks_total: 'Всего недель'
@@ -396,7 +403,7 @@ ru:
         table_title: 'Сообщения об ошибках'
         status_code: 'Код'
         page_url: 'URL страницы'
-        reporter_email: 'Email'
+        reporter_email: 'E-mail'
         message: 'Сообщение'
         reported_at: 'Отправлено'
         none: 'Репортов пока нет'
@@ -443,7 +450,7 @@ ru:
         title: 'Редактирование пользователя'
         back_to_user: 'Вернуться к пользователю'
         back_to_list: 'Вернуться к списку'
-        email: 'Email'
+        email: 'E-mail'
         role: 'Роль'
         email_verified: 'Email подтвержден'
         update: 'Обновить'

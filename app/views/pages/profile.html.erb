@@ -25,14 +25,18 @@
           <% end %>
         </div>
         <div class="PageProfile-Identity-Meta">
-          <div class="PageProfile-Identity-Row">
+          <% badges = @user.earned_badges %>
+          <div class="PageProfile-Identity-NameRow">
             <span class="PageProfile-Identity-Name text-p-3"><%= @user.name.presence || t('pages.profile.no_name') %></span>
-            <% if @user.game_role.present? %>
-              <span class="PageProfile-Identity-Role text-p-3">
-                <%= t('pages.profile.game_role') %>: <strong><%= @user.game_role_label %></strong>
-              </span>
+            <% badges.each do |b| %>
+              <span class="PageProfile-Identity-Badge text-p-3" title="<%= b[:achievement].name %>"><%= b[:label] %></span>
             <% end %>
           </div>
+          <% if @user.game_role.present? %>
+            <span class="PageProfile-Identity-Role text-p-3">
+              <%= t('pages.profile.game_role') %>: <strong><%= @user.game_role_label %></strong>
+            </span>
+          <% end %>
           <% if @user.game_role.blank? %>
             <%= link_to t('pages.profile.choose_game_role'), select_game_role_path, class: 'A_TextButton text-p-3' %>
           <% end %>
@@ -99,8 +103,10 @@
                 <% @achievement_groups.each do |g| %>
                   <div class="PageProfile-AchievementRow <%= 'PageProfile-AchievementRow--Done' if g[:all_completed] %>">
                     <div class="PageProfile-AchievementRow-Body">
-                      <div class="text-p-3">
-                        <strong><%= g[:tier].name %></strong><% if g[:all_completed] %> ✓<% end %>
+                      <div class="PageProfile-AchievementRow-Head">
+                        <strong class="text-p-3"><%= g[:tier].name %></strong>
+                        <% if g[:all_completed] %><span class="text-p-3">✓</span><% end %>
+                        <span class="PageProfile-AchievementRow-Pill text-p-3"><%= t("achievement_categories.#{g[:category]}", default: g[:category].to_s.titleize) %></span>
                       </div>
                       <div class="text-p-3"><%= g[:tier].description %></div>
                       <% if g[:tiers_total] > 1 %>
@@ -148,19 +154,69 @@
             <% end %>
 
           <% when 'rewards' %>
-            <% reward_uas = @completed_achievements.select { |ua| ua.achievement.title.present? } %>
-            <% if reward_uas.any? %>
-              <div class="PageProfile-RewardList">
-                <% reward_uas.each do |ua| %>
-                  <div class="PageProfile-RewardRow">
-                    <div class="PageProfile-RewardRow-Title text-p-2"><%= ua.achievement.title.name %></div>
-                    <div class="PageProfile-RewardRow-From text-p-3">
-                      <%= t('pages.profile.rewards.from', name: ua.achievement.name) %>
+            <%# Все возможные награды: открытые показываются как есть, закрытые с пометкой "закрыто" + текст ачивки %>
+            <% completed_ach_ids = @completed_achievements.map(&:achievement_id).to_set %>
+            <% title_achs = Achievement.where.not(title_id: nil).includes(:title).order(:progress_target) %>
+            <% theme_achs = Achievement.where.not(reward_theme: nil).order(:progress_target) %>
+            <% badge_achs = Achievement.where.not(reward_badge_label: nil).order(:progress_target) %>
+
+            <% if title_achs.any? %>
+              <div class="PageProfile-RewardSection">
+                <h4 class="text-p-3 PageProfile-RewardSection-Title"><%= t('pages.profile.rewards.titles_heading') %></h4>
+                <div class="PageProfile-RewardList">
+                  <% title_achs.each do |a| %>
+                    <% earned = completed_ach_ids.include?(a.id) %>
+                    <div class="PageProfile-RewardRow <%= 'PageProfile-RewardRow--Locked' unless earned %>">
+                      <div class="PageProfile-RewardRow-Title text-p-2"><%= a.title.name %></div>
+                      <div class="PageProfile-RewardRow-From text-p-3">
+                        <%= t('pages.profile.rewards.from', name: a.name) %><% unless earned %> · <%= t('pages.profile.rewards.locked', default: 'закрыто') %><% end %>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
-            <% else %>
+            <% end %>
+
+            <% if theme_achs.any? %>
+              <div class="PageProfile-RewardSection">
+                <h4 class="text-p-3 PageProfile-RewardSection-Title"><%= t('pages.profile.rewards.themes_heading') %></h4>
+                <div class="PageProfile-RewardThemes">
+                  <% theme_achs.each do |a|
+                       t_key   = a.reward_theme
+                       earned  = completed_ach_ids.include?(a.id) %>
+                    <div class="PageProfile-RewardTheme <%= 'PageProfile-RewardTheme--Locked' unless earned %>" title="<%= a.name %>">
+                      <div class="O_ThemePickerModal-Card-Preview PageProfile-RewardTheme-Preview" data-theme="<%= t_key %>">
+                        <span class="O_ThemePickerModal-Card-Bar"></span>
+                        <span class="O_ThemePickerModal-Card-Surface"></span>
+                        <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--1"></span>
+                        <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--2"></span>
+                        <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--3"></span>
+                        <span class="O_ThemePickerModal-Card-Accent"></span>
+                      </div>
+                      <span class="PageProfile-RewardTheme-Name text-p-3"><%= t("pages.profile_config.preferences.theme_options.#{t_key}", default: t_key.titleize) %></span>
+                      <span class="PageProfile-RewardTheme-From text-p-3"><%= a.name %><% unless earned %> · <%= t('pages.profile.rewards.locked', default: 'закрыто') %><% end %></span>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <% if badge_achs.any? %>
+              <div class="PageProfile-RewardSection">
+                <h4 class="text-p-3 PageProfile-RewardSection-Title"><%= t('pages.profile.rewards.badges_heading') %></h4>
+                <div class="PageProfile-RewardBadges">
+                  <% badge_achs.each do |a|
+                       earned = completed_ach_ids.include?(a.id) %>
+                    <div class="PageProfile-RewardBadge <%= 'PageProfile-RewardBadge--Locked' unless earned %>" title="<%= a.name %>">
+                      <span class="PageProfile-RewardBadge-Label text-p-3"><%= a.reward_badge_label %></span>
+                      <span class="PageProfile-RewardBadge-From text-p-3"><%= a.name %><% unless earned %> · <%= t('pages.profile.rewards.locked', default: 'закрыто') %><% end %></span>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <% if title_achs.empty? && theme_achs.empty? && badge_achs.empty? %>
               <p class="text-p-3"><%= t('pages.profile.empty.rewards') %></p>
             <% end %>
           <% end %>

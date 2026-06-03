@@ -1,10 +1,16 @@
-<div class="O_ModalInteractive" style="display: none;" data-interactive-name="<%= local_assigns[:name] || 'Интерактив обнаружен!' %>">
+<%
+  name = local_assigns[:name] || 'Интерактив обнаружен!'
+%>
+<div class="O_ModalInteractive"
+     style="display: none;"
+     data-js-interactive-modal
+     data-interactive-name="<%= name %>">
   <div class="O_ModalInteractive-Modal">
     <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon', width: 24, height: 24 %>
-    <span class="O_ModalInteractive-Modal-Text text-p-1-mono"><%= local_assigns[:name] || 'Интерактив обнаружен!' %></span>
+    <span class="O_ModalInteractive-Modal-Text text-p-1-mono"><%= name %></span>
     <div class="O_ModalInteractive-Modal-Buttons">
-      <%= render 'shared/atoms/A_Button', text: 'Отмена' %>
-      <%= render 'shared/atoms/A_Button', text: 'Продолжить' %>
+      <%= render 'shared/atoms/A_Button', text: 'Отмена', id: 'js-interactive-modal-cancel' %>
+      <%= render 'shared/atoms/A_Button', text: 'Продолжить', id: 'js-interactive-modal-continue' %>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<%
+﻿<%
   initial_code = variant&.payload&.dig('broken_code') || ''
   expected_output = variant&.payload&.dig('expected_output').to_s
   required_patterns = Array(variant&.payload&.dig('required_patterns'))
@@ -28,14 +28,14 @@
   <% end %>
 
   <% if required_patterns.any? %>
-    <p class="text-caption">
+    <p class="text-p-3">
       Код должен содержать: <%= required_patterns.map { |p| "<code>#{ERB::Util.h(p)}</code>" }.join(', ').html_safe %>.
       Простой <code>console.log("ответ")</code> не сработает — нужен реальный фикс логики.
     </p>
   <% end %>
 
   <% if local_assigns[:max_attempts] %>
-    <p class="text-caption PageInteractive-AttemptsBadge">
+    <p class="text-p-3 PageInteractive-AttemptsBadge">
       ⚠ Максимум попыток: <%= local_assigns[:max_attempts] %>.
       <% if local_assigns[:attempts_left] %>
         Осталось: <strong><%= local_assigns[:attempts_left] %></strong>.
@@ -63,7 +63,7 @@
   <div class="PageInteractive-Sandbox-Output">
     <p class="text-p-3">Вывод:</p>
     <pre class="PageInteractive-Code text-code" data-sandbox-output>—</pre>
-    <p class="text-caption" data-sandbox-status>Жду запуска…</p>
+    <p class="text-p-3" data-sandbox-status>Жду запуска…</p>
   </div>
 
   <% if variant&.payload&.dig('fix_hint') %>
@@ -72,5 +72,4 @@
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? %><p class="text-caption">Dev-ответ: <code><%= success_token %></code></p><% end %>
 </div>

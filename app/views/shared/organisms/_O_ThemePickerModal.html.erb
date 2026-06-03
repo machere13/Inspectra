@@ -26,24 +26,43 @@
     <div class="O_ThemePickerModal-Grid">
       <% User::ALLOWED_THEMES.each do |t_key|
            current_theme_key = (defined?(current_user) && current_user&.theme.presence) || 'dark'
-           current = (current_theme_key == t_key) %>
-        <%= button_to update_preferences_path,
-                      method: :patch,
-                      params: { theme: t_key },
-                      class: ['O_ThemePickerModal-Card', ('O_ThemePickerModal-Card--Active' if current)].compact.join(' ') do %>
-          <div class="O_ThemePickerModal-Card-Preview" data-theme="<%= t_key %>">
-            <span class="O_ThemePickerModal-Card-Bar"></span>
-            <span class="O_ThemePickerModal-Card-Surface"></span>
-            <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--1"></span>
-            <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--2"></span>
-            <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--3"></span>
-            <span class="O_ThemePickerModal-Card-Accent"></span>
-          </div>
-          <div class="O_ThemePickerModal-Card-Meta">
-            <span class="O_ThemePickerModal-Card-Name text-p-3"><%= t("pages.profile_config.preferences.theme_options.#{t_key}", default: t_key.titleize) %></span>
-            <% if current %>
-              <span class="O_ThemePickerModal-Card-Badge text-p-3"><%= t('pages.profile_config.preferences.theme_modal.active', default: 'Активна') %></span>
-            <% end %>
+           current  = (current_theme_key == t_key)
+           unlocked = !defined?(current_user) || current_user.nil? || current_user.theme_unlocked?(t_key) %>
+        <% if unlocked %>
+          <%= button_to update_preferences_path,
+                        method: :patch,
+                        params: { theme: t_key },
+                        class: ['O_ThemePickerModal-Card', ('O_ThemePickerModal-Card--Active' if current)].compact.join(' ') do %>
+            <div class="O_ThemePickerModal-Card-Preview" data-theme="<%= t_key %>">
+              <span class="O_ThemePickerModal-Card-Bar"></span>
+              <span class="O_ThemePickerModal-Card-Surface"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--1"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--2"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--3"></span>
+              <span class="O_ThemePickerModal-Card-Accent"></span>
+            </div>
+            <div class="O_ThemePickerModal-Card-Meta">
+              <span class="O_ThemePickerModal-Card-Name text-p-3"><%= t("pages.profile_config.preferences.theme_options.#{t_key}", default: t_key.titleize) %></span>
+              <% if current %>
+                <span class="O_ThemePickerModal-Card-Badge text-p-3"><%= t('pages.profile_config.preferences.theme_modal.active', default: 'Активна') %></span>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="O_ThemePickerModal-Card O_ThemePickerModal-Card--Locked"
+               title="<%= t('pages.profile_config.preferences.theme_modal.locked_hint', default: 'Открой соответствующую ачивку, чтобы разблокировать') %>">
+            <div class="O_ThemePickerModal-Card-Preview" data-theme="<%= t_key %>">
+              <span class="O_ThemePickerModal-Card-Bar"></span>
+              <span class="O_ThemePickerModal-Card-Surface"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--1"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--2"></span>
+              <span class="O_ThemePickerModal-Card-Line O_ThemePickerModal-Card-Line--3"></span>
+              <span class="O_ThemePickerModal-Card-Accent"></span>
+            </div>
+            <div class="O_ThemePickerModal-Card-Meta">
+              <span class="O_ThemePickerModal-Card-Name text-p-3"><%= t("pages.profile_config.preferences.theme_options.#{t_key}", default: t_key.titleize) %></span>
+              <span class="O_ThemePickerModal-Card-LockedLabel text-p-3"><%= t('pages.profile_config.preferences.theme_modal.locked', default: 'Закрыто') %></span>
+            </div>
           </div>
         <% end %>
       <% end %>

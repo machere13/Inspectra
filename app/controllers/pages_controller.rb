@@ -56,7 +56,12 @@ class PagesController < WebController
     @user = current_user
     attrs = {}
     if params[:theme].present? && User::ALLOWED_THEMES.include?(params[:theme])
-      attrs[:theme] = params[:theme]
+      if @user.theme_unlocked?(params[:theme])
+        attrs[:theme] = params[:theme]
+      else
+        redirect_back(fallback_location: profile_config_path, alert: t('pages.profile_config.preferences.theme_locked', default: 'Тема ещё не разблокирована'))
+        return
+      end
     end
     unless params[:notifications_email].nil?
       attrs[:notifications_email] = ActiveModel::Type::Boolean.new.cast(params[:notifications_email])
@@ -188,27 +193,91 @@ class PagesController < WebController
 private
 
   def build_achievement_groups(user)
+    ensure_user_achievements!(user)
     user_progress = user.user_achievements.includes(:achievement).index_by(&:achievement_id)
 
-    Achievement.all.group_by { |a| [a.category, a.progress_type] }.map do |(category, _progress_type), group|
-      sorted_tiers     = group.sort_by(&:progress_target)
-      raw_progress     = sorted_tiers.map { |a| user_progress[a.id]&.progress.to_i }.max.to_i
-      completed_tiers  = sorted_tiers.select { |a| user_progress[a.id]&.completed? }
-      next_tier        = sorted_tiers.find { |a| !user_progress[a.id]&.completed? }
-      display_tier     = next_tier || sorted_tiers.last
-      all_completed    = next_tier.nil?
+    result = []
+    Achievement.all.group_by { |a| [a.category, a.progress_type] }.each do |(category, _progress_type), group|
+      sorted  = group.sort_by(&:progress_target)
+      targets = sorted.map(&:progress_target)
 
-      {
-        key:               "#{category}_#{display_tier.progress_type}",
-        category:          category,
-        tier:              display_tier,
-        progress:          all_completed ? display_tier.progress_target : [raw_progress, display_tier.progress_target].min,
-        target:            display_tier.progress_target,
-        tiers_total:       sorted_tiers.size,
-        tiers_completed:   completed_tiers.size,
-        all_completed:     all_completed
-      }
-    end.sort_by { |g| [g[:all_completed] ? 1 : 0, g[:category].to_s, g[:tier].progress_target] }
+      if sorted.size > 1 && targets.uniq.size == targets.size
+        result << build_chain_group(sorted, category, user_progress)
+      else
+        sorted.each { |a| result << build_single_group(a, category, user_progress) }
+      end
+    end
+    result.sort_by { |g| [g[:all_completed] ? 1 : 0, g[:category].to_s, g[:tier].progress_target] }
+  end
+
+  def build_chain_group(sorted_tiers, category, user_progress)
+    raw_progress    = sorted_tiers.map { |a| user_progress[a.id]&.progress.to_i }.max.to_i
+    completed_tiers = sorted_tiers.select { |a| user_progress[a.id]&.completed? }
+    next_tier       = sorted_tiers.find { |a| !user_progress[a.id]&.completed? }
+    display_tier    = next_tier || sorted_tiers.last
+    all_completed   = next_tier.nil?
+
+    {
+      key:             "#{category}_#{display_tier.progress_type}_chain",
+      category:        category,
+      tier:            display_tier,
+      progress:        all_completed ? display_tier.progress_target : [raw_progress, display_tier.progress_target].min,
+      target:          display_tier.progress_target,
+      tiers_total:     sorted_tiers.size,
+      tiers_completed: completed_tiers.size,
+      all_completed:   all_completed
+    }
+  end
+
+  def build_single_group(achievement, category, user_progress)
+    ua            = user_progress[achievement.id]
+    raw_progress  = ua&.progress.to_i
+    all_completed = ua&.completed? || false
+
+    {
+      key:             "#{category}_#{achievement.id}",
+      category:        category,
+      tier:            achievement,
+      progress:        all_completed ? achievement.progress_target : [raw_progress, achievement.progress_target].min,
+      target:          achievement.progress_target,
+      tiers_total:     1,
+      tiers_completed: all_completed ? 1 : 0,
+      all_completed:   all_completed
+    }
+  end
+
+  def ensure_user_achievements!(user)
+    interactive_counts_by_category = user.interactive_completions.group(:category).count
+    total_interactives             = user.interactive_completions.count
+    registration_order             = User.where('created_at <= ?', user.created_at).count
+
+    Achievement.all.find_each do |a|
+      ua = user.user_achievements.find_or_initialize_by(achievement: a)
+      previously_completed = ua.completed_at.present?
+
+      new_progress = case a.progress_type
+                     when 'registration_order'
+                       registration_order
+                     when 'total_interactives'
+                       a.category == 'general' ? total_interactives : interactive_counts_by_category[a.category].to_i
+                     else
+                       ua.progress.to_i
+                     end
+
+      ua.progress = new_progress
+
+      reached_target = if a.progress_type == 'registration_order'
+                         # инвертированная логика: «N-й из первых M» → completed когда order ≤ target
+                         new_progress.positive? && new_progress <= a.progress_target
+                       else
+                         new_progress >= a.progress_target
+                       end
+
+      if !previously_completed && reached_target
+        ua.completed_at = Time.current
+      end
+      ua.save! if ua.changed?
+    end
   end
 
   def build_skill_chart(user)

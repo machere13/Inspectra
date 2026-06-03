@@ -1,0 +1,85 @@
+<%
+  data = local_assigns[:data] || {}
+  interactive       = data[:interactive]
+  variant           = data[:variant]
+  already_completed = data[:already_completed]
+  attempts_left     = data[:attempts_left]
+  max_attempts      = data[:max_attempts]
+  session_token     = data[:session_token]
+%>
+<% header_controls = capture do %>
+  <%= render 'shared/atoms/A_ControlButton',
+             icon_name: 'Q_FullScreenIcon',
+             aria_label: 'На весь экран',
+             class: 'W_ControlPanel-Header-Button W_ControlPanel-Header-Button--maximize',
+             data: {
+               js_interactive_overlay_maximize: '',
+               icon_url: asset_path('Q_FullScreenIcon.svg'),
+               icon_alt_url: asset_path('Q_NotFullScreenIcon.svg')
+             } %>
+  <%= render 'shared/atoms/A_ControlButton',
+             icon_name: 'Q_CloseIcon',
+             aria_label: 'Закрыть',
+             class: 'W_ControlPanel-Header-Button',
+             data: { js_interactive_overlay_close: '' } %>
+<% end %>
+<%= render layout: 'shared/wrappers/W_ControlPanel',
+    locals: {
+      id: 'js-interactive-overlay',
+      icon_name: 'Q_AsteriskIcon',
+      data: { js_interactive_overlay: '', session_token: session_token },
+      body_fill: true,
+      header_controls: header_controls,
+      resizable: true,
+      draggable: true,
+      class: 'W_ControlPanel--interactive-overlay'
+    } do %>
+  <div class="SO_InteractiveOverlay">
+    <header class="SO_InteractiveOverlay-Header">
+      <h2 class="SO_InteractiveOverlay-Title text-h4"><%= interactive.title %></h2>
+      <p class="SO_InteractiveOverlay-Description text-p-3"><%= interactive.description %></p>
+      <div class="SO_InteractiveOverlay-Meta text-p-3">
+        <%= t('achievement_categories.' + interactive.category) %> ·
+        XP: <%= interactive.xp_reward %> ·
+        <%= t('pages.interactives.difficulty', n: interactive.difficulty) %>
+        <% if max_attempts && attempts_left %>
+          · попыток: <%= attempts_left %>/<%= max_attempts %>
+        <% end %>
+      </div>
+    </header>
+
+    <% if already_completed %>
+      <div class="SO_InteractiveOverlay-CompletedBanner text-p-2">
+        <%= t('pages.interactive.already_completed') %>
+      </div>
+    <% end %>
+
+    <div class="SO_InteractiveOverlay-Body">
+      <%= render partial: "interactives/kinds/#{interactive.kind}",
+                 locals: {
+                   interactive: interactive,
+                   variant: variant,
+                   already_completed: already_completed,
+                   attempts_left: attempts_left,
+                   max_attempts: max_attempts
+                 } %>
+    </div>
+
+    <% unless already_completed %>
+      <%= form_with url: submit_interactive_path(interactive.key),
+                    method: :post,
+                    local: true,
+                    class: 'SO_InteractiveOverlay-Form' do %>
+        <%= render 'shared/atoms/A_Input',
+                   name: 'answer',
+                   type: 'text',
+                   required: true,
+                   autocomplete: 'off',
+                   placeholder: t('pages.interactive.answer_placeholder') %>
+        <%= render 'shared/atoms/A_Button',
+                   type: 'submit',
+                   text: t('pages.interactive.submit') %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

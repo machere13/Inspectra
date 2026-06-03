@@ -30,7 +30,36 @@ class User < ApplicationRecord
   }, prefix: true
 
   ALLOWED_THEMES = %w[dark white void purple chrome ocean-blue vampire acid-green neon pink].freeze
+  # Темы, доступные всем без необходимости что-то проходить.
+  DEFAULT_THEMES = %w[dark white].freeze
   validates :theme, inclusion: { in: ALLOWED_THEMES }, allow_nil: true
+
+  # Темы, разблокированные пользователем = базовые + те, что прикреплены к завершённым ачивкам через reward_theme.
+  def unlocked_themes
+    earned = Achievement
+              .joins(:user_achievements)
+              .where(user_achievements: { user_id: id })
+              .where.not(user_achievements: { completed_at: nil })
+              .where.not(reward_theme: nil)
+              .pluck(:reward_theme)
+    (DEFAULT_THEMES + earned).uniq
+  end
+
+  def theme_unlocked?(theme_key)
+    return true if DEFAULT_THEMES.include?(theme_key)
+    unlocked_themes.include?(theme_key)
+  end
+
+  # Бейджи — все ачивки с reward_badge_label, которые пользователь завершил.
+  # Возвращает [{ label:, achievement: }, ...]
+  def earned_badges
+    Achievement
+      .joins(:user_achievements)
+      .where(user_achievements: { user_id: id })
+      .where.not(user_achievements: { completed_at: nil })
+      .where.not(reward_badge_label: nil)
+      .map { |a| { label: a.reward_badge_label, achievement: a } }
+  end
 
   GAME_ROLE_SPECIALTIES = {
     'mage'    => 'it_security',

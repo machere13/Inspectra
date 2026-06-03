@@ -2,9 +2,9 @@
   <div class="PageProfile-Missions-Section">
     <h3 class="text-p-3 PageProfile-Card-Title"><%= t('pages.profile.missions.current') %></h3>
     <% if @current_interactive %>
-      <%= link_to interactive_path(@current_interactive.key), class: 'PageProfile-MissionItem PageProfile-MissionItem--Active' do %>
+      <div class="PageProfile-MissionItem PageProfile-MissionItem--Active">
         <span class="PageProfile-MissionItem-Title text-p-3"><%= @current_interactive.title %></span>
-      <% end %>
+      </div>
     <% else %>
       <p class="text-p-3 PageProfile-MissionItem-Empty"><%= t('pages.profile.missions.current_empty') %></p>
     <% end %>

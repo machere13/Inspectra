@@ -3,8 +3,12 @@ Rails.application.routes.draw do
     mount ActiveStorage::Engine => '/rails/active_storage'
   end
   
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  if defined?(Rswag::Ui::Engine)
+    mount Rswag::Ui::Engine => '/api-docs'
+  end
+  if defined?(Rswag::Api::Engine)
+    mount Rswag::Api::Engine => '/api-docs'
+  end
   
   namespace :api do
     namespace :v1 do
@@ -14,6 +18,11 @@ Rails.application.routes.draw do
       post 'auth/resend', to: 'auth#resend_verification_code'
       get 'auth/me', to: 'auth#me'
       get 'auth/supported-domains', to: 'auth#supported_email_domains'
+
+      get   'profile',              to: 'profile#show'
+      patch 'profile/preferences',  to: 'profile#update_preferences'
+      patch 'profile/title',        to: 'profile#select_title'
+      patch 'profile/name',         to: 'profile#update_name'
       get 'game_roles', to: 'game_roles#index'
       patch 'game_roles/select', to: 'game_roles#select'
       
@@ -64,8 +73,8 @@ Rails.application.routes.draw do
   get 'profile/select_game_role', to: 'pages#select_game_role', as: 'select_game_role'
   patch 'profile/select_game_role', to: 'pages#update_game_role', as: 'update_game_role'
 
-  get 'interactives', to: 'interactives#index', as: 'interactives'
-  get 'interactives/:key', to: 'interactives#show', as: 'interactive', constraints: { key: %r{[^/]+} }
+  # Интерактивы открываются inline (через SO_InteractiveOverlay) на страницах
+  # недель и статей — отдельных страниц index/show больше нет.
   post 'interactives/:key/submit', to: 'interactives#submit', as: 'submit_interactive', constraints: { key: %r{[^/]+} }
   get 'auth', to: redirect('/auth/login')
   delete 'auth/logout', to: 'auth#logout', as: 'logout'
