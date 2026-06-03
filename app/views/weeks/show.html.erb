@@ -71,4 +71,22 @@
       <% end %>
     </div>
   </div>
+
+  <%
+    week_interactives = @week.articles
+                              .includes(:interactives)
+                              .flat_map(&:interactives)
+                              .compact
+                              .uniq(&:id)
+    random_interactive = random_pending_interactive(current_user, week_interactives)
+  %>
+  <% if random_interactive %>
+    <% interactive_url = interactive_path(random_interactive.key) %>
+    <%= render 'shared/molecules/M_ToastInteractive',
+               name: random_interactive.title,
+               href: interactive_url %>
+    <%= render 'shared/organisms/O_ModalInteractive',
+               name: random_interactive.title,
+               href: interactive_url %>
+  <% end %>
 </div>
