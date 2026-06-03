@@ -14,6 +14,8 @@
 
       const nodes = [];
 
+      const edgePadding = 24;
+
       items.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
         const itemWidth = rect.width || 200;
@@ -39,6 +41,11 @@
           x = centerX + Math.cos(angle) * radiusXFinal + noiseX;
           y = centerY + Math.sin(angle) * radiusYFinal + noiseY;
         }
+
+        const halfW = itemWidth / 2 + edgePadding;
+        const halfH = itemHeight / 2 + edgePadding;
+        x = Math.max(halfW, Math.min(canvasWidth - halfW, x));
+        y = Math.max(halfH, Math.min(canvasHeight - halfH, y));
 
         nodes.push({
           element: item,

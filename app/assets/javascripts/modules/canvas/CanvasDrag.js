@@ -18,8 +18,8 @@
       let animationFrameId = null;
       const friction = 0.96;
       const dragThreshold = 5;
-      const maxX = canvasWidth - viewportWidth;
-      const maxY = canvasHeight - viewportHeight;
+      let maxX = canvasWidth - viewportWidth;
+      let maxY = canvasHeight - viewportHeight;
 
       canvasContainer.style.transform = `translate(${transformX}px, ${transformY}px)`;
       canvasContainer.style.touchAction = 'none';
@@ -28,6 +28,20 @@
         transformX = Math.max(-maxX, Math.min(0, transformX));
         transformY = Math.max(-maxY, Math.min(0, transformY));
         canvasContainer.style.transform = `translate(${transformX}px, ${transformY}px)`;
+      };
+
+      const setBounds = function(newCanvasWidth, newCanvasHeight, newViewportWidth, newViewportHeight) {
+        canvasWidth = newCanvasWidth;
+        canvasHeight = newCanvasHeight;
+        viewportWidth = newViewportWidth;
+        viewportHeight = newViewportHeight;
+        maxX = Math.max(0, canvasWidth - viewportWidth);
+        maxY = Math.max(0, canvasHeight - viewportHeight);
+        transformX = -maxX / 2;
+        transformY = -maxY / 2;
+        velocityX = 0;
+        velocityY = 0;
+        updateTransform();
       };
 
       const animate = function(currentTime) {
@@ -153,7 +167,8 @@
       canvasContainer.addEventListener('pointerdown', onPointerDown);
 
       return {
-        updateTransform: updateTransform
+        updateTransform: updateTransform,
+        setBounds: setBounds
       };
     }
   };

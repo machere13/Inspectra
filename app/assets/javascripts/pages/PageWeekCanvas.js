@@ -12,10 +12,10 @@
     const items = Array.from(itemsContainer.querySelectorAll('.PageWeek-Content-Item'));
     if (items.length === 0) return;
 
-    const canvasConfig = window.CanvasSetup.init(container);
+    let canvasConfig = window.CanvasSetup.init(container);
     if (!canvasConfig) return;
 
-    const nodes = window.NodePositioner.calculatePositions(
+    let nodes = window.NodePositioner.calculatePositions(
       items,
       canvasConfig.width,
       canvasConfig.height
@@ -49,13 +49,32 @@
       drawLines();
     }, 100);
 
-    window.CanvasDrag.init(
+    const dragApi = window.CanvasDrag.init(
       canvasContainer,
       canvasConfig.width,
       canvasConfig.height,
       canvasConfig.viewportWidth,
       canvasConfig.viewportHeight
     );
+
+    const recomputeGeometry = function() {
+      canvasConfig = window.CanvasSetup.init(container);
+      if (!canvasConfig) return;
+      nodes = window.NodePositioner.calculatePositions(
+        items,
+        canvasConfig.width,
+        canvasConfig.height
+      );
+      if (dragApi && typeof dragApi.setBounds === 'function') {
+        dragApi.setBounds(
+          canvasConfig.width,
+          canvasConfig.height,
+          canvasConfig.viewportWidth,
+          canvasConfig.viewportHeight
+        );
+      }
+      drawLines();
+    };
 
     const resizeObserver = new ResizeObserver(function() {
       updateNodePositions();
@@ -65,8 +84,13 @@
       resizeObserver.observe(item);
     });
 
+    let resizeTimerId = null;
     window.addEventListener('resize', function() {
-      updateNodePositions();
+      if (resizeTimerId) clearTimeout(resizeTimerId);
+      resizeTimerId = setTimeout(function() {
+        recomputeGeometry();
+        resizeTimerId = null;
+      }, 120);
     });
 
     const mutationObserver = new MutationObserver(function() {
