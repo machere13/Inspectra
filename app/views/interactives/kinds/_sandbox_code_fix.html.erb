@@ -72,5 +72,4 @@
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
   <% end %>
-  <% if Rails.env.development? %><p class="text-p-3">Dev-ответ: <code><%= success_token %></code></p><% end %>
 </div>

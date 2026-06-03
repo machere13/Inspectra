@@ -98,8 +98,4 @@
     </p>
   <% end %>
 
-  <% if Rails.env.development? %>
-    <% dev_answer = interactive.randomizable? ? interactive.issue_token_for(current_user, variant: variant) : variant&.expected_answer %>
-    <p class="text-p-3 PageInteractive-Stub-Note">Dev-ответ: <code><%= dev_answer %></code></p>
-  <% end %>
 </div>
