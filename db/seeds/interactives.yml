@@ -1,7 +1,4 @@
 interactives:
-  # ============================================================
-  # DEV DIVING (7 уникальных видов)
-  # ============================================================
   - key: 'dev_diving.blind_in_dom'
     category: 'dev_diving'
     kind: 'find_text_in_html'
@@ -200,9 +197,6 @@ interactives:
           hint: 'Открой консоль до перехода — иначе события улетят.'
         }
 
-  # ============================================================
-  # LEGACY (7)
-  # ============================================================
   - key: 'legacy.archive_worm'
     category: 'legacy'
     kind: 'find_text_in_html'
@@ -392,9 +386,6 @@ interactives:
           hint: 'После смены UA — перезагрузи страницу.'
         }
 
-  # ============================================================
-  # IT ERRORS (7)
-  # ============================================================
   - key: 'it_errors.silent_failure'
     category: 'it_errors'
     kind: 'inspect_devtools'
@@ -635,9 +626,6 @@ interactives:
         required_patterns: ['function', 'fib', 'return', '+']
         hint: 'fib(0)=0, fib(1)=1.'
 
-  # ============================================================
-  # IT SECURITY (7)
-  # ============================================================
   - key: 'it_security.phishing_expedition'
     category: 'it_security'
     kind: 'phishing_quiz'
