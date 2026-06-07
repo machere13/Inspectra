@@ -20,13 +20,7 @@
           <%# === AVATAR (большой, кликабельный, авто-сабмит) === %>
           <%= form_with url: update_avatar_path, method: :patch, local: true, multipart: true, id: 'config-avatar-form', class: 'PageProfileConfig-Avatar' do |f| %>
             <label for="config-avatar-upload" class="PageProfileConfig-AvatarThumb" title="<%= @user.avatar.attached? ? t('pages.profile.avatar.change') : t('pages.profile.avatar.upload') %>">
-              <% if @user.avatar.attached? %>
-                <%= image_tag url_for(@user.avatar), alt: @user.name || @user.email %>
-              <% else %>
-                <div class="PageProfileConfig-AvatarThumb--placeholder">
-                  <span class="text-p-3"><%= (@user.name || @user.email).to_s[0]&.upcase %></span>
-                </div>
-              <% end %>
+              <%= image_tag avatar_url_for(@user), alt: @user.name || @user.email %>
               <span class="PageProfileConfig-AvatarThumb-Overlay text-p-3">
                 <%= @user.avatar.attached? ? t('pages.profile.avatar.change', default: 'Сменить') : t('pages.profile.avatar.upload', default: 'Загрузить') %>
               </span>

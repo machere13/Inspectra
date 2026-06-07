@@ -14,11 +14,7 @@
     <div class="PageProfile-Col PageProfile-Col--Identity">
       <div class="PageProfile-Card PageProfile-Identity">
         <div class="PageProfile-Avatar-Wrapper">
-          <% if @user.avatar.attached? %>
-            <%= image_tag url_for(@user.avatar), alt: @user.name || @user.email, class: 'PageProfile-Avatar' %>
-          <% else %>
-            <div class="PageProfile-Avatar PageProfile-Avatar--placeholder"></div>
-          <% end %>
+          <%= image_tag avatar_url_for(@user), alt: @user.name || @user.email, class: 'PageProfile-Avatar' %>
           <%= form_with url: update_avatar_path, method: :patch, local: true, multipart: true, class: 'PageProfile-Avatar-Form' do |f| %>
             <%= f.file_field :avatar, accept: 'image/*', class: 'PageProfile-Avatar-Input', id: 'avatar-upload' %>
             <label for="avatar-upload" class="PageProfile-Avatar-Label" title="<%= @user.avatar.attached? ? t('pages.profile.avatar.change') : t('pages.profile.avatar.upload') %>"></label>

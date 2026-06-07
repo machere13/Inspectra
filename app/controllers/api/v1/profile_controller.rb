@@ -13,7 +13,7 @@ class Api::V1::ProfileController < ApplicationController
         id:                 user.id,
         email:              user.email,
         name:               user.name,
-        avatar_url:         user.avatar.attached? ? Rails.application.routes.url_helpers.url_for(user.avatar) : nil,
+        avatar_url:         user.avatar.attached? ? Rails.application.routes.url_helpers.url_for(user.avatar) : Rails.application.routes.url_helpers.generated_avatar_url(user.id, format: :svg, host: request.base_url),
         game_role:          user.game_role,
         game_role_label:    user.game_role_label,
         game_role_required: user.game_role_required?,
