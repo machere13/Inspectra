@@ -1,7 +1,4 @@
 interactives:
-  # ============================================================
-  # DEV DIVING (7 уникальных видов)
-  # ============================================================
   - key: 'dev_diving.blind_in_dom'
     category: 'dev_diving'
     kind: 'find_text_in_html'
@@ -10,9 +7,24 @@ interactives:
     xp_reward: 60
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'rabbit',  hidden_text: 'rabbit',  hint: 'Удалённый узел всё ещё в памяти браузера.' }
-      - { seed: 2, expected_answer: 'phoenix', hidden_text: 'phoenix', hint: 'Detached DOM node — обычное место для секретов.' }
-      - { seed: 3, expected_answer: 'griffin', hidden_text: 'griffin', hint: 'Используй Memory snapshot или Console: $0.' }
+      - {
+          seed: 1,
+          expected_answer: 'rabbit',
+          hidden_text: 'rabbit',
+          hint: 'Удалённый узел всё ещё в памяти браузера.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'phoenix',
+          hidden_text: 'phoenix',
+          hint: 'Detached DOM node — обычное место для секретов.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'griffin',
+          hidden_text: 'griffin',
+          hint: 'Используй Memory snapshot или Console: $0.'
+        }
 
   - key: 'dev_diving.css_labyrinth'
     category: 'dev_diving'
@@ -22,9 +34,24 @@ interactives:
     xp_reward: 50
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'minotaur', hidden_text: 'minotaur', hint: 'overflow:hidden и font-size:0 — частые приёмы.' }
-      - { seed: 2, expected_answer: 'daedalus', hidden_text: 'daedalus', hint: 'Проверь z-index и clip-path.' }
-      - { seed: 3, expected_answer: 'ariadne',  hidden_text: 'ariadne',  hint: 'transform:scale(0) тоже прячет.' }
+      - {
+          seed: 1,
+          expected_answer: 'minotaur',
+          hidden_text: 'minotaur',
+          hint: 'overflow:hidden и font-size:0 — частые приёмы.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'daedalus',
+          hidden_text: 'daedalus',
+          hint: 'Проверь z-index и clip-path.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'ariadne',
+          hidden_text: 'ariadne',
+          hint: 'transform:scale(0) тоже прячет.'
+        }
 
   - key: 'dev_diving.secret_message'
     category: 'dev_diving'
@@ -34,9 +61,24 @@ interactives:
     xp_reward: 40
     difficulty: 1
     variants:
-      - { seed: 1, expected_answer: 'kraken',   hidden_text: 'kraken',   hint: 'Подсветь весь текст мышью или Ctrl+A.' }
-      - { seed: 2, expected_answer: 'leviathan', hidden_text: 'leviathan', hint: 'Загляни в инспектор элементов.' }
-      - { seed: 3, expected_answer: 'hydra',    hidden_text: 'hydra',    hint: 'Текст рядом с обычным абзацем.' }
+      - {
+          seed: 1,
+          expected_answer: 'kraken',
+          hidden_text: 'kraken',
+          hint: 'Подсветь весь текст мышью или Ctrl+A.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'leviathan',
+          hidden_text: 'leviathan',
+          hint: 'Загляни в инспектор элементов.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'hydra',
+          hidden_text: 'hydra',
+          hint: 'Текст рядом с обычным абзацем.'
+        }
 
   - key: 'dev_diving.hidden_js_script'
     category: 'dev_diving'
@@ -46,9 +88,24 @@ interactives:
     xp_reward: 55
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'orion',   hidden_text: 'const SECRET = "orion";',   hint: 'Sources -> текущий документ.' }
-      - { seed: 2, expected_answer: 'cassiopeia', hidden_text: 'const SECRET = "cassiopeia";', hint: 'View source страницы.' }
-      - { seed: 3, expected_answer: 'andromeda', hidden_text: 'const SECRET = "andromeda";', hint: 'Открой Sources, найди inline-скрипт.' }
+      - {
+          seed: 1,
+          expected_answer: 'orion',
+          hidden_text: 'const SECRET = "orion";',
+          hint: 'Sources -> текущий документ.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'cassiopeia',
+          hidden_text: 'const SECRET = "cassiopeia";',
+          hint: 'View source страницы.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'andromeda',
+          hidden_text: 'const SECRET = "andromeda";',
+          hint: 'Открой Sources, найди inline-скрипт.'
+        }
 
   - key: 'dev_diving.missing_cookie'
     category: 'dev_diving'
@@ -58,9 +115,27 @@ interactives:
     xp_reward: 70
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'unlocked-alpha',   cookie_name: 'inspectra_token', cookie_value: 'alpha',   hint: 'DevTools -> Application -> Cookies.' }
-      - { seed: 2, expected_answer: 'unlocked-beta',    cookie_name: 'inspectra_token', cookie_value: 'beta',    hint: 'Поле "Name" и "Value" во вкладке Cookies.' }
-      - { seed: 3, expected_answer: 'unlocked-gamma',   cookie_name: 'inspectra_token', cookie_value: 'gamma',   hint: 'Не забудь нажать Enter после ввода значения.' }
+      - {
+          seed: 1,
+          expected_answer: 'unlocked-alpha',
+          cookie_name: 'inspectra_token',
+          cookie_value: 'alpha',
+          hint: 'DevTools -> Application -> Cookies.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'unlocked-beta',
+          cookie_name: 'inspectra_token',
+          cookie_value: 'beta',
+          hint: 'Поле "Name" и "Value" во вкладке Cookies.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'unlocked-gamma',
+          cookie_name: 'inspectra_token',
+          cookie_value: 'gamma',
+          hint: 'Не забудь нажать Enter после ввода значения.'
+        }
 
   - key: 'dev_diving.network_spy'
     category: 'dev_diving'
@@ -70,9 +145,27 @@ interactives:
     xp_reward: 65
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'NET-TOKEN-ARC',   endpoint: '/api/v1/spy?seed=1', token: 'NET-TOKEN-ARC',   hint: 'Фильтр XHR/Fetch.' }
-      - { seed: 2, expected_answer: 'NET-TOKEN-NOVA',  endpoint: '/api/v1/spy?seed=2', token: 'NET-TOKEN-NOVA',  hint: 'Ищи запрос в момент клика.' }
-      - { seed: 3, expected_answer: 'NET-TOKEN-PULSE', endpoint: '/api/v1/spy?seed=3', token: 'NET-TOKEN-PULSE', hint: 'Закладка Response внизу панели Network.' }
+      - {
+          seed: 1,
+          expected_answer: 'NET-TOKEN-ARC',
+          endpoint: '/api/v1/spy?seed=1',
+          token: 'NET-TOKEN-ARC',
+          hint: 'Фильтр XHR/Fetch.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'NET-TOKEN-NOVA',
+          endpoint: '/api/v1/spy?seed=2',
+          token: 'NET-TOKEN-NOVA',
+          hint: 'Ищи запрос в момент клика.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'NET-TOKEN-PULSE',
+          endpoint: '/api/v1/spy?seed=3',
+          token: 'NET-TOKEN-PULSE',
+          hint: 'Закладка Response внизу панели Network.'
+        }
 
   - key: 'dev_diving.event_listener'
     category: 'dev_diving'
@@ -82,13 +175,28 @@ interactives:
     xp_reward: 75
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'EV-OWL',   event_name: 'inspectra:secret', token: 'EV-OWL',   hint: 'addEventListener("inspectra:secret", e => console.log(e.detail))' }
-      - { seed: 2, expected_answer: 'EV-FOX',   event_name: 'inspectra:secret', token: 'EV-FOX',   hint: 'window.addEventListener поможет.' }
-      - { seed: 3, expected_answer: 'EV-RAVEN', event_name: 'inspectra:secret', token: 'EV-RAVEN', hint: 'Открой консоль до перехода — иначе события улетят.' }
+      - {
+          seed: 1,
+          expected_answer: 'EV-OWL',
+          event_name: 'inspectra:secret',
+          token: 'EV-OWL',
+          hint: 'addEventListener("inspectra:secret", e => console.log(e.detail))'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'EV-FOX',
+          event_name: 'inspectra:secret',
+          token: 'EV-FOX',
+          hint: 'window.addEventListener поможет.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'EV-RAVEN',
+          event_name: 'inspectra:secret',
+          token: 'EV-RAVEN',
+          hint: 'Открой консоль до перехода — иначе события улетят.'
+        }
 
-  # ============================================================
-  # LEGACY (7)
-  # ============================================================
   - key: 'legacy.archive_worm'
     category: 'legacy'
     kind: 'find_text_in_html'
@@ -97,9 +205,24 @@ interactives:
     xp_reward: 50
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'fortran',    hidden_text: 'fortran',    hint: 'Ссылка на /legacy/archive/1.' }
-      - { seed: 2, expected_answer: 'cobol',      hidden_text: 'cobol',      hint: 'Ссылка на /legacy/archive/2.' }
-      - { seed: 3, expected_answer: 'pascal',     hidden_text: 'pascal',     hint: 'Ссылка на /legacy/archive/3.' }
+      - {
+          seed: 1,
+          expected_answer: 'fortran',
+          hidden_text: 'fortran',
+          hint: 'Ссылка на /legacy/archive/1.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'cobol',
+          hidden_text: 'cobol',
+          hint: 'Ссылка на /legacy/archive/2.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'pascal',
+          hidden_text: 'pascal',
+          hint: 'Ссылка на /legacy/archive/3.'
+        }
 
   - key: 'legacy.deprecation_encyclopedia'
     category: 'legacy'
@@ -109,9 +232,24 @@ interactives:
     xp_reward: 55
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'marquee',   hidden_text: '<marquee>',  hint: 'Где-то бегущая строка.' }
-      - { seed: 2, expected_answer: 'blink',     hidden_text: '<blink>',    hint: 'Старый тег мерцания.' }
-      - { seed: 3, expected_answer: 'jquery-1.2',hidden_text: 'jquery-1.2.js', hint: 'Подключение через <script src>.' }
+      - {
+          seed: 1,
+          expected_answer: 'marquee',
+          hidden_text: '<marquee>',
+          hint: 'Где-то бегущая строка.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'blink',
+          hidden_text: '<blink>',
+          hint: 'Старый тег мерцания.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'jquery-1.2',
+          hidden_text: 'jquery-1.2.js',
+          hint: 'Подключение через <script src>.'
+        }
 
   - key: 'legacy.ancient_iframe'
     category: 'legacy'
@@ -121,9 +259,24 @@ interactives:
     xp_reward: 60
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'amber',  iframe_src: '/legacy/iframe/1', hint: 'Кликни внутрь iframe и используй DevTools.' }
-      - { seed: 2, expected_answer: 'fossil', iframe_src: '/legacy/iframe/2', hint: 'Контент в самом теле iframe.' }
-      - { seed: 3, expected_answer: 'relict', iframe_src: '/legacy/iframe/3', hint: 'Right-click на iframe -> Inspect.' }
+      - {
+          seed: 1,
+          expected_answer: 'amber',
+          iframe_src: '/legacy/iframe/1',
+          hint: 'Кликни внутрь iframe и используй DevTools.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'fossil',
+          iframe_src: '/legacy/iframe/2',
+          hint: 'Контент в самом теле iframe.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'relict',
+          iframe_src: '/legacy/iframe/3',
+          hint: 'Right-click на iframe -> Inspect.'
+        }
 
   - key: 'legacy.relic_layout'
     category: 'legacy'
@@ -133,9 +286,24 @@ interactives:
     xp_reward: 50
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'filter:alpha', hidden_text: 'filter: alpha(opacity=50)', hint: 'IE-only.' }
-      - { seed: 2, expected_answer: 'zoom',         hidden_text: 'zoom: 1',                   hint: 'IE-хак для hasLayout.' }
-      - { seed: 3, expected_answer: 'expression',   hidden_text: 'expression(',               hint: 'CSS expression — старый IE-трюк.' }
+      - {
+          seed: 1,
+          expected_answer: 'filter:alpha',
+          hidden_text: 'filter: alpha(opacity=50)',
+          hint: 'IE-only.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'zoom',
+          hidden_text: 'zoom: 1',
+          hint: 'IE-хак для hasLayout.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'expression',
+          hidden_text: 'expression(',
+          hint: 'CSS expression — старый IE-трюк.'
+        }
 
   - key: 'legacy.ghost_format'
     category: 'legacy'
@@ -145,9 +313,24 @@ interactives:
     xp_reward: 45
     difficulty: 1
     variants:
-      - { seed: 1, expected_answer: 'swf',  hidden_text: 'animation.swf',  hint: 'Flash.' }
-      - { seed: 2, expected_answer: 'gif89',hidden_text: 'banner.gif89',   hint: 'Старый формат анимации.' }
-      - { seed: 3, expected_answer: 'midi', hidden_text: 'theme.midi',     hint: 'Музыка из 90-х.' }
+      - {
+          seed: 1,
+          expected_answer: 'swf',
+          hidden_text: 'animation.swf',
+          hint: 'Flash.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'gif89',
+          hidden_text: 'banner.gif89',
+          hint: 'Старый формат анимации.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'midi',
+          hidden_text: 'theme.midi',
+          hint: 'Музыка из 90-х.'
+        }
 
   - key: 'legacy.echo_of_past'
     category: 'legacy'
@@ -157,9 +340,24 @@ interactives:
     xp_reward: 65
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'ECHO-V1-A', endpoint: '/api/v0/echo?seed=1', hint: 'fetch("/api/v0/echo?seed=1")' }
-      - { seed: 2, expected_answer: 'ECHO-V1-B', endpoint: '/api/v0/echo?seed=2', hint: 'fetch("/api/v0/echo?seed=2")' }
-      - { seed: 3, expected_answer: 'ECHO-V1-C', endpoint: '/api/v0/echo?seed=3', hint: 'fetch("/api/v0/echo?seed=3")' }
+      - {
+          seed: 1,
+          expected_answer: 'ECHO-V1-A',
+          endpoint: '/api/v0/echo?seed=1',
+          hint: 'fetch("/api/v0/echo?seed=1")'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'ECHO-V1-B',
+          endpoint: '/api/v0/echo?seed=2',
+          hint: 'fetch("/api/v0/echo?seed=2")'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'ECHO-V1-C',
+          endpoint: '/api/v0/echo?seed=3',
+          hint: 'fetch("/api/v0/echo?seed=3")'
+        }
 
   - key: 'legacy.ie6_hack'
     category: 'legacy'
@@ -169,13 +367,25 @@ interactives:
     xp_reward: 80
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'IE6-TOKEN-A', target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', hint: 'DevTools -> Network conditions -> User agent.' }
-      - { seed: 2, expected_answer: 'IE6-TOKEN-B', target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)', hint: 'Снять "Use browser default", вписать UA.' }
-      - { seed: 3, expected_answer: 'IE6-TOKEN-C', target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)',      hint: 'После смены UA — перезагрузи страницу.' }
+      - {
+          seed: 1,
+          expected_answer: 'IE6-TOKEN-A',
+          target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)',
+          hint: 'DevTools -> Network conditions -> User agent.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'IE6-TOKEN-B',
+          target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)',
+          hint: 'Снять "Use browser default", вписать UA.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'IE6-TOKEN-C',
+          target_ua: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)',
+          hint: 'После смены UA — перезагрузи страницу.'
+        }
 
-  # ============================================================
-  # IT ERRORS (7)
-  # ============================================================
   - key: 'it_errors.silent_failure'
     category: 'it_errors'
     kind: 'inspect_devtools'
@@ -184,9 +394,24 @@ interactives:
     xp_reward: 50
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'kitten.png',  broken_url: '/img/ktiten.png',  hint: 'Console -> 404.' }
-      - { seed: 2, expected_answer: 'puppy.png',   broken_url: '/img/upppy.png',   hint: 'Network -> Failed.' }
-      - { seed: 3, expected_answer: 'fox.png',     broken_url: '/img/foox.png',    hint: 'Опечатка в имени.' }
+      - {
+          seed: 1,
+          expected_answer: 'cookies.jpg',
+          broken_url: '/img/coookies_.jpg',
+          hint: 'Console -> 404.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'terminal.jpg',
+          broken_url: '/img/t3irmnaI.jpg',
+          hint: 'Network -> Failed.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'monitor.jpg',
+          broken_url: '/img/m0ointor_.jpg',
+          hint: 'Опечатка в имени.'
+        }
 
   - key: 'it_errors.blind_check'
     category: 'it_errors'
@@ -196,9 +421,24 @@ interactives:
     xp_reward: 60
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: 'passw0rd!',   hidden_text: 'const PASSWORD = "passw0rd!"',   hint: 'Открой Sources, ищи /js/auth.js.' }
-      - { seed: 2, expected_answer: 'qwerty1234',  hidden_text: 'const PASSWORD = "qwerty1234"',  hint: 'Pretty-print JS файла.' }
-      - { seed: 3, expected_answer: 'letmein-99',  hidden_text: 'const PASSWORD = "letmein-99"',  hint: 'Ctrl+Shift+F — глобальный поиск.' }
+      - {
+          seed: 1,
+          expected_answer: 'passw0rd!',
+          hidden_text: 'const PASSWORD = "passw0rd!"',
+          hint: 'Открой Sources, ищи /js/auth.js.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'qwerty1234',
+          hidden_text: 'const PASSWORD = "qwerty1234"',
+          hint: 'Pretty-print JS файла.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'letmein-99',
+          hidden_text: 'const PASSWORD = "letmein-99"',
+          hint: 'Ctrl+Shift+F — глобальный поиск.'
+        }
 
   - key: 'it_errors.groundhog_day'
     category: 'it_errors'
@@ -253,9 +493,24 @@ interactives:
     xp_reward: 70
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'RACE-A1', fast_endpoint: '/api/v1/race/fast?seed=1', hint: 'Network -> сортируй по Start time.' }
-      - { seed: 2, expected_answer: 'RACE-B2', fast_endpoint: '/api/v1/race/fast?seed=2', hint: 'Первый ответ — нужный.' }
-      - { seed: 3, expected_answer: 'RACE-C3', fast_endpoint: '/api/v1/race/fast?seed=3', hint: 'Игнорируй медленный ответ.' }
+      - {
+          seed: 1,
+          expected_answer: 'RACE-A1',
+          fast_endpoint: '/api/v1/race/fast?seed=1',
+          hint: 'Network -> сортируй по Start time.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'RACE-B2',
+          fast_endpoint: '/api/v1/race/fast?seed=2',
+          hint: 'Первый ответ — нужный.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'RACE-C3',
+          fast_endpoint: '/api/v1/race/fast?seed=3',
+          hint: 'Игнорируй медленный ответ.'
+        }
 
   - key: 'it_errors.error_chain'
     category: 'it_errors'
@@ -310,9 +565,24 @@ interactives:
     xp_reward: 85
     difficulty: 4
     variants:
-      - { seed: 1, expected_answer: '101', interval_id: 101, hint: 'DevTools -> Memory snapshot.' }
-      - { seed: 2, expected_answer: '202', interval_id: 202, hint: 'Performance tab покажет GC.' }
-      - { seed: 3, expected_answer: '303', interval_id: 303, hint: 'window.__intervals содержит активные.' }
+      - {
+          seed: 1,
+          expected_answer: '101',
+          interval_id: 101,
+          hint: 'DevTools -> Memory snapshot.'
+        }
+      - {
+          seed: 2,
+          expected_answer: '202',
+          interval_id: 202,
+          hint: 'Performance tab покажет GC.'
+        }
+      - {
+          seed: 3,
+          expected_answer: '303',
+          interval_id: 303,
+          hint: 'window.__intervals содержит активные.'
+        }
 
   - key: 'it_errors.recursive_catastrophe'
     category: 'it_errors'
@@ -356,9 +626,6 @@ interactives:
         required_patterns: ['function', 'fib', 'return', '+']
         hint: 'fib(0)=0, fib(1)=1.'
 
-  # ============================================================
-  # IT SECURITY (7)
-  # ============================================================
   - key: 'it_security.phishing_expedition'
     category: 'it_security'
     kind: 'phishing_quiz'
@@ -371,23 +638,77 @@ interactives:
         expected_answer: 'email-3'
         hint: 'Сравни домены отправителей.'
         emails:
-          - { id: 'email-1', phishing: true,  sender: 'support@inspectra-mail.ru',         subject: 'Срочно! Подтвердите аккаунт',           preview: 'Если не подтвердите в течение 24 часов — аккаунт будет удалён. Перейдите по ссылке.' }
-          - { id: 'email-2', phishing: true,  sender: 'admin@inspectra.com.support.ru',    subject: 'Восстановление пароля',                 preview: 'Кто-то запросил сброс пароля. Перейдите для подтверждения.' }
-          - { id: 'email-3', phishing: false, sender: 'noreply@inspectra.ru',              subject: 'Новый интерактив на Inspectra',         preview: 'Сегодня открылся новый интерактив. Заходите изучать.' }
+          - {
+              id: 'email-1',
+              phishing: true,
+              sender: 'support@inspectra-mail.ru',
+              subject: 'Срочно! Подтвердите аккаунт',
+              preview: 'Если не подтвердите в течение 24 часов — аккаунт будет удалён. Перейдите по ссылке.'
+            }
+          - {
+              id: 'email-2',
+              phishing: true,
+              sender: 'admin@inspectra.com.support.ru',
+              subject: 'Восстановление пароля',
+              preview: 'Кто-то запросил сброс пароля. Перейдите для подтверждения.'
+            }
+          - {
+              id: 'email-3',
+              phishing: false,
+              sender: 'noreply@inspectra.ru',
+              subject: 'Новый интерактив на Inspectra',
+              preview: 'Сегодня открылся новый интерактив. Заходите изучать.'
+            }
       - seed: 2
         expected_answer: 'email-2'
         hint: 'Поддомены ради обмана.'
         emails:
-          - { id: 'email-1', phishing: true,  sender: 'security@inspectra-update.net',     subject: 'Обновление безопасности',               preview: 'Ваш аккаунт нужно срочно защитить новым патчем. Скачайте файл.' }
-          - { id: 'email-2', phishing: false, sender: 'noreply@inspectra.ru',              subject: 'Рассылка: достижение разблокировано',   preview: 'Вы получили новое достижение на платформе.' }
-          - { id: 'email-3', phishing: true,  sender: 'help@inspectra.ru.com',             subject: 'Поддержка Inspectra',                   preview: 'Подтвердите вход с нового устройства — пройдите по ссылке.' }
+          - {
+              id: 'email-1',
+              phishing: true,
+              sender: 'security@inspectra-update.net',
+              subject: 'Обновление безопасности',
+              preview: 'Ваш аккаунт нужно срочно защитить новым патчем. Скачайте файл.'
+            }
+          - {
+              id: 'email-2',
+              phishing: false,
+              sender: 'noreply@inspectra.ru',
+              subject: 'Рассылка: достижение разблокировано',
+              preview: 'Вы получили новое достижение на платформе.'
+            }
+          - {
+              id: 'email-3',
+              phishing: true,
+              sender: 'help@inspectra.ru.com',
+              subject: 'Поддержка Inspectra',
+              preview: 'Подтвердите вход с нового устройства — пройдите по ссылке.'
+            }
       - seed: 3
         expected_answer: 'email-1'
         hint: 'Лишний дефис, лишний слитный домен.'
         emails:
-          - { id: 'email-1', phishing: false, sender: 'noreply@inspectra.ru',              subject: 'Еженедельный дайджест',                 preview: 'Свежий контент за неделю в одном письме.' }
-          - { id: 'email-2', phishing: true,  sender: 'login@inspectra-secure.com',        subject: 'Подозрительный вход',                   preview: 'Мы заметили вход с нового устройства. Проверьте.' }
-          - { id: 'email-3', phishing: true,  sender: 'admin@inspectraru.com',             subject: 'Обновите данные карты',                 preview: 'Срок действия данных истёк. Введите данные карты заново.' }
+          - {
+              id: 'email-1',
+              phishing: false,
+              sender: 'noreply@inspectra.ru',
+              subject: 'Еженедельный дайджест',
+              preview: 'Свежий контент за неделю в одном письме.'
+            }
+          - {
+              id: 'email-2',
+              phishing: true,
+              sender: 'login@inspectra-secure.com',
+              subject: 'Подозрительный вход',
+              preview: 'Мы заметили вход с нового устройства. Проверьте.'
+            }
+          - {
+              id: 'email-3',
+              phishing: true,
+              sender: 'admin@inspectraru.com',
+              subject: 'Обновите данные карты',
+              preview: 'Срок действия данных истёк. Введите данные карты заново.'
+            }
 
   - key: 'it_security.link_swap'
     category: 'it_security'
@@ -400,7 +721,15 @@ interactives:
       - seed: 1
         expected_answer: 'urgency,typo_domain,shortener'
         correct_markers: ['urgency', 'typo_domain', 'shortener']
-        marker_options: ['urgency', 'typo_domain', 'shortener', 'generic_greeting', 'official_signature', 'normal_grammar']
+        marker_options:
+          [
+            'urgency',
+            'typo_domain',
+            'shortener',
+            'generic_greeting',
+            'official_signature',
+            'normal_grammar'
+          ]
         email_from: 'security@insp3ctra.ru'
         email_subject: 'СРОЧНО! Подтвердите аккаунт в 24 часа'
         email_body: |
@@ -417,7 +746,15 @@ interactives:
       - seed: 2
         expected_answer: 'generic_greeting,attachment_exe,wrong_sender'
         correct_markers: ['generic_greeting', 'attachment_exe', 'wrong_sender']
-        marker_options: ['generic_greeting', 'attachment_exe', 'wrong_sender', 'corporate_logo', 'company_address', 'unsubscribe_link']
+        marker_options:
+          [
+            'generic_greeting',
+            'attachment_exe',
+            'wrong_sender',
+            'corporate_logo',
+            'company_address',
+            'unsubscribe_link'
+          ]
         email_from: 'noreply@delivery-secure-mail.ru'
         email_subject: 'Ваш счёт-фактура'
         email_body: |
@@ -432,7 +769,15 @@ interactives:
       - seed: 3
         expected_answer: 'typo_domain,misspelled_brand,fake_logo'
         correct_markers: ['typo_domain', 'misspelled_brand', 'fake_logo']
-        marker_options: ['typo_domain', 'misspelled_brand', 'fake_logo', 'real_domain', 'correct_spelling', 'verified_sender']
+        marker_options:
+          [
+            'typo_domain',
+            'misspelled_brand',
+            'fake_logo',
+            'real_domain',
+            'correct_spelling',
+            'verified_sender'
+          ]
         email_from: 'support@inspektra.com'
         email_subject: 'Подтверждение входа в Inspecktra'
         email_body: |
@@ -453,9 +798,27 @@ interactives:
     xp_reward: 90
     difficulty: 4
     variants:
-      - { seed: 1, expected_answer: '123456',    hash_value: 'e10adc3949ba59abbe56e057f20f883e', hash_algo: 'md5', hint: 'Самый частый.' }
-      - { seed: 2, expected_answer: 'password',  hash_value: '5f4dcc3b5aa765d61d8327deb882cf99', hash_algo: 'md5', hint: 'Топ-2.' }
-      - { seed: 3, expected_answer: 'qwerty',    hash_value: 'd8578edf8458ce06fbc5bb76a58c5ca4', hash_algo: 'md5', hint: 'Клавиатурная подсказка.' }
+      - {
+          seed: 1,
+          expected_answer: '123456',
+          hash_value: 'e10adc3949ba59abbe56e057f20f883e',
+          hash_algo: 'md5',
+          hint: 'Самый частый.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'password',
+          hash_value: '5f4dcc3b5aa765d61d8327deb882cf99',
+          hash_algo: 'md5',
+          hint: 'Топ-2.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'qwerty',
+          hash_value: 'd8578edf8458ce06fbc5bb76a58c5ca4',
+          hash_algo: 'md5',
+          hint: 'Клавиатурная подсказка.'
+        }
 
   - key: 'it_security.deprecated_dangerous'
     category: 'it_security'
@@ -465,9 +828,24 @@ interactives:
     xp_reward: 65
     difficulty: 2
     variants:
-      - { seed: 1, expected_answer: '1.4.2',  hidden_text: 'jquery-1.4.2.js',  hint: 'jQuery.' }
-      - { seed: 2, expected_answer: '0.12.0', hidden_text: 'lodash-0.12.0.js', hint: 'Lodash.' }
-      - { seed: 3, expected_answer: '0.9.0',  hidden_text: 'angular-0.9.0.js', hint: 'AngularJS старый.' }
+      - {
+          seed: 1,
+          expected_answer: '1.4.2',
+          hidden_text: 'jquery-1.4.2.js',
+          hint: 'jQuery.'
+        }
+      - {
+          seed: 2,
+          expected_answer: '0.12.0',
+          hidden_text: 'lodash-0.12.0.js',
+          hint: 'Lodash.'
+        }
+      - {
+          seed: 3,
+          expected_answer: '0.9.0',
+          hidden_text: 'angular-0.9.0.js',
+          hint: 'AngularJS старый.'
+        }
 
   - key: 'it_security.broken_perms'
     category: 'it_security'
@@ -477,9 +855,24 @@ interactives:
     xp_reward: 70
     difficulty: 3
     variants:
-      - { seed: 1, expected_answer: 'sk-PUBLIC-DONT-USE-1', hidden_text: 'apiKey: "sk-PUBLIC-DONT-USE-1"', hint: 'Sources -> assets/config.js' }
-      - { seed: 2, expected_answer: 'sk-PUBLIC-DONT-USE-2', hidden_text: 'API_KEY = "sk-PUBLIC-DONT-USE-2"', hint: 'Поиск по "API_KEY".' }
-      - { seed: 3, expected_answer: 'sk-PUBLIC-DONT-USE-3', hidden_text: 'X-Api-Key: sk-PUBLIC-DONT-USE-3', hint: 'В meta-теге страницы.' }
+      - {
+          seed: 1,
+          expected_answer: 'sk-PUBLIC-DONT-USE-1',
+          hidden_text: 'apiKey: "sk-PUBLIC-DONT-USE-1"',
+          hint: 'Sources -> assets/config.js'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'sk-PUBLIC-DONT-USE-2',
+          hidden_text: 'API_KEY = "sk-PUBLIC-DONT-USE-2"',
+          hint: 'Поиск по "API_KEY".'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'sk-PUBLIC-DONT-USE-3',
+          hidden_text: 'X-Api-Key: sk-PUBLIC-DONT-USE-3',
+          hint: 'В meta-теге страницы.'
+        }
 
   - key: 'it_security.unsecured_keys'
     category: 'it_security'
@@ -489,9 +882,24 @@ interactives:
     xp_reward: 95
     difficulty: 4
     variants:
-      - { seed: 1, expected_answer: 'ADMIN-TOKEN-1', target_endpoint: '/api/v1/users/1', hint: 'Network -> правый клик -> Edit and resend.' }
-      - { seed: 2, expected_answer: 'ADMIN-TOKEN-2', target_endpoint: '/api/v1/users/1', hint: 'Замени id, сохрани JWT из ответа.' }
-      - { seed: 3, expected_answer: 'ADMIN-TOKEN-3', target_endpoint: '/api/v1/users/1', hint: 'Authorization header возможно нужен.' }
+      - {
+          seed: 1,
+          expected_answer: 'ADMIN-TOKEN-1',
+          target_endpoint: '/api/v1/users/1',
+          hint: 'Network -> правый клик -> Edit and resend.'
+        }
+      - {
+          seed: 2,
+          expected_answer: 'ADMIN-TOKEN-2',
+          target_endpoint: '/api/v1/users/1',
+          hint: 'Замени id, сохрани JWT из ответа.'
+        }
+      - {
+          seed: 3,
+          expected_answer: 'ADMIN-TOKEN-3',
+          target_endpoint: '/api/v1/users/1',
+          hint: 'Authorization header возможно нужен.'
+        }
 
   - key: 'it_security.xss_injection'
     category: 'it_security'
@@ -501,6 +909,14 @@ interactives:
     xp_reward: 100
     difficulty: 5
     variants:
-      - { seed: 1, expected_answer: '<script>alert(1)</script>',          hint: 'Классика.' }
-      - { seed: 2, expected_answer: '<img src=x onerror=alert(1)>',       hint: 'Через onerror.' }
-      - { seed: 3, expected_answer: '<svg onload=alert(1)>',              hint: 'SVG-тег.' }
+      - {
+          seed: 1,
+          expected_answer: '<script>alert(1)</script>',
+          hint: 'Классика.'
+        }
+      - {
+          seed: 2,
+          expected_answer: '<img src=x onerror=alert(1)>',
+          hint: 'Через onerror.'
+        }
+      - { seed: 3, expected_answer: '<svg onload=alert(1)>', hint: 'SVG-тег.' }
