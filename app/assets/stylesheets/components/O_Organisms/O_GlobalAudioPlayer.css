@@ -206,7 +206,8 @@
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.O_GlobalAudioPlayer-Volume.is-open .O_GlobalAudioPlayer-VolumeSliderWrap {
+.O_GlobalAudioPlayer-Volume.is-open .O_GlobalAudioPlayer-VolumeSliderWrap,
+.O_GlobalAudioPlayer-Volume:hover .O_GlobalAudioPlayer-VolumeSliderWrap {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;

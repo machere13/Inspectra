@@ -3,6 +3,11 @@
   const state = { playlist: [], playlistTitles: [], currentIndex: 0 };
   let globalVideoInited = false;
 
+  function setToggleIcon(btn, on) {
+    const t = btn && btn.querySelector('.Q_ToggleIcon');
+    if (t) t.classList.toggle('is-toggled', !!on);
+  }
+
   const setPlaylist = window.createSetPlaylist
     ? window.createSetPlaylist(state)
     : (urls, index, titles) => {
@@ -381,6 +386,11 @@
       if (video.paused) video.play().catch(() => {});
       else video.pause();
     });
+    const playBtns = root.querySelectorAll('[data-js-video-player-play]');
+    const syncPlayIcon = () => playBtns.forEach((b) => setToggleIcon(b, !video.paused));
+    video.addEventListener('play', syncPlayIcon);
+    video.addEventListener('pause', syncPlayIcon);
+    syncPlayIcon();
 
     if (seekInput) {
       seekInput.addEventListener('input', applySeek);
@@ -397,19 +407,15 @@
       });
     }
 
-    if (volumeToggle && volumeWrap) {
+    const syncMuteIcon = () => setToggleIcon(volumeToggle, video.muted || video.volume === 0);
+    if (volumeToggle) {
       volumeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = volumeWrap.classList.toggle('is-open');
-        volumeToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-      document.addEventListener('click', (e) => {
-        if (!volumeWrap.contains(e.target)) {
-          volumeWrap.classList.remove('is-open');
-          volumeToggle.setAttribute('aria-expanded', 'false');
-        }
+        video.muted = !video.muted;
       });
     }
+    video.addEventListener('volumechange', syncMuteIcon);
+    syncMuteIcon();
     if (volumeInput) {
       let vol = 1;
       if (container.id === C.GLOBAL_CONTAINER_ID) {
@@ -420,6 +426,7 @@
       volumeInput.value = String(Math.round(vol * 10));
       volumeInput.addEventListener('input', () => {
         video.volume = volumeFromInput();
+        if (video.muted && video.volume > 0) video.muted = false;
         updateVolumeFill();
         if (container.id === C.GLOBAL_CONTAINER_ID) persistVideoState();
       });
@@ -439,11 +446,9 @@
         }
       });
       document.addEventListener('fullscreenchange', () => {
-        if (document.fullscreenElement === panel) {
-          panel.classList.add('is-fullscreen');
-        } else {
-          panel.classList.remove('is-fullscreen');
-        }
+        const isFs = document.fullscreenElement === panel;
+        panel.classList.toggle('is-fullscreen', isFs);
+        setToggleIcon(fullscreenBtn, isFs);
       });
     }
 

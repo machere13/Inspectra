@@ -145,7 +145,8 @@
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.O_VideoPlayer-Volume.is-open .O_VideoPlayer-VolumeSliderWrap {
+.O_VideoPlayer-Volume.is-open .O_VideoPlayer-VolumeSliderWrap,
+.O_VideoPlayer-Volume:hover .O_VideoPlayer-VolumeSliderWrap {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;

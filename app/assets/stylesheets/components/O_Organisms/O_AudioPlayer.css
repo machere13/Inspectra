@@ -115,7 +115,8 @@
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.O_AudioPlayer-Volume.is-open .O_AudioPlayer-VolumeSliderWrap {
+.O_AudioPlayer-Volume.is-open .O_AudioPlayer-VolumeSliderWrap,
+.O_AudioPlayer-Volume:hover .O_AudioPlayer-VolumeSliderWrap {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;

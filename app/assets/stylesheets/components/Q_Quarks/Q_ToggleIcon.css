@@ -1,0 +1,23 @@
+.Q_ToggleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.Q_ToggleIcon-Primary,
+.Q_ToggleIcon-Alt {
+  display: inline-flex;
+}
+
+.Q_ToggleIcon-Alt {
+  display: none;
+}
+
+.Q_ToggleIcon.is-toggled .Q_ToggleIcon-Primary {
+  display: none;
+}
+
+.Q_ToggleIcon.is-toggled .Q_ToggleIcon-Alt {
+  display: inline-flex;
+}
