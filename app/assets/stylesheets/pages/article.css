@@ -37,6 +37,26 @@
     margin-bottom: var(--spacing-x5);
 }
 
+.PageArticle-Markdown h1{
+    font-size: 32px;
+    line-height: var(--line-height-normal);
+}
+
+.PageArticle-Markdown h2{
+    font-size: 26px;
+    line-height: var(--line-height-normal);
+}
+
+.PageArticle-Markdown h3{
+    font-size: 22px;
+    line-height: var(--line-height-normal);
+}
+
+.PageArticle-Markdown h4{
+    font-size: 19px;
+    line-height: var(--line-height-normal);
+}
+
 .PageArticle-Markdown p,
 .PageArticle-Markdown ul,
 .PageArticle-Markdown ol,
@@ -76,5 +96,83 @@
 .PageArticle-Markdown code{
     background: var(--color-primary);
     padding: 2px 6px;
+    border-radius: var(--border-radius-x1);
+}
+
+.PageArticle-Markdown h4,
+.PageArticle-Markdown h5,
+.PageArticle-Markdown h6{
+    margin-bottom: var(--spacing-x3);
+}
+
+.PageArticle-Markdown h4,
+.PageArticle-Markdown h5,
+.PageArticle-Markdown h6{
+    overflow-wrap: anywhere;
+}
+
+.PageArticle-Markdown pre{
+    background: var(--color-primary);
+    padding: var(--spacing-x4);
+    border-radius: var(--border-radius-x1);
+    border: var(--border-x025) solid var(--color-border-secondary);
+    overflow-x: auto;
+}
+
+.PageArticle-Markdown pre code{
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.PageArticle-Markdown blockquote{
+    padding: var(--spacing-x3) var(--spacing-x4);
+    border-left: var(--border-x05) solid var(--color-accent);
+    border-radius: var(--border-radius-x1);
+    background: var(--color-quinary);
+    color: var(--color-text-secondary);
+}
+
+.PageArticle-Markdown blockquote :last-child{
+    margin-bottom: 0;
+}
+
+.PageArticle-Markdown table{
+    width: 100%;
+    margin-bottom: var(--spacing-x5);
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+}
+
+.PageArticle-Markdown th,
+.PageArticle-Markdown td{
+    padding: var(--spacing-x2) var(--spacing-x3);
+    border: var(--border-x025) solid var(--color-border-secondary);
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.PageArticle-Markdown th{
+    background: var(--color-primary);
+    font-weight: 600;
+}
+
+.PageArticle-Markdown hr{
+    margin: var(--spacing-x6) 0;
+    border: none;
+    height: var(--border-x025);
+    background: var(--color-border-secondary);
+}
+
+.PageArticle-Markdown a{
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.PageArticle-Markdown img{
+    max-width: 100%;
+    height: auto;
     border-radius: var(--border-radius-x1);
 }
