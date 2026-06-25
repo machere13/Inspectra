@@ -38,7 +38,7 @@
     <%= link_to t('admin.users.index.regular'), admin_users_path(role: 'user'), class: (@role_filter == 'user' ? 'active' : '') %>
   </p>
 
-  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
+  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
   <%= render 'shared/organisms/O_ControlPanelTable',
       title: t('admin.users.index.title'),
       actions: pagination_info do %>
@@ -62,7 +62,7 @@
         ] %>
       <% end %>
     <% else %>
-      <p>Пользователей не найдено</p>
+      <p>Пользователей не найдено</p>
     <% end %>
   <% end %>
 

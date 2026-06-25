@@ -3,7 +3,7 @@
 
   <%= render 'shared/atoms/A_Button', text: 'Новая статья', href: new_admin_week_article_path(@week) %>
 
-  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
+  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
   <%= render 'shared/organisms/O_ControlPanelTable',
       title: 'Статьи',
       actions: pagination_info do %>
@@ -29,5 +29,5 @@
 
   <%= raw pagy_nav(@pagy) if @pagy.pages > 1 %>
 
-  <%= link_to 'Назад к неделе', admin_week_path(@week) %>
+  <%= link_to 'Назад к неделе', admin_week_path(@week) %>
 </main>

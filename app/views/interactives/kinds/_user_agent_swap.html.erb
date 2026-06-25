@@ -1,10 +1,10 @@
 ﻿<div class="PageInteractive-Scene">
   <p class="text-p-2">
-    Бэкенд возвращает токен только клиенту с User-Agent старого IE6.
-    Подмени UA в DevTools → ⋮ → More tools → <strong>Network conditions</strong> → сними «Use browser default» → вставь нужный UA → перезагрузи страницу → нажми кнопку.
+    Бэкенд возвращает токен только клиенту с User-Agent старого IE6.
+    Подмени UA в DevTools → ⋮ → More tools → <strong>Network conditions</strong> → сними «Use browser default» → вставь нужный UA → перезагрузи страницу → нажми кнопку.
   </p>
   <% if variant&.payload&.dig('target_ua') %>
-    <p class="text-p-3">UA для подмены:</p>
+    <p class="text-p-3">UA для подмены:</p>
     <pre class="PageInteractive-Code text-code"><%= variant.payload['target_ua'] %></pre>
   <% end %>
 
@@ -12,7 +12,7 @@
           data-endpoint="/api/v1/interactive_props/ie6_token?seed=<%= variant&.seed %>">
     <span class="A_Button-Content text-button">Запросить токен</span>
   </button>
-  <p class="text-p-3">После нажатия — открой Network, найди запрос, посмотри Response.</p>
+  <p class="text-p-3">После нажатия — открой Network, найди запрос, посмотри Response.</p>
 
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>

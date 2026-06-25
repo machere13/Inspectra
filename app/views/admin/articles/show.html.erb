@@ -9,5 +9,5 @@
     <p><strong>Теги:</strong> <%= Array(@article.tags).join(', ') %></p>
   <% end %>
   <%= render_markdown(@article.body) %>
-  <div class="PageAdminArticlesShow-Links"><%= link_to 'Редактировать', edit_admin_week_article_path(@week, @article) %> | <%= link_to 'Назад к списку', admin_week_articles_path(@week) %></div>
+  <div class="PageAdminArticlesShow-Links"><%= link_to 'Редактировать', edit_admin_week_article_path(@week, @article) %> | <%= link_to 'Назад к списку', admin_week_articles_path(@week) %></div>
 </main>

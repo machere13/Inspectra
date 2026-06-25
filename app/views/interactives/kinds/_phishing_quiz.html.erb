@@ -6,7 +6,7 @@
 <div class="PageInteractive-Scene">
   <% if is_marker_quiz %>
     <p class="text-p-2">
-      Перед тобой фишинговое письмо. Прочитай и отметь чекбоксами все признаки фишинга.
+      Перед тобой фишинговое письмо. Прочитай и отметь чекбоксами все признаки фишинга.
       Поле ответа заполнится автоматически.
     </p>
 
@@ -28,10 +28,10 @@
         </label>
       <% end %>
     </div>
-    <p class="text-p-3">Порядок чекбоксов не важен — сравнение по множеству.</p>
+    <p class="text-p-3">Порядок чекбоксов не важен — сравнение по множеству.</p>
   <% else %>
     <p class="text-p-2">
-      В «Уведомлениях» пришло 3 письма. Два — фишинг. Кликни по настоящему.
+      В «Уведомлениях» пришло 3 письма. Два — фишинг. Кликни по настоящему.
     </p>
     <div class="PageInteractive-Inbox"
          data-interactive-phishing
@@ -42,7 +42,7 @@
         <button type="button" class="PageInteractive-Inbox-Item <%= mage_class %>" data-email-id="<%= email['id'] %>">
           <%= render 'shared/molecules/M_NotificationItem',
                      title: email['sender'],
-                     text: "#{email['subject']} — #{email['preview']}",
+                     text: "#{email['subject']} — #{email['preview']}",
                      read: false %>
         </button>
       <% end %>
@@ -50,7 +50,7 @@
     <% if current_user&.game_role_mage? %>
       <p class="text-p-3 PageInteractive-RolePerk"><strong>Перк Мага:</strong> фишинговые письма подсвечены.</p>
     <% end %>
-    <p class="text-p-3">При клике id выбранного письма попадает в поле ответа. Подсказка: сравнивай домен отправителя с <code>inspectra.ru</code>.</p>
+    <p class="text-p-3">При клике id выбранного письма попадает в поле ответа. Подсказка: сравнивай домен отправителя с <code>inspectra.ru</code>.</p>
   <% end %>
 
   <% if variant&.hint.present? %>

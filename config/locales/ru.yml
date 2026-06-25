@@ -17,20 +17,20 @@ ru:
     errors:
       messages:
         record_invalid: 'Запись невалидна: %{errors}'
-        taken: 'уже используется'
-        blank: 'не может быть пустым'
+        taken: 'уже используется'
+        blank: 'не может быть пустым'
         too_short: 'слишком короткое (минимум %{count})'
         too_long: 'слишком длинное (максимум %{count})'
         invalid: 'неверный формат'
-        confirmation: 'не совпадает с подтверждением'
+        confirmation: 'не совпадает с подтверждением'
         accepted: 'должно быть принято'
         present: 'должно быть пустым'
-        inclusion: 'не входит в список допустимых значений'
+        inclusion: 'не входит в список допустимых значений'
         exclusion: 'зарезервировано'
         greater_than: 'должно быть больше %{count}'
-        greater_than_or_equal_to: 'должно быть больше или равно %{count}'
+        greater_than_or_equal_to: 'должно быть больше или равно %{count}'
         less_than: 'должно быть меньше %{count}'
-        less_than_or_equal_to: 'должно быть меньше или равно %{count}'
+        less_than_or_equal_to: 'должно быть меньше или равно %{count}'
         equal_to: 'должно быть равно %{count}'
         not_an_integer: 'должно быть целым числом'
         not_a_number: 'должно быть числом'
@@ -42,42 +42,42 @@ ru:
           has_many: 'Невозможно удалить запись, есть связанные записи'
   errors:
     messages:
-      taken: 'уже используется'
-      blank: 'не может быть пустым'
+      taken: 'уже используется'
+      blank: 'не может быть пустым'
       invalid: 'неверный формат'
   game_roles:
     mage:
       label: 'Маг'
       subtitle: 'Шифровальщик'
-      description: 'Магистр криптографии и тонкого анализа защищённых систем. Видит то, что скрыто за слоями шифрования.'
+      description: 'Магистр криптографии и тонкого анализа защищённых систем. Видит то, что скрыто за слоями шифрования.'
       perks:
-        - 'Подсказка к части пароля в "Слабый рубеж"'
+        - 'Подсказка к части пароля в "Слабый рубеж"'
         - 'Подсветка маркеров фишингового письма'
-        - '+15% опыта за интерактивы IT-безопасности'
+        - '+15% опыта за интерактивы IT-безопасности'
     warrior:
       label: 'Воин'
-      subtitle: 'Охотник за багами'
-      description: 'Бесстрашный охотник за ошибками. Прорывается сквозь любые баги и не отступает перед самыми сложными.'
+      subtitle: 'Охотник за багами'
+      description: 'Бесстрашный охотник за ошибками. Прорывается сквозь любые баги и не отступает перед самыми сложными.'
       perks:
-        - 'Дополнительная попытка в "Рекурсивная катастрофа"'
-        - 'Подсветка сломанного места в "Цепочка ошибок"'
-        - '+15% опыта за интерактивы IT-ошибок'
+        - 'Дополнительная попытка в "Рекурсивная катастрофа"'
+        - 'Подсветка сломанного места в "Цепочка ошибок"'
+        - '+15% опыта за интерактивы IT-ошибок'
     priest:
       label: 'Жрец'
       subtitle: 'Археолог легаси'
       description: 'Хранитель древних знаний устаревших технологий. Видит сквозь пыль десятилетий старого кода.'
       perks:
-        - 'Подсказки к устаревшим CSS-свойствам'
+        - 'Подсказки к устаревшим CSS-свойствам'
         - 'Подсветка устаревших эндпоинтов'
-        - '+15% опыта за интерактивы Легаси'
+        - '+15% опыта за интерактивы Легаси'
     hunter:
       label: 'Охотник'
       subtitle: 'Кодовый следопыт'
-      description: 'Мастер чтения следов в DOM-лесу и Network-водопаде. Найдёт скрытое там, где другие не заметят.'
+      description: 'Мастер чтения следов в DOM-лесу и Network-водопаде. Найдёт скрытое там, где другие не заметят.'
       perks:
-        - 'Подсветка скрытого текста в "Тайное послание"'
-        - 'Подсказка к удалённому DOM в "Слепой в DOM-лесу"'
-        - '+15% опыта за интерактивы Девелопмент-дайвинга'
+        - 'Подсветка скрытого текста в "Тайное послание"'
+        - 'Подсказка к удалённому DOM в "Слепой в DOM-лесу"'
+        - '+15% опыта за интерактивы Девелопмент-дайвинга'
   achievement_categories:
     registration: 'Регистрация'
     content_viewing: 'Просмотр контента'
@@ -90,68 +90,68 @@ ru:
     home:
       title: 'Главная / Инспектра'
     Инспектра:
-      title: 'О нас / Инспектра'
-      subscription_success: 'Подписка успешна. Мы сообщим на почту, когда медиа запустится'
-      back_to_home: 'На главную'
+      title: 'О нас / Инспектра'
+      subscription_success: 'Подписка успешна. Мы сообщим на почту, когда медиа запустится'
+      back_to_home: 'На главную'
     article:
       attached_interactives_title: 'Интерактивы статьи'
-      attached_interactives_hint: 'Эта статья связана с интерактивами. Открой и проходи — XP и достижения капают.'
+      attached_interactives_hint: 'Эта статья связана с интерактивами. Открой и проходи — XP и достижения капают.'
     content_view:
-      xp_awarded: '+%{xp} XP за просмотр (стрик: %{streak} дн.)'
+      xp_awarded: '+%{xp} XP за просмотр (стрик: %{streak} дн.)'
     interactives:
       title: 'Интерактивы'
-      description: 'Каждый класс получает преимущество в своей категории. XP начисляется за каждое прохождение.'
+      description: 'Каждый класс получает преимущество в своей категории. XP начисляется за каждое прохождение.'
       difficulty: 'Сложность: %{n}'
       completed_badge: '✓ пройдено'
     interactive:
-      back_to_list: '← К списку интерактивов'
+      back_to_list: '← К списку интерактивов'
       answer_placeholder: 'Введи ответ'
       submit: 'Проверить'
       completed: 'Готово! Получено %{xp} XP.'
       wrong_answer: 'Неверный ответ. Попробуй ещё.'
       wrong_with_attempts: 'Неверно. Осталось попыток: %{left}.'
-      locked: 'Попытки исчерпаны. Интерактив заблокирован на 1 час.'
-      already_completed: 'Этот интерактив уже пройден.'
-      no_variant: 'Для этого интерактива пока нет вариантов.'
-      not_found: 'Интерактив не найден'
+      locked: 'Попытки исчерпаны. Интерактив заблокирован на 1 час.'
+      already_completed: 'Этот интерактив уже пройден.'
+      no_variant: 'Для этого интерактива пока нет вариантов.'
+      not_found: 'Интерактив не найден'
     select_game_role:
       title_initial: 'Выберите свою роль'
       title_change: 'Сменить роль'
-      description_initial: 'Каждая роль открывает уникальные подсказки и бонусы для интерактивов своей категории. Любой интерактив можно пройти любой ролью, но "свои" даются легче.'
-      description_change: 'Вы можете сменить роль в любой момент.'
-      change_warning: 'Внимание: при смене роли вы теряете доступ к подсказкам и бонусам предыдущей роли. Прогресс уровня и достижения сохраняются.'
+      description_initial: 'Каждая роль открывает уникальные подсказки и бонусы для интерактивов своей категории. Любой интерактив можно пройти любой ролью, но "свои" даются легче.'
+      description_change: 'Вы можете сменить роль в любой момент.'
+      change_warning: 'Внимание: при смене роли вы теряете доступ к подсказкам и бонусам предыдущей роли. Прогресс уровня и достижения сохраняются.'
       specialty_label: 'Преимущество в'
       current_badge: 'Текущая роль'
       assigned: 'Роль "%{role}" выбрана'
-      changed: 'Роль изменена на "%{role}"'
+      changed: 'Роль изменена на "%{role}"'
       invalid_role: 'Неизвестная роль'
-      cancel: 'Назад в профиль'
+      cancel: 'Назад в профиль'
     profile_config:
       title: 'Настройки / Инспектра'
       heading: 'Настройки аккаунта'
-      subheading: 'Управляй своим профилем, безопасностью и сессией'
+      subheading: 'Управляй своим профилем, безопасностью и сессией'
       actions:
         save: 'Сохранить'
         save_avatar: 'Сохранить аватар'
       account:
         title: 'Аккаунт'
-        desc: 'Базовая информация о профиле'
+        desc: 'Базовая информация о профиле'
         email: 'E-mail'
         email_locked: 'нельзя сменить'
         name: 'Имя'
         avatar: 'Аватар'
         game_role: 'Игровая роль'
-        game_role_empty: 'не выбрана'
+        game_role_empty: 'не выбрана'
       security:
         title: 'Безопасность'
-        desc: 'Пароль и доступ к аккаунту'
+        desc: 'Пароль и доступ к аккаунту'
         password: 'Пароль'
-        password_hint: 'Письмо со ссылкой для смены пароля придёт на твою почту'
+        password_hint: 'Письмо со ссылкой для смены пароля придёт на твою почту'
         request_password_change: 'Сменить пароль'
-        confirm_password_change: 'Отправить письмо для смены пароля?'
+        confirm_password_change: 'Отправить письмо для смены пароля?'
       preferences:
         title: 'Предпочтения'
-        desc: 'Внешний вид и уведомления'
+        desc: 'Внешний вид и уведомления'
         theme: 'Тема'
         theme_desc: 'Цветовая схема интерфейса'
         theme_options:
@@ -167,15 +167,15 @@ ru:
           pink: 'Розовая'
         theme_modal:
           title: 'Выбор темы'
-          sub: 'Кликни на карточку, чтобы переключить интерфейс'
+          sub: 'Кликни на карточку, чтобы переключить интерфейс'
           open: 'Выбрать тему'
           close: 'Закрыть'
           active: 'Активна'
           locked: 'Закрыто'
-          locked_hint: 'Открой соответствующую ачивку, чтобы разблокировать'
-        theme_locked: 'Тема ещё не разблокирована'
+          locked_hint: 'Открой соответствующую ачивку, чтобы разблокировать'
+        theme_locked: 'Тема ещё не разблокирована'
         notifications: 'Уведомления'
-        notifications_desc: 'Письма о новых достижениях и неделях'
+        notifications_desc: 'Письма о новых достижениях и неделях'
         notifications_options:
           on: 'ВКЛ'
           off: 'ВЫКЛ'
@@ -185,14 +185,14 @@ ru:
         title: 'Сессия'
         desc: 'Управление текущей сессией'
         logout: 'Выход'
-        logout_hint: 'Завершить текущую сессию и вернуться к экрану входа'
-        logout_action: 'Выйти из аккаунта'
-        logout_confirm: 'Точно выйти из аккаунта?'
+        logout_hint: 'Завершить текущую сессию и вернуться к экрану входа'
+        logout_action: 'Выйти из аккаунта'
+        logout_confirm: 'Точно выйти из аккаунта?'
     profile:
       title: 'Профиль / Инспектра'
       current_title: 'Текущий титул'
       title_selected: 'Титул "%{title}" выбран'
-      no_name: 'Без имени'
+      no_name: 'Без имени'
       name_placeholder: 'Введите имя'
       update_name: 'Изменить'
       name_updated: 'Имя обновлено'
@@ -201,7 +201,7 @@ ru:
       change_game_role: 'Сменить роль'
       level: 'Уровень'
       xp_label: 'Опыт'
-      xp_to_next: 'До уровня %{level}: %{xp} XP'
+      xp_to_next: 'До уровня %{level}: %{xp} XP'
       streak_current: 'Текущий стрик: %{days}'
       streak_longest: 'Самый длинный стрик: %{days}'
       title_earned: 'Новый титул: %{title}'
@@ -217,7 +217,7 @@ ru:
         titles: 'Титулы'
         rewards: 'Награды'
       rewards:
-        from: 'За достижение «%{name}»'
+        from: 'За достижение «%{name}»'
         titles_heading: 'Титулы'
         themes_heading: 'Темы'
         badges_heading: 'Бейджи'
@@ -226,11 +226,11 @@ ru:
         current: 'Текущая миссия'
         current_empty: 'Активной миссии нет'
         completed: 'Решённые миссии'
-        completed_empty: 'Пока ничего не пройдено'
+        completed_empty: 'Пока ничего не пройдено'
         cta: 'Продолжить расследование'
       empty:
         achievements: 'Пока нет достижений'
-        rewards: 'Пока нет наград. Завершай достижения — получай титулы'
+        rewards: 'Пока нет наград. Завершай достижения — получай титулы'
       avatar:
         change: 'Изменить'
         upload: 'Загрузить'
@@ -238,22 +238,22 @@ ru:
         required: 'Выберите файл'
       password_change:
         title: 'Смена пароля'
-        description: 'Мы отправим ссылку для смены пароля на вашу почту'
+        description: 'Мы отправим ссылку для смены пароля на вашу почту'
         reset_description: 'Введите новый пароль'
         new_password_placeholder: 'Новый пароль'
         password_confirmation_placeholder: 'Подтвердите новый пароль'
         submit: 'Изменить пароль'
-        send_email: 'Отправить ссылку на почту'
-        email_sent: 'Ссылка для смены пароля отправлена на вашу почту'
+        send_email: 'Отправить ссылку на почту'
+        email_sent: 'Ссылка для смены пароля отправлена на вашу почту'
       stats:
         title: 'Статистика'
         completed_achievements: 'Завершённых достижений'
-        in_progress_achievements: 'Достижений в процессе'
+        in_progress_achievements: 'Достижений в процессе'
       achievements:
         completed:
           title: 'Завершённые достижения'
         in_progress:
-          title: 'Достижения в процессе'
+          title: 'Достижения в процессе'
           progress: 'Прогресс: %{progress}%'
         tier: 'Ступень %{current}/%{total}'
       titles:
@@ -261,22 +261,22 @@ ru:
         selected: 'Выбран'
         select: 'Выбрать'
         no_titles: 'Нет доступных титулов'
-        section_hint: 'Кликни по карточке, чтобы выбрать активный титул. Он отображается рядом с именем.'
+        section_hint: 'Кликни по карточке, чтобы выбрать активный титул. Он отображается рядом с именем.'
         earned_toast: 'Получен новый титул: %{title}'
-      title_not_available: 'Титул не доступен'
+      title_not_available: 'Титул не доступен'
   articles:
     show:
       title: 'Статья'
-      back_to_week: 'Назад к %{week_title}'
-      back_to_home: 'На главную'
+      back_to_week: 'Назад к %{week_title}'
+      back_to_home: 'На главную'
   weeks:
     show:
       title: 'Неделя'
-      back_to_home: 'На главную'
+      back_to_home: 'На главную'
   layouts:
     application:
       title: 'Инспектра'
-      description: 'Инспектра — интерактивная платформа с неделями, статьями и мультимедийным контентом'
+      description: 'Инспектра — интерактивная платформа с неделями, статьями и мультимедийным контентом'
   auth:
     shared:
       email: 'E-mail'
@@ -284,56 +284,56 @@ ru:
       back_to_login: 'Вернуться назад'
     login:
       title: 'Авторизация'
-      description: 'Введите данные, чтобы начать расследование в Инспектра'
+      description: 'Введите данные, чтобы начать расследование в Инспектра'
       email_placeholder: 'E-mail'
       password_placeholder: 'Пароль'
       submit: 'Продолжить'
       forgot_link: 'Забыли пароль?'
     forgot:
       title: 'Забыли пароль?'
-      description: 'Мы вышлем ссылку на создание нового пароля '
+      description: 'Мы вышлем ссылку на создание нового пароля '
       email_placeholder: 'E-mail'
       submit: 'Отправить письмо'
     reset:
       title: 'Сброс пароля'
-      description: 'Введите новые данные, чтобы начать расследование в Инспектра'
+      description: 'Введите новые данные, чтобы начать расследование в Инспектра'
       password_placeholder: 'Новый пароль'
       password_confirmation_placeholder: 'Подтвердите пароль'
       submit: 'Продолжить'
     verify:
       title: 'Код подтверждения'
-      description: 'Введите код, который мы выслали Вам на ваш email'
+      description: 'Введите код, который мы выслали Вам на ваш email'
       submit: 'Продолжить'
       resend: 'Отправить повторно'
       resend_countdown: 'Отправить повторно (%{seconds})'
       back_link: 'Вернуться назад'
     flashes:
-      email_and_password_required: 'Email и пароль обязательны'
-      code_sent: 'Код отправлен на email'
+      email_and_password_required: 'Email и пароль обязательны'
+      code_sent: 'Код отправлен на email'
       wrong_password: 'Неверный пароль'
-      check_email_for_verification: 'Проверьте email для подтверждения'
-      email_and_code_required: 'Email и код обязательны'
-      user_not_found: 'Пользователь не найден'
+      check_email_for_verification: 'Проверьте email для подтверждения'
+      email_and_code_required: 'Email и код обязательны'
+      user_not_found: 'Пользователь не найден'
       login_success: 'Вход выполнен'
-      invalid_or_expired_code: 'Неверный или истекший код'
+      invalid_or_expired_code: 'Неверный или истекший код'
       email_required: 'Email обязателен'
-      resend_wait: 'Повторная отправка доступна через %{seconds} сек'
+      resend_wait: 'Повторная отправка доступна через %{seconds} сек'
       code_resent: 'Код отправлен повторно'
-      email_already_sent_try_later: 'Письмо уже отправлено, попробуйте позже'
-      smtp_debug_link: 'Отладка: письмо не отправлено (SMTP). URL: %{url}'
-      failed_to_send_email: 'Не удалось отправить письмо'
-      if_email_exists_sent_link: 'Если email существует, мы отправили ссылку для сброса'
-      token_and_passwords_required: 'Токен и пароли обязательны'
-      password_length_invalid: 'Пароль должен быть от 8 до 64 символов'
+      email_already_sent_try_later: 'Письмо уже отправлено, попробуйте позже'
+      smtp_debug_link: 'Отладка: письмо не отправлено (SMTP). URL: %{url}'
+      failed_to_send_email: 'Не удалось отправить письмо'
+      if_email_exists_sent_link: 'Если email существует, мы отправили ссылку для сброса'
+      token_and_passwords_required: 'Токен и пароли обязательны'
+      password_length_invalid: 'Пароль должен быть от 8 до 64 символов'
       invalid_token: 'Неверный токен'
       link_expired: 'Ссылка истекла'
       password_updated: 'Пароль обновлён'
-      login_required: 'Требуется вход в систему'
-      logout_success: 'Вы вышли из аккаунта'
+      login_required: 'Требуется вход в систему'
+      logout_success: 'Вы вышли из аккаунта'
   shared:
     navigation:
       home: 'Главная'
-      Инспектра: 'О нас'
+      Инспектра: 'О нас'
     day_card:
       heading: 'День %{number}'
       article_prefix: 'Статья:'
@@ -344,7 +344,7 @@ ru:
       weeks: 'Недели'
       articles: 'Статьи'
       content: 'Контент'
-      to_site: 'На сайт'
+      to_site: 'На сайт'
     dashboard:
       title: 'Панель управления / Инспектра'
       users:
@@ -357,7 +357,7 @@ ru:
         moderators: 'Модераторы'
         regular: 'Обычные пользователи'
         email_verified: 'Подтверждено email'
-        email_unverified: 'Не подтверждено email'
+        email_unverified: 'Не подтверждено email'
       content:
         title: 'Контент / Инспектра'
         statistic: 'Статистика'
@@ -373,7 +373,7 @@ ru:
         count: 'Количество'
         total: 'Всего достижений'
         completed: 'Завершено'
-        in_progress: 'В процессе'
+        in_progress: 'В процессе'
       recent_users:
         title: 'Недавно зарегистрированные пользователи'
         role: 'Роль'
@@ -385,7 +385,7 @@ ru:
       view_all_users: 'Просмотреть всех пользователей'
     media_subscriptions:
       index:
-        title: 'Подписки на медиа'
+        title: 'Подписки на медиа'
         statistics: 'Статистика'
         statistic: 'Показатель'
         count: 'Количество'
@@ -400,7 +400,7 @@ ru:
         statistic: 'Показатель'
         count: 'Количество'
         total: 'Всего репортов'
-        table_title: 'Сообщения об ошибках'
+        table_title: 'Сообщения об ошибках'
         status_code: 'Код'
         page_url: 'URL страницы'
         reporter_email: 'E-mail'
@@ -433,8 +433,8 @@ ru:
         edit: 'Редактировать'
       show:
         title: 'Пользователь'
-        back_to_list: 'Вернуться к списку'
-        user_info: 'Информация о пользователе'
+        back_to_list: 'Вернуться к списку'
+        user_info: 'Информация о пользователе'
         role: 'Роль'
         email_verified: 'Email подтвержден'
         registered: 'Зарегистрирован'
@@ -448,8 +448,8 @@ ru:
         no: 'Нет'
       edit:
         title: 'Редактирование пользователя'
-        back_to_user: 'Вернуться к пользователю'
-        back_to_list: 'Вернуться к списку'
+        back_to_user: 'Вернуться к пользователю'
+        back_to_list: 'Вернуться к списку'
         email: 'E-mail'
         role: 'Роль'
         email_verified: 'Email подтвержден'
@@ -459,14 +459,14 @@ ru:
 
   errors:
     heading: 'ERROR %{code}'
-    back_home: 'На главную'
-    report_button: 'Сообщить об ошибке'
-    report_modal_title: 'Что-то пошло не так? Расскажите нам'
+    back_home: 'На главную'
+    report_button: 'Сообщить об ошибке'
+    report_modal_title: 'Что-то пошло не так? Расскажите нам'
     report_close: 'Закрыть'
     report_submit: 'Отправить'
-    report_placeholder: 'Опишите, что произошло'
+    report_placeholder: 'Опишите, что произошло'
     report_thanks: 'Спасибо, сообщение отправлено'
-    report_invalid_message: 'Введите текст сообщения (не длиннее 20 000 символов)'
+    report_invalid_message: 'Введите текст сообщения (не длиннее 20 000 символов)'
     console_codes:
       403: '403_forbidden'
       404: '404_not_found'
@@ -511,9 +511,9 @@ ru:
         >_ Bad gateway
         >_ Path: %{path}
         >_ Status: 502 Bad Gateway
-        >_ Solution: Upstream server is unavailable — try again in a minute
+        >_ Solution: Upstream server is unavailable — try again in a minute
       503: |
         >_ Service unavailable
         >_ Path: %{path}
         >_ Status: 503 Service Unavailable
-        >_ Solution: Maintenance or overload — try again later
+        >_ Solution: Maintenance or overload — try again later

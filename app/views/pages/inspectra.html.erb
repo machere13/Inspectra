@@ -7,10 +7,10 @@
   <div class="PageInspectra-Content">
     <section id="main" class="PageInspectra-Section-Main">
       <div class="PageInspectra-Section-Title">
-          <h1 class="text-h3">Inspectra — это место, где ты учишься понимать, как реально работает цифровой мир. Не из статей и туториалов, а через интерактивные расследования, ошибки и головоломки.</h1>
+          <h1 class="text-h3">Inspectra — это место, где ты учишься понимать, как реально работает цифровой мир. Не из статей и туториалов, а через интерактивные расследования, ошибки и головоломки.</h1>
           <div class="PageInspectra-Section-Content-Interactions">
-            <%= render 'shared/atoms/A_Button', text: 'Погрузиться в веб', href: root_path %>
-            <%= render 'shared/atoms/A_Button', text: 'Узнать больше о вебе', href: root_path %>
+            <%= render 'shared/atoms/A_Button', text: 'Погрузиться в веб', href: root_path %>
+            <%= render 'shared/atoms/A_Button', text: 'Узнать больше о вебе', href: root_path %>
           </div>
       </div>
     </section>
@@ -18,14 +18,14 @@
       <%= render 'pages/inspectra/M_InspectraContentPlug', info: 'Ты будешь' %>
       <div class="PageInspectra-Section-Inspectra-Cards">
         <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//01', text: 'РАЗБИРАТЬ САЙТЫ ИЗНУТРИ (DOM, COOKIES, NETWORK)' %>
-        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//02', text: 'НАХОДИТЬ УЯЗВИМОСТИ И ЛОГИЧЕСКИЕ ОШИБКИ' %>
-        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//03', text: 'РАЗБИРАТЬСЯ В УСТАРЕВШИХ СИСТЕМАХ' %>
-        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//04', text: 'ПРОВЕРЯТЬ СИСТЕМУ НА ПРОЧНОСТЬ' %>
+        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//02', text: 'НАХОДИТЬ УЯЗВИМОСТИ И ЛОГИЧЕСКИЕ ОШИБКИ' %>
+        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//03', text: 'РАЗБИРАТЬСЯ В УСТАРЕВШИХ СИСТЕМАХ' %>
+        <%= render 'pages/inspectra/M_InspectraTextPlug', order: '//04', text: 'ПРОВЕРЯТЬ СИСТЕМУ НА ПРОЧНОСТЬ' %>
       </div>
     </section>
     <section id="your_role" class="PageInspectra-Section-Role">
       <%= render 'pages/inspectra/M_InspectraContentPlug', info: 'Роль пользователя' %>
-      <h4>В Inspectra ты — агент.<br>Агент — это не профессия, а роль: человек, который исследует, сомневается и докапывается до сути.</h4>
+      <h4>В Inspectra ты — агент.<br>Агент — это не профессия, а роль: человек, который исследует, сомневается и докапывается до сути.</h4>
       <div class="PageInspectra-Section-Role-ImageBlock">
         <div class="PageInspectra-Section-Role-ImageBlock-ImageWrapper effect-blur">
           <%= render 'shared/quarks/Q_Icon', name: 'A_PriestIcon', width: 192, height: 193 %>
@@ -35,43 +35,43 @@
             <span class="PageInspectra-AdditionalText-Icon">
               <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon' %>
             </span>
-            <span class="text-p-1-mono">Не боится ошибок</span>
+            <span class="text-p-1-mono">Не боится ошибок</span>
           </div>
           <div class='PageInspectra-AdditionalText'>
             <span class="PageInspectra-AdditionalText-Icon">
               <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon' %>
             </span>
-            <span class="text-p-1-mono">Хочет понимать, а не заучивать</span>
+            <span class="text-p-1-mono">Хочет понимать, а не заучивать</span>
           </div>
           <div class='PageInspectra-AdditionalText'>
             <span class="PageInspectra-AdditionalText-Icon">
               <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon' %>
             </span>
-            <span class="text-p-1-mono">Не обязан быть программистом</span>
+            <span class="text-p-1-mono">Не обязан быть программистом</span>
           </div>
         </div>
       </div>
     </section>
     <section id="how" class="PageInspectra-Section-Info">
-      <%= render 'pages/inspectra/M_InspectraContentPlug', info: 'Как именно происходит обучение' %>
+      <%= render 'pages/inspectra/M_InspectraContentPlug', info: 'Как именно происходит обучение' %>
       <div class="PageInspectra-Section-Info-Blocks">
-        <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '1.', text: 'Ты заходишь в материал — это не статья, а интерактивная сцена' %>
-        <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '2.', text: 'Читаешь вводную и получаешь задачу, которую надо решить' %>
+        <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '1.', text: 'Ты заходишь в материал — это не статья, а интерактивная сцена' %>
+        <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '2.', text: 'Читаешь вводную и получаешь задачу, которую надо решить' %>
         <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '3.', text: 'Исследуешь интерфейс, код, поведение системы,можешь ошибиться' %>
         <%= render 'pages/inspectra/M_InspectraNumberedPlug', order: '4.', text: 'Разобравшись, почему всё работает именно так' %>
       </div>
-      <h4>Inspectra — для тех, кто хочет понимать, как устроен цифровой мир, а не учить теорию, и любит разбирать все через квесты и расследования.</h4>
+      <h4>Inspectra — для тех, кто хочет понимать, как устроен цифровой мир, а не учить теорию, и любит разбирать все через квесты и расследования.</h4>
     </section>
     <%= render 'pages/inspectra/O_InspectraTopics' %>
     <div class="PageInspectra-Section-CTA" id="ready">
       <h4>Готов начать обучение?</h4>
       <%= render 'shared/atoms/A_Button', text: 'Начать первое расследование', href: root_path %>
-      <%= render 'shared/atoms/A_Button', text: 'Узнать, как работает Inspectra', href: root_path %>
+      <%= render 'shared/atoms/A_Button', text: 'Узнать, как работает Inspectra', href: root_path %>
       <div class='PageInspectra-AdditionalText'>
         <span class="PageInspectra-AdditionalText-Icon">
           <%= render 'shared/quarks/Q_Icon', name: 'Q_AsteriskIcon' %>
         </span>
-        <span class="text-p-1-mono">займет 10-15 мин > можно без опыта </span>
+        <span class="text-p-1-mono">займет 10-15 мин > можно без опыта </span>
       </div>
     </div>
     <div id="form" class='PageInspectra-Section-Form'>

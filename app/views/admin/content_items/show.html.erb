@@ -1,8 +1,8 @@
 <main class="PageAdminContentItemsShow">
-  <h1><%= @content_item.title.presence || '(без названия)' %></h1>
+  <h1><%= @content_item.title.presence || '(без названия)' %></h1>
 
   <%= render 'shared/organisms/O_ControlPanelTable',
-      title: 'Информация о контенте' do %>
+      title: 'Информация о контенте' do %>
     <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
       'Тип',
       'Заголовок',
@@ -11,11 +11,11 @@
     ] %>
     <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
       @content_item.kind,
-      @content_item.title.presence || '(без названия)',
+      @content_item.title.presence || '(без названия)',
       @content_item.url.present? ? content_tag(:span, @content_item.url, title: @content_item.url, style: 'max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block;') : '-',
       "#{link_to('Редактировать', edit_admin_week_content_item_path(@week, @content_item))} | #{button_to('Удалить', admin_week_content_item_path(@week, @content_item), method: :delete, form: { data: { turbo_confirm: 'Удалить этот контент?' }, style: 'display:inline', class: 'button-text-style text-p-2' })}".html_safe
     ] %>
   <% end %>
 
-  <%= link_to 'Назад к списку', admin_week_content_items_path(@week) %>
+  <%= link_to 'Назад к списку', admin_week_content_items_path(@week) %>
 </main>

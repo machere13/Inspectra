@@ -3,7 +3,7 @@
 
   <%= render 'shared/atoms/A_Button', text: 'Новая неделя', href: new_admin_week_path %>
 
-  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
+  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
   <%= render 'shared/organisms/O_ControlPanelTable',
       title: 'Недели',
       actions: pagination_info do %>
@@ -18,7 +18,7 @@
         <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
           week.number,
           link_to(week.title, admin_week_path(week)),
-          "#{week.published_at.in_time_zone.strftime('%d.%m.%Y')} — #{week.expires_at.in_time_zone.strftime('%d.%m.%Y')}",
+          "#{week.published_at.in_time_zone.strftime('%d.%m.%Y')} — #{week.expires_at.in_time_zone.strftime('%d.%m.%Y')}",
           "#{link_to('Редактировать', edit_admin_week_path(week))} | #{link_to('Удалить', admin_week_path(week), data: { turbo_method: :delete, turbo_confirm: 'Удалить неделю?' })}".html_safe
         ] %>
       <% end %>

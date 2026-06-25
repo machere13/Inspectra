@@ -13,7 +13,7 @@
     ] %>
   <% end %>
 
-  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
+  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
   <div class="PageAdminErrorReports-Table">
     <%= render 'shared/organisms/O_ControlPanelTable',
         title: t('admin.error_reports.index.table_title'),
