@@ -1,0 +1,12 @@
+<%
+  primary = local_assigns[:primary]
+  alt = local_assigns[:alt]
+  size = local_assigns[:size] || 18
+  toggled = local_assigns[:toggled] == true
+  klass = ['Q_ToggleIcon']
+  klass << 'is-toggled' if toggled
+%>
+<span class="<%= klass.join(' ') %>">
+  <span class="Q_ToggleIcon-Primary"><%= render 'shared/quarks/Q_Icon', name: primary, width: size, height: size %></span>
+  <span class="Q_ToggleIcon-Alt"><%= render 'shared/quarks/Q_Icon', name: alt, width: size, height: size %></span>
+</span>

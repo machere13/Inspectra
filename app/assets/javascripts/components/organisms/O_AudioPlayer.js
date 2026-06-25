@@ -3,6 +3,11 @@
   const state = { playlist: [], playlistTitles: [], currentIndex: 0 };
   let loopOne = false;
 
+  function setToggleIcon(btn, on) {
+    const t = btn && btn.querySelector('.Q_ToggleIcon');
+    if (t) t.classList.toggle('is-toggled', !!on);
+  }
+
   function setPlaylist(urls, index, titles) {
     if (window.createSetPlaylist) return window.createSetPlaylist(state, persistGlobalState)(urls, index, titles);
     state.playlist = Array.isArray(urls) ? urls.filter(Boolean) : [];
@@ -296,6 +301,10 @@
       }
     });
     playBtn?.addEventListener('click', () => { if (audio.paused) audio.play().catch(() => {}); else audio.pause(); });
+    const syncPlayIcon = () => setToggleIcon(playBtn, !audio.paused);
+    audio.addEventListener('play', syncPlayIcon);
+    audio.addEventListener('pause', syncPlayIcon);
+    syncPlayIcon();
     seekInput?.addEventListener('input', applySeek);
     seekInput?.addEventListener('change', applySeek);
     const timelineEl = root.querySelector('[data-js-timeline]');
@@ -360,19 +369,15 @@
     }
     const volumeWrap = root.querySelector('[data-js-audio-player-volume]');
     const volumeToggle = root.querySelector('[data-js-audio-player-volume-toggle]');
-    if (volumeToggle && volumeWrap) {
+    const syncMuteIcon = () => setToggleIcon(volumeToggle, audio.muted || audio.volume === 0);
+    if (volumeToggle) {
       volumeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = volumeWrap.classList.toggle('is-open');
-        volumeToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-      document.addEventListener('click', (e) => {
-        if (!volumeWrap.contains(e.target)) {
-          volumeWrap.classList.remove('is-open');
-          volumeToggle.setAttribute('aria-expanded', 'false');
-        }
+        audio.muted = !audio.muted;
       });
     }
+    audio.addEventListener('volumechange', syncMuteIcon);
+    syncMuteIcon();
     if (volumeInput) {
       const savedVol = (container.id === C.GLOBAL_CONTAINER_ID)
         ? (parseFloat(sessionStorage.getItem(C.STORAGE_KEY_VOLUME)) || parseFloat(container.getAttribute(C.DATA_ATTR_VOLUME)) || 1)
@@ -381,6 +386,7 @@
       volumeInput.value = String(Math.round(audio.volume * 10));
       volumeInput.addEventListener('input', () => {
         audio.volume = volumeFromInput();
+        if (audio.muted && audio.volume > 0) audio.muted = false;
         updateVolumeFill();
         if (container.id === C.GLOBAL_CONTAINER_ID) persistGlobalState();
       });
