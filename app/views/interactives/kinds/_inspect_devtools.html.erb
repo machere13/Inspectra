@@ -15,13 +15,13 @@
 
 <div class="PageInteractive-Scene">
   <p class="text-p-2">
-    Открой <strong>DevTools</strong> (F12 или Ctrl+Shift+I) → вкладка <strong>Network</strong>.
+    Открой <strong>DevTools</strong> (F12 или Ctrl+Shift+I) → вкладка <strong>Network</strong>.
     Ответ нужно достать оттуда.
   </p>
 
   <% if interactive.key == 'dev_diving.missing_cookie' && cookie_name %>
     <p class="text-p-3">
-      Перейди в <strong>Application → Cookies → http://localhost:3000</strong>, добавь поле:
+      Перейди в <strong>Application → Cookies → http://localhost:3000</strong>, добавь поле:
     </p>
     <ul class="PageInteractive-Code">
       <li>Name: <code><%= cookie_name %></code></li>
@@ -36,8 +36,8 @@
     <p class="text-p-3" data-cookie-feedback></p>
   <% elsif interactive.key == 'it_errors.data_race' %>
     <p class="text-p-3">
-      Нажми кнопку — параллельно полетят два запроса. <strong>Первый ответ</strong> (быстрый) содержит нужный токен.
-      Медленный приходит с задержкой и его легко спутать.
+      Нажми кнопку — параллельно полетят два запроса. <strong>Первый ответ</strong> (быстрый) содержит нужный токен.
+      Медленный приходит с задержкой и его легко спутать.
     </p>
     <button type="button" class="A_Button" data-interactive-race
             data-fast="/api/v1/interactive_props/race/fast?seed=<%= variant&.seed %>"
@@ -46,19 +46,19 @@
     </button>
   <% elsif interactive.key == 'it_errors.memory_leak' %>
     <p class="text-p-3">
-      Нажми «Запустить процесс» — на странице появится утечка через setInterval.
-      Найди его ID в DevTools → Performance/Memory или в <code>window.__intervalsLog</code>.
+      Нажми «Запустить процесс» — на странице появится утечка через setInterval.
+      Найди его ID в DevTools → Performance/Memory или в <code>window.__intervalsLog</code>.
     </p>
     <button type="button" class="A_Button" data-interactive-leak
             data-target-id="<%= variant&.payload&.dig('interval_id') %>">
       <span class="A_Button-Content text-button">Запустить процесс</span>
     </button>
-    <p class="text-p-3" data-leak-feedback>Интервалы не запущены</p>
+    <p class="text-p-3" data-leak-feedback>Интервалы не запущены</p>
   <% elsif interactive.key == 'it_errors.silent_failure' %>
     <p class="text-p-3">
-      Картинка ниже не грузится — путь содержит опечатку. Открой DevTools → <strong>Network</strong> или <strong>Console</strong>,
-      найди ошибку 404, увидь URL вида <code><%= broken_url %></code>, восстанови оригинальное имя без опечатки
-      (поменяй порядок букв) и введи его (например, <code>kitten.png</code>).
+      Картинка ниже не грузится — путь содержит опечатку. Открой DevTools → <strong>Network</strong> или <strong>Console</strong>,
+      найди ошибку 404, увидь URL вида <code><%= broken_url %></code>, восстанови оригинальное имя без опечатки
+      (поменяй порядок букв) и введи его (например, <code>kitten.png</code>).
     </p>
     <div class="PageInteractive-BrokenImage" data-broken-image-holder>
       <img src="<%= broken_url %>"
@@ -66,19 +66,19 @@
            onerror="console.error('[Inspectra] 404:', this.src); this.replaceWith(Object.assign(document.createElement('div'), { className: 'PageInteractive-BrokenImage-Placeholder', innerHTML: '❌ 404<br><code>' + this.src + '</code>' }));" />
     </div>
     <p class="text-p-3">
-      <em>Замечание:</em> реальные картинки в проекте не лежат — даже исправленный путь не покажет изображение.
-      Зачёт по тому, что введён правильный исходный filename.
+      <em>Замечание:</em> реальные картинки в проекте не лежат — даже исправленный путь не покажет изображение.
+      Зачёт по тому, что введён правильный исходный filename.
     </p>
   <% elsif interactive.key == 'it_security.unsecured_keys' && endpoint %>
     <p class="text-p-3">
-      Нажми — запрос полетит с <code>id=2</code> и вернёт обычного юзера. Чтобы получить admin-токен,
-      найди запрос в Network → правый клик → <strong>Edit and Resend</strong> → поменяй id с 2 на 1 → отправь.
+      Нажми — запрос полетит с <code>id=2</code> и вернёт обычного юзера. Чтобы получить admin-токен,
+      найди запрос в Network → правый клик → <strong>Edit and Resend</strong> → поменяй id с 2 на 1 → отправь.
     </p>
     <button type="button" class="A_Button" data-interactive-fetch data-endpoint="<%= endpoint %>">
       <span class="A_Button-Content text-button">Сделать запрос (id=2)</span>
     </button>
   <% elsif endpoint %>
-    <p class="text-p-3">Нажми кнопку — улетит запрос. Найди его в Network, открой <strong>Response</strong>.</p>
+    <p class="text-p-3">Нажми кнопку — улетит запрос. Найди его в Network, открой <strong>Response</strong>.</p>
     <button type="button" class="A_Button" data-interactive-fetch
             data-endpoint="<%= endpoint %>">
       <span class="A_Button-Content text-button">Сделать запрос</span>
@@ -94,7 +94,7 @@
 
   <% if current_user&.game_role_priest? && interactive.category == 'legacy' && endpoint %>
     <p class="text-p-3 PageInteractive-RolePerk">
-      <strong>Перк Жреца:</strong> устаревший эндпоинт сразу подсвечен — <code><%= endpoint %></code>
+      <strong>Перк Жреца:</strong> устаревший эндпоинт сразу подсвечен — <code><%= endpoint %></code>
     </p>
   <% end %>
 

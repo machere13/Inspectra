@@ -9,7 +9,7 @@
 
     <div class="PageProfileConfig-Bento">
 
-      <%# ===== IDENTITY (span 6) — hero-аватар слева, поля справа ===== %>
+      <%# ===== IDENTITY (span 6) — hero-аватар слева, поля справа ===== %>
       <article class="PageProfileConfig-Block PageProfileConfig-Block--Identity">
         <header class="PageProfileConfig-Block-Header">
           <span class="PageProfileConfig-Block-Label text-p-3"><%= t('pages.profile_config.account.title') %></span>
@@ -35,7 +35,7 @@
           <%# === Поля справа === %>
           <div class="PageProfileConfig-Identity-Fields">
 
-            <%# Имя — редактируется === %>
+            <%# Имя — редактируется === %>
             <div class="PageProfileConfig-Row">
               <span class="PageProfileConfig-Field-Label text-p-3"><%= t('pages.profile_config.account.name') %></span>
               <%= form_with url: update_name_path, method: :patch, local: true, class: 'PageProfileConfig-Row-Edit' do %>

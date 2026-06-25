@@ -3,7 +3,7 @@
 
   <%= render 'shared/atoms/A_Button', text: 'Добавить контент', href: new_admin_week_content_item_path(@week) %>
 
-  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
+  <% pagination_info = @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} из #{@pagy.count}" : nil %>
   <%= render 'shared/organisms/O_ControlPanelTable',
       title: 'Контент',
       actions: pagination_info do %>
@@ -19,7 +19,7 @@
         <%= render 'shared/collections/C_ControlPanelTableRow', cells: [
           ci.position,
           ci.kind,
-          link_to(ci.title.presence || '(без названия)', admin_week_content_item_path(@week, ci)),
+          link_to(ci.title.presence || '(без названия)', admin_week_content_item_path(@week, ci)),
           content_tag(:span, ci.url, title: ci.url, style: 'max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block;'),
           "#{link_to('Редактировать', edit_admin_week_content_item_path(@week, ci))} | #{button_to('Удалить', admin_week_content_item_path(@week, ci), method: :delete, form: { data: { turbo_confirm: 'Удалить этот контент?' }, style: 'display:inline', class: 'button-text-style text-p-2' })}".html_safe
         ] %>
@@ -31,5 +31,5 @@
 
   <%= raw pagy_nav(@pagy) if @pagy.pages > 1 %>
 
-  <%= link_to 'Назад к неделе', admin_week_path(@week) %>
+  <%= link_to 'Назад к неделе', admin_week_path(@week) %>
 </main>

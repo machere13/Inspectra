@@ -2,7 +2,7 @@
   <h1>Неделя <%= @week.number %>: <%= @week.title %></h1>
 
   <%= render 'shared/organisms/O_ControlPanelTable',
-      title: 'Информация о неделе' do %>
+      title: 'Информация о неделе' do %>
     <%= render 'shared/collections/C_ControlPanelTableHeaderRow', cells: [
       '#',
       'Название',

@@ -14,7 +14,7 @@
     </div>
 
     <div class="O_AdminEditBlock-Field">
-      <%= f.label :tag_list, 'Теги (через запятую)', class: 'O_AdminEditBlock-Label text-labels-1' %>
+      <%= f.label :tag_list, 'Теги (через запятую)', class: 'O_AdminEditBlock-Label text-labels-1' %>
       <%= render 'shared/atoms/A_Input', name: "#{f.object_name}[tag_list]", value: @article.tag_list, placeholder: 'web, dom, security' %>
     </div>
 
@@ -34,7 +34,7 @@
 
     <div class="O_AdminEditBlock-Field">
       <%= f.label :body, 'Текст', class: 'O_AdminEditBlock-Label text-labels-1' %>
-      <%= render 'shared/atoms/A_TextArea', name: "#{f.object_name}[body]", value: @article.body, rows: 14, placeholder: '# Markdown заголовок\n\nТекст **жирным** и список:\n- пункт 1\n- пункт 2' %>
+      <%= render 'shared/atoms/A_TextArea', name: "#{f.object_name}[body]", value: @article.body, rows: 14, placeholder: '# Markdown заголовок\n\nТекст **жирным** и список:\n- пункт 1\n- пункт 2' %>
     </div>
   <% end %>
   <%= render 'shared/atoms/A_Button', type: 'submit', text: @article.new_record? ? 'Создать' : 'Сохранить' %>

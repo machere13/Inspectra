@@ -150,7 +150,7 @@
             <% end %>
 
           <% when 'rewards' %>
-            <%# Все возможные награды: открытые показываются как есть, закрытые с пометкой "закрыто" + текст ачивки %>
+            <%# Все возможные награды: открытые показываются как есть, закрытые с пометкой "закрыто" + текст ачивки %>
             <% completed_ach_ids = @completed_achievements.map(&:achievement_id).to_set %>
             <% title_achs = Achievement.where.not(title_id: nil).includes(:title).order(:progress_target) %>
             <% theme_achs = Achievement.where.not(reward_theme: nil).order(:progress_target) %>

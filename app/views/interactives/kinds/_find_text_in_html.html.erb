@@ -22,15 +22,15 @@
   <% case interactive.key
 
      when 'dev_diving.secret_message' %>
-    <p class="text-p-2">Внимательно изучи DOM. Слово где-то в декое.</p>
+    <p class="text-p-2">Внимательно изучи DOM. Слово где-то в декое.</p>
     <div class="PageInteractive-Decoy">
       <span class="text-p-3">Просто текст-обманка</span>
       <span class="<%= hidden_classes.join(' ') %>" aria-hidden="true"><%= hidden_text %></span>
-      <span class="text-p-3">И ещё немного шумного содержимого</span>
+      <span class="text-p-3">И ещё немного шумного содержимого</span>
     </div>
 
   <% when 'dev_diving.css_labyrinth' %>
-    <p class="text-p-2">Слово закопано через несколько слоёв CSS-сокрытия (transform/font-size/clip-path). Прорвись.</p>
+    <p class="text-p-2">Слово закопано через несколько слоёв CSS-сокрытия (transform/font-size/clip-path). Прорвись.</p>
     <div style="overflow:hidden; font-size:0;">
       <div style="display:inline-block; transform: scale(0); transform-origin: top left;">
         <span style="font-size:14px; clip-path: circle(0); position: relative;"><%= hidden_text %></span>
@@ -39,16 +39,16 @@
         <span style="font-size:14px;"><%= hidden_text %></span>
       </div>
     </div>
-    <p class="text-p-3">Подсказка: смотри inline-стили в инспекторе, попробуй убрать каждое свойство.</p>
+    <p class="text-p-3">Подсказка: смотри inline-стили в инспекторе, попробуй убрать каждое свойство.</p>
 
   <% when 'dev_diving.blind_in_dom' %>
     <p class="text-p-2">
-      Где-то ниже среди обычных элементов один из них носит токен в <strong>data-атрибуте</strong>.
+      Где-то ниже среди обычных элементов один из них носит токен в <strong>data-атрибуте</strong>.
       Открой DevTools → Elements → Ctrl+F → ищи <code>data-token</code>.
     </p>
     <div class="PageInteractive-DomForest">
-      <div class="PageInteractive-DomForest-Leaf">какой-то контент A</div>
-      <div class="PageInteractive-DomForest-Leaf">какой-то контент B</div>
+      <div class="PageInteractive-DomForest-Leaf">какой-то контент A</div>
+      <div class="PageInteractive-DomForest-Leaf">какой-то контент B</div>
       <ul class="PageInteractive-DomForest-Leaf">
         <li>item 1</li>
         <li data-decoy="x">item 2</li>
@@ -59,20 +59,20 @@
         <span data-token="<%= expected %>" aria-hidden="true">обычный текст-обманка</span>
         <span>another wrap</span>
       </div>
-      <p class="PageInteractive-DomForest-Leaf">какой-то контент C</p>
+      <p class="PageInteractive-DomForest-Leaf">какой-то контент C</p>
     </div>
 
   <% when 'dev_diving.hidden_js_script' %>
     <p class="text-p-2">
-      На странице есть inline-скрипт с константой <code>SECRET</code>.
-      Открой <strong>View Source</strong> (Ctrl+U) или DevTools → Sources → текущий документ.
+      На странице есть inline-скрипт с константой <code>SECRET</code>.
+      Открой <strong>View Source</strong> (Ctrl+U) или DevTools → Sources → текущий документ.
     </p>
     <script>
       const SECRET = <%= expected.to_json.html_safe %>;
     </script>
 
   <% when 'legacy.archive_worm' %>
-    <p class="text-p-2">Ниже — устаревшая архивная страница. Найди в ней кодовое слово.</p>
+    <p class="text-p-2">Ниже — устаревшая архивная страница. Найди в ней кодовое слово.</p>
     <% session = @session_token || @session&.attempts_record&.session_token %>
     <iframe src="<%= legacy_archive_path(variant&.seed, session: session) %>"
             class="PageInteractive-Iframe"
@@ -80,27 +80,27 @@
             title="legacy archive"></iframe>
 
   <% when 'legacy.deprecation_encyclopedia' %>
-    <p class="text-p-2">На странице используется устаревший HTML-тег или подключён старый скрипт. Найди и введи его имя/версию.</p>
+    <p class="text-p-2">На странице используется устаревший HTML-тег или подключён старый скрипт. Найди и введи его имя/версию.</p>
     <% case expected
        when 'marquee' %>
       <marquee behavior="scroll" direction="left" scrollamount="3">
-        Бегущая строка — реклама старого образца
+        Бегущая строка — реклама старого образца
       </marquee>
     <% when 'blink' %>
-      <blink>Мигающий текст из 1995-го</blink>
+      <blink>Мигающий текст из 1995-го</blink>
     <% when 'jquery-1.2' %>
       <script src="/legacy/cdn/jquery-1.2.js"></script>
-      <p class="text-p-3">На странице подключён очень старый jQuery. Изучи <code>&lt;script src&gt;</code>.</p>
+      <p class="text-p-3">На странице подключён очень старый jQuery. Изучи <code>&lt;script src&gt;</code>.</p>
     <% end %>
 
   <% when 'legacy.relic_layout' %>
-    <p class="text-p-2">У одного из блоков ниже устаревшее CSS-свойство. Найди в инспекторе и введи имя свойства.</p>
+    <p class="text-p-2">У одного из блоков ниже устаревшее CSS-свойство. Найди в инспекторе и введи имя свойства.</p>
     <div style="<%= hidden_text %>; padding: 8px; border: 1px dashed currentColor;">
-      Древний блок с устаревшим стилем. Открой его в инспекторе.
+      Древний блок с устаревшим стилем. Открой его в инспекторе.
     </div>
 
   <% when 'legacy.ghost_format' %>
-    <p class="text-p-2">На странице подключён файл устаревшего формата. Найди его расширение и введи.</p>
+    <p class="text-p-2">На странице подключён файл устаревшего формата. Найди его расширение и введи.</p>
     <% case expected
        when 'swf' %>
       <embed src="/legacy/cdn/animation.swf" type="application/x-shockwave-flash" width="120" height="80"></embed>
@@ -109,11 +109,11 @@
     <% when 'midi' %>
       <embed src="/legacy/cdn/theme.midi" type="audio/midi" width="120" height="40"></embed>
     <% end %>
-    <p class="text-p-3">Подсказка: посмотри <code>src</code> в инспекторе.</p>
+    <p class="text-p-3">Подсказка: посмотри <code>src</code> в инспекторе.</p>
 
   <% when 'it_errors.blind_check' %>
     <p class="text-p-2">
-      Где-то в исходниках страницы пароль захардкожен в JS. Открой <strong>Sources</strong> (или Ctrl+U) и найди константу <code>PASSWORD</code>.
+      Где-то в исходниках страницы пароль захардкожен в JS. Открой <strong>Sources</strong> (или Ctrl+U) и найди константу <code>PASSWORD</code>.
     </p>
     <script>
       const PASSWORD = <%= expected.to_json.html_safe %>;
@@ -121,21 +121,21 @@
 
   <% when 'it_security.deprecated_dangerous' %>
     <p class="text-p-2">
-      На странице подключена устаревшая JS-библиотека через <code>&lt;script src&gt;</code>. Найди её версию.
+      На странице подключена устаревшая JS-библиотека через <code>&lt;script src&gt;</code>. Найди её версию.
     </p>
     <script src="/legacy/cdn/<%= hidden_text %>"></script>
-    <p class="text-p-3">Подсказка: View Source или Network → отфильтруй JS.</p>
+    <p class="text-p-3">Подсказка: View Source или Network → отфильтруй JS.</p>
 
   <% when 'it_security.broken_perms' %>
     <p class="text-p-2">
-      В публичных файлах страницы есть API-ключ. Найди его (Sources → текущий документ, или <code>window.inspectraApiKey</code> в консоли).
+      В публичных файлах страницы есть API-ключ. Найди его (Sources → текущий документ, или <code>window.inspectraApiKey</code> в консоли).
     </p>
     <script>
       window.inspectraApiKey = <%= expected.to_json.html_safe %>;
     </script>
 
   <% else %>
-    <p class="text-p-2">Где-то на этой странице спрятано слово. Открой DevTools или внимательно изучи DOM.</p>
+    <p class="text-p-2">Где-то на этой странице спрятано слово. Открой DevTools или внимательно изучи DOM.</p>
     <div class="PageInteractive-Decoy">
       <span class="<%= hidden_classes.join(' ') %>" aria-hidden="true"><%= hidden_text %></span>
     </div>
@@ -151,6 +151,6 @@
   <% if priest_perk %>
     <p class="text-p-3 PageInteractive-RolePerk"><strong>Перк Жреца:</strong> устаревшая запись слегка проявлена.</p>
   <% elsif hunter_perk %>
-    <p class="text-p-3 PageInteractive-RolePerk"><strong>Перк Охотника:</strong> скрытый текст полупрозрачно видим (если интерактив использует opacity).</p>
+    <p class="text-p-3 PageInteractive-RolePerk"><strong>Перк Охотника:</strong> скрытый текст полупрозрачно видим (если интерактив использует opacity).</p>
   <% end %>
 </div>

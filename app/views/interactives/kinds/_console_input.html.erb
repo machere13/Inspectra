@@ -7,11 +7,11 @@
      data-event-name="<%= event_name %>"
      data-token="<%= token %>">
   <p class="text-p-2">
-    На странице фоном летят события <code><%= event_name %></code>.
-    Открой консоль и подпишись:
+    На странице фоном летят события <code><%= event_name %></code>.
+    Открой консоль и подпишись:
   </p>
   <pre class="PageInteractive-Code text-code">window.addEventListener('<%= event_name %>', e =&gt; console.log(e.detail))</pre>
-  <p class="text-p-3">В <code>detail.token</code> — нужный токен. Введи его в поле ниже.</p>
+  <p class="text-p-3">В <code>detail.token</code> — нужный токен. Введи его в поле ниже.</p>
 
   <% if variant&.hint.present? %>
     <details class="PageInteractive-Hint"><summary class="text-p-3">Подсказка</summary><p class="text-p-3"><%= variant.hint %></p></details>
