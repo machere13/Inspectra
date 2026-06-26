@@ -40,11 +40,20 @@ function typoProtect(text, patterns) {
     });
   }
   masked = typo(masked);
-  return masked.replace(/\x00(\d+)\x00/g, (_, i) => stash[Number(i)]);
+  let out = masked;
+  let prev;
+  do {
+    prev = out;
+    out = out.replace(/\x00(\d+)\x00/g, (_, i) => stash[Number(i)]);
+  } while (out !== prev && /\x00\d+\x00/.test(out));
+  return out;
 }
 
 function processErb(text) {
-  return typoProtect(text, [/<(script|style)\b[\s\S]*?<\/\1>/gi]);
+  return typoProtect(text, [
+    /<%[\s\S]*?%>/g,
+    /<(script|style)\b[\s\S]*?<\/\1>/gi,
+  ]);
 }
 
 function processMarkdown(text) {
